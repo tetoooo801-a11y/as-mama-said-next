@@ -1,5 +1,6 @@
-import { Montserrat, Manrope } from "next/font/google";
+import { Montserrat, Manrope, Cairo } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -15,6 +16,13 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-cairo",
+  display: "swap",
+});
+
 export const metadata = {
   title: "As Mama Said — Mama said it. We made it.",
   description: "Well said, well made — a creative studio out of Cairo and Dubai.",
@@ -22,8 +30,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${manrope.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${manrope.variable} ${cairo.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

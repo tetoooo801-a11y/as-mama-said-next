@@ -1,34 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
-const projects = [
-  {
-    tag: "Food & beverage",
-    title: "Sundown Foods — Launch film",
-    desc: "A 45-second brand film that opened a new product line across three markets.",
-  },
-  {
-    tag: "Logistics",
-    title: "Nile Freight — Full rebrand",
-    desc: "Identity, fleet livery, and a site rebuilt around one promise: on time, every time.",
-  },
-  {
-    tag: "Real estate",
-    title: "Verde Living — Campaign",
-    desc: "A launch campaign for a new development, from teaser films to sales-floor screens.",
-  },
-  {
-    tag: "Hospitality",
-    title: "Sette Café — Social system",
-    desc: "A content system that took a single café from neighbourhood spot to city-wide name.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Results() {
+  const { t } = useLanguage();
   const [index, setIndex] = useState(0);
   const [flickering, setFlickering] = useState(false);
 
+  const projects = t.results.projects;
   const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
 
   const handleSlide = (dir) => {
@@ -41,14 +21,14 @@ export default function Results() {
     }, 320);
   };
 
-  const current = projects[index];
+  const current = projects[index] || projects[0];
 
   return (
     <section id="results">
       <div className="wrap">
         <div className="head">
-          <h2>This is what we made.</h2>
-          <p>A handful of the briefs that turned into work we're proud to show.</p>
+          <h2>{t.results.headTitle}</h2>
+          <p>{t.results.headDesc}</p>
         </div>
         <div className="results-tv">
           <div>
@@ -91,11 +71,8 @@ export default function Results() {
             </div>
           </div>
           <div className="results-side">
-            <div className="kicker">Cairo and Dubai, on screen.</div>
-            <p>
-              From a single reel to a full rebrand, every project here started the same
-              way — a client with a story worth telling properly.
-            </p>
+            <div className="kicker">{t.results.kicker}</div>
+            <p>{t.results.sideDesc}</p>
           </div>
         </div>
       </div>
