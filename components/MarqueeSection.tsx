@@ -66,6 +66,19 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Track visibility to apply willChange only when in viewport
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: "50px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -106,7 +119,7 @@ export default function MarqueeSection() {
           className="flex gap-3.5"
           style={{
             transform: row1Transform,
-            willChange: "transform",
+            willChange: isVisible ? "transform" : "auto",
             transition: "transform 0.05s linear",
           }}
         >
@@ -128,7 +141,7 @@ export default function MarqueeSection() {
           className="flex gap-3.5"
           style={{
             transform: row2Transform,
-            willChange: "transform",
+            willChange: isVisible ? "transform" : "auto",
             transition: "transform 0.05s linear",
           }}
         >

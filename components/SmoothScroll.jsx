@@ -34,8 +34,8 @@ export default function SmoothScroll() {
         lenis.destroy();
         delete window.__lenis;
       };
-    } catch (e) {
-      console.warn("Lenis initialization error:", e);
+    } catch {
+      // Lenis failed to initialize; native scroll will be used as fallback
     }
   }, []);
 
