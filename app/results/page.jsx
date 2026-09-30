@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import LandingAccordionItem from "@/components/ui/interactive-image-accordion";
 import Results from "@/components/Results";
+import GalleryClients from "@/components/GalleryClients";
 import SharedCta from "@/components/SharedCta";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -32,17 +33,8 @@ export default function ResultsPage() {
         {/* Studio Live Reels & Phone Showcase */}
         <Results />
 
-        <section className="proj-grid-section flex-1">
-          <div className="wrap proj-grid">
-            {t.results.projects.map((proj, idx) => (
-              <article className="proj-card" key={idx}>
-                <span className="proj-tag">{proj.tag}</span>
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        {/* Clients & Brands Partner Showcase */}
+        <GalleryClients />
 
         <SharedCta />
       </main>
