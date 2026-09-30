@@ -244,9 +244,9 @@ header.site-nav {
   position: fixed; top: var(--safe-t); left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px clamp(20px, 5vw, 40px);
-  opacity: 0; transform: translateY(-12px);
-  transition: opacity .5s ease, transform .5s ease;
-  pointer-events: none;
+  opacity: 1; transform: translateY(0);
+  pointer-events: auto;
+  transition: padding .3s ease, background-color .3s ease, border-color .3s ease;
 }
 header.site-nav.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
 header.site-nav.scrolled {
