@@ -23,6 +23,46 @@ const CLIPS = [
 const ROW_1 = [...CLIPS.slice(0, 8), ...CLIPS.slice(0, 8), ...CLIPS.slice(0, 8)];
 const ROW_2 = [...CLIPS.slice(7), ...CLIPS.slice(7), ...CLIPS.slice(7)];
 
+// Lazy video: loads + plays only when in viewport, pauses when out
+function LazyVideo({ src, className }: { src: string; className?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoad(true);
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { rootMargin: "100px" } // Start loading slightly before visible
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={shouldLoad ? src : undefined}
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+    />
+  );
+}
+
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
@@ -75,13 +115,8 @@ export default function MarqueeSection() {
               key={`r1-${i}`}
               className="relative w-[300px] sm:w-[360px] md:w-[420px] h-[190px] sm:h-[230px] md:h-[270px] shrink-0 overflow-hidden rounded-2xl bg-black border border-[#15100C]/10 dark:border-white/10 shadow-[0_12px_28px_rgba(21,16,12,0.08)] group"
             >
-              <video
+              <LazyVideo
                 src={src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
@@ -102,13 +137,8 @@ export default function MarqueeSection() {
               key={`r2-${i}`}
               className="relative w-[300px] sm:w-[360px] md:w-[420px] h-[190px] sm:h-[230px] md:h-[270px] shrink-0 overflow-hidden rounded-2xl bg-black border border-[#15100C]/10 dark:border-white/10 shadow-[0_12px_28px_rgba(21,16,12,0.08)] group"
             >
-              <video
+              <LazyVideo
                 src={src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
