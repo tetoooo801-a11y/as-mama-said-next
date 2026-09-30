@@ -11,18 +11,20 @@ export default function ResultsPage() {
   const { t, isRTL } = useLanguage();
 
   return (
-    <>
+    <div
+      className="relative w-full min-h-screen flex flex-col justify-between bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors"
+      style={{ overflowX: "clip" }}
+    >
       <SmoothScroll />
       <Navbar />
-      <main>
+      <main className="flex-1 flex flex-col">
         <PageHero
-          eyebrow={isRTL ? "المعرض" : "Gallery"}
-          title={t.results.headTitle}
-          subtitle={t.results.headDesc}
-          curveFill="#F2E6DC"
+          compact={true}
+          title={isRTL ? "المعرض" : "GALLERY"}
+          curveFill="var(--theme-bg, #FAF6F0)"
         />
 
-        <section className="proj-grid-section">
+        <section className="proj-grid-section flex-1">
           <div className="wrap proj-grid">
             {t.results.projects.map((proj, idx) => (
               <article className="proj-card" key={idx}>
@@ -37,6 +39,6 @@ export default function ResultsPage() {
         <SharedCta />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

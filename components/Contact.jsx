@@ -48,7 +48,7 @@ export default function Contact({ isPage = false }) {
     <section
       id="contact"
       className={`relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors ${
-        isPage ? "py-10 sm:py-16 md:py-20" : "py-20 sm:py-28 md:py-32"
+        isPage ? "pt-6 sm:pt-10 md:pt-14 pb-14 sm:pb-20" : "py-20 sm:py-28 md:py-32"
       } px-5 sm:px-8 md:px-12`}
     >
       <div className="max-w-7xl mx-auto">

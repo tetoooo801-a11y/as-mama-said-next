@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
+import PageHero from "@/components/PageHero";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import Collaborations from "@/components/Collaborations";
@@ -13,10 +14,15 @@ export default function ServicesPage() {
   const { isRTL } = useLanguage();
 
   return (
-    <div className="relative w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC]" style={{ overflowX: "clip" }}>
+    <div className="relative w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors" style={{ overflowX: "clip" }}>
       <SmoothScroll />
       <Navbar />
-      <main className="pt-16 sm:pt-20">
+      <main>
+        <PageHero
+          compact={true}
+          title={isRTL ? "خدماتنا" : "SERVICES"}
+          curveFill="var(--theme-bg, #FAF6F0)"
+        />
         <ServicesSection />
         <ProjectsSection />
         <Collaborations />

@@ -45,7 +45,12 @@ export default function Navbar() {
     }
   };
 
-  const hasDarkHero = pathname === "/about" || pathname === "/results" || pathname === "/gallery";
+  const hasDarkHero =
+    pathname === "/about" ||
+    pathname === "/services" ||
+    pathname === "/results" ||
+    pathname === "/gallery" ||
+    pathname === "/contact";
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
 
   useEffect(() => {
