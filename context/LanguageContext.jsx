@@ -9,6 +9,7 @@ const LanguageContext = createContext({
   toggleLanguage: () => {},
   t: translations.en,
   dir: "ltr",
+  isRTL: false,
 });
 
 export function LanguageProvider({ children }) {
@@ -37,6 +38,7 @@ export function LanguageProvider({ children }) {
 
   const t = translations[language] || translations.en;
   const dir = language === "ar" ? "rtl" : "ltr";
+  const isRTL = dir === "rtl";
 
   return (
     <LanguageContext.Provider
@@ -46,6 +48,7 @@ export function LanguageProvider({ children }) {
         toggleLanguage,
         t,
         dir,
+        isRTL,
       }}
     >
       {children}

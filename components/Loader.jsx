@@ -60,29 +60,30 @@ export default function Loader() {
           const scale = (diag / 18) * 1.5;
 
           const tl = gsap.timeline({
-            delay: reduceMotion ? 0 : 0.4,
+            delay: reduceMotion ? 0 : 0.12,
             onComplete: unlock,
           });
 
           tl.to(markRef.current, {
             opacity: 0,
-            duration: reduceMotion ? 0.01 : 0.35,
-            ease: "power1.in",
-          }, 0.05)
+            scale: 0.96,
+            duration: reduceMotion ? 0.01 : 0.22,
+            ease: "power2.in",
+          }, 0)
             .to(flood, {
               scale: scale,
-              duration: reduceMotion ? 0.01 : 0.85,
-              ease: "power2.in",
-            }, 0.15)
+              duration: reduceMotion ? 0.01 : 0.45,
+              ease: "power2.inOut",
+            }, 0.04)
             .to(loaderRef.current, {
               opacity: 0,
-              duration: reduceMotion ? 0.01 : 0.01,
-            }, ">-0.01")
+              duration: reduceMotion ? 0.01 : 0.15,
+            }, ">-0.1")
             .to(flood, {
               opacity: 0,
-              duration: reduceMotion ? 0.01 : 0.4,
+              duration: reduceMotion ? 0.01 : 0.25,
               ease: "power1.out",
-            }, ">+0.05");
+            }, ">");
         } catch (e) {
           unlock();
         }
@@ -92,11 +93,11 @@ export default function Loader() {
         start();
       } else {
         window.addEventListener("load", start);
-        setTimeout(start, 1500);
+        setTimeout(start, 350);
       }
     });
 
-    const failsafe = setTimeout(unlock, 3500);
+    const failsafe = setTimeout(unlock, 1200);
 
     return () => {
       clearTimeout(failsafe);

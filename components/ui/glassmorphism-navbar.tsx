@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Moon, Sun, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -76,28 +77,34 @@ export function GlassmorphismNavBar({
     onThemeChange?.(newTheme);
   };
 
+  const router = useRouter();
+
   const handleItemClick = (item: NavItem) => {
-    setActiveTab(item.name);
+    setActiveTab(item.id || item.name);
     if (onItemSelect) {
       onItemSelect(item);
     }
-    if (item.url === "#hero-pin" || item.url === "#" || item.url === "#top") {
-      if (typeof window !== "undefined") {
-        const win = window as any;
-        if (win.__lenis) {
-          win.__lenis.scrollTo(0, { duration: 1.5 });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+    if (item.url) {
+      if (item.url.startsWith("/")) {
+        router.push(item.url);
+      } else if (item.url === "#hero-pin" || item.url === "#" || item.url === "#top") {
+        if (typeof window !== "undefined") {
+          const win = window as any;
+          if (win.__lenis) {
+            win.__lenis.scrollTo(0, { duration: 1.5 });
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         }
-      }
-    } else if (item.url && item.url.startsWith("#")) {
-      const target = document.querySelector(item.url);
-      if (target) {
-        const win = window as any;
-        if (win.__lenis) {
-          win.__lenis.scrollTo(target, { duration: 1.4 });
-        } else {
-          target.scrollIntoView({ behavior: "smooth" });
+      } else if (item.url.startsWith("#")) {
+        const target = document.querySelector(item.url);
+        if (target) {
+          const win = window as any;
+          if (win.__lenis) {
+            win.__lenis.scrollTo(target, { duration: 1.4 });
+          } else {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         }
       }
     }
