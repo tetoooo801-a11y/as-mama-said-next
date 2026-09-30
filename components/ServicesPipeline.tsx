@@ -135,12 +135,12 @@ export default function ServicesPipeline() {
   return (
     <section
       id="pipeline"
-      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] px-5 sm:px-8 md:px-12 py-20 sm:py-28 md:py-32 border-t border-black/[0.08] dark:border-white/10 transition-colors"
+      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] px-5 sm:px-8 md:px-12 pt-6 sm:pt-10 md:pt-12 pb-20 sm:pb-28 md:pb-32 border-t border-black/[0.08] dark:border-white/10 transition-colors"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <FadeIn delay={0.1} y={25}>
-          <div className="flex flex-col items-center text-center mb-14 sm:mb-18 md:mb-20">
+          <div className="flex flex-col items-center text-center mb-10 sm:mb-12 md:mb-14">
             <div className="flex items-center gap-2.5 mb-3.5">
               <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
               <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">

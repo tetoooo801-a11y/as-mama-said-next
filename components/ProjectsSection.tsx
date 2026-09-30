@@ -176,6 +176,7 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
     offset: ["start start", "end start"],
   });
 
+  const isLast = index === totalCards - 1;
   const targetScale = 1 - (totalCards - 1 - index) * 0.02;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
   const opacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 1, 0.75]);
@@ -183,7 +184,11 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
   return (
     <div
       ref={containerRef}
-      className="min-h-[82vh] sm:min-h-[90vh] flex items-start justify-center sticky pb-14"
+      className={`flex items-start justify-center sticky ${
+        isLast
+          ? "min-h-0 pb-4 sm:pb-6"
+          : "min-h-[75vh] sm:min-h-[82vh] pb-8 sm:pb-10"
+      }`}
       style={{
         top: `calc(5rem + ${index * 14}px)`,
       }}
@@ -305,7 +310,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="featured-work"
-      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-4 sm:px-6 md:px-10 pt-20 sm:pt-28 pb-32 transition-colors"
+      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-4 sm:px-6 md:px-10 pt-20 sm:pt-28 pb-6 sm:pb-8 transition-colors"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Heading */}
