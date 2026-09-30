@@ -63,20 +63,32 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  const logoColor = hasDarkHero && !isScrolledPastHero ? "#FAF6F0" : "var(--theme-text)";
-
   return (
     <header className="site-nav show" id="siteNav">
       <Link
         href="/"
         onClick={handleLogoClick}
-        className="logo small transition-colors duration-300"
-        style={{
-          textDecoration: "none",
-          color: logoColor,
-        }}
+        className="flex items-center transition-transform duration-300 hover:scale-105 shrink-0"
+        aria-label="As Mama Said"
       >
-        AS MAMA SAID<span className="dot-inline"></span>
+        <img
+          src="/assets/images/ams-logo-darkbg.webp"
+          alt="As Mama Said"
+          width={54}
+          height={48}
+          className={`h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 ${
+            hasDarkHero && !isScrolledPastHero ? "block" : "hidden dark:block"
+          }`}
+        />
+        <img
+          src="/assets/images/ams-logo-lightbg.webp"
+          alt="As Mama Said"
+          width={54}
+          height={48}
+          className={`h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 ${
+            hasDarkHero && !isScrolledPastHero ? "hidden" : "block dark:hidden"
+          }`}
+        />
       </Link>
 
       <GlassmorphismNavBar
