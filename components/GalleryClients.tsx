@@ -169,13 +169,13 @@ export default function GalleryClients() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 bg-gradient-to-l from-[#FAF6F0] dark:from-[#061516] to-transparent z-10" />
 
         <div className="flex flex-col space-y-4 sm:space-y-6">
-          {/* Row 1 - Velocity: -2.5 (gliding to the left) */}
-          <ScrollVelocity velocity={-2.5} pauseOnHover={true}>
+          {/* Row 1 - Velocity: -0.8 (gentle glide to the left) */}
+          <ScrollVelocity velocity={-0.8} pauseOnHover={true}>
             {ROW_1_ITEMS.map((client, idx) => (
               <div
                 key={`row1-${client.id}-${idx}`}
                 title={isRTL ? client.nameAr : client.name}
-                className="group relative shrink-0 h-20 w-44 sm:h-24 sm:w-52 md:h-28 md:w-60 rounded-2xl bg-white dark:bg-[#0c1c1e] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_16px_rgba(21,16,12,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_28px_rgba(210,57,42,0.14)] hover:border-[#D2392A]/50 transition-all duration-300 flex items-center justify-center p-3 sm:p-4 cursor-pointer select-none"
+                className="group relative shrink-0 h-20 w-44 sm:h-24 sm:w-52 md:h-28 md:w-60 rounded-2xl bg-white border border-black/[0.08] dark:border-white/10 shadow-[0_4px_16px_rgba(21,16,12,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_28px_rgba(210,57,42,0.14)] hover:border-[#D2392A]/50 transition-all duration-300 flex items-center justify-center p-2.5 sm:p-3.5 cursor-pointer select-none overflow-hidden"
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
@@ -183,20 +183,20 @@ export default function GalleryClients() {
                     alt={client.name}
                     fill
                     sizes="(max-width: 640px) 176px, (max-width: 768px) 208px, 240px"
-                    className="object-contain p-2 filter brightness-0 opacity-70 group-hover:opacity-100 group-hover:scale-105 dark:brightness-100 dark:opacity-85 dark:group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain p-1.5 sm:p-2 group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
             ))}
           </ScrollVelocity>
 
-          {/* Row 2 - Velocity: 2.5 (gliding to the right) */}
-          <ScrollVelocity velocity={2.5} pauseOnHover={true}>
+          {/* Row 2 - Velocity: 0.8 (gentle glide to the right) */}
+          <ScrollVelocity velocity={0.8} pauseOnHover={true}>
             {ROW_2_ITEMS.map((client, idx) => (
               <div
                 key={`row2-${client.id}-${idx}`}
                 title={isRTL ? client.nameAr : client.name}
-                className="group relative shrink-0 h-20 w-44 sm:h-24 sm:w-52 md:h-28 md:w-60 rounded-2xl bg-white dark:bg-[#0c1c1e] border border-black/[0.08] dark:border-white/10 shadow-[0_4px_16px_rgba(21,16,12,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_28px_rgba(210,57,42,0.14)] hover:border-[#D2392A]/50 transition-all duration-300 flex items-center justify-center p-3 sm:p-4 cursor-pointer select-none"
+                className="group relative shrink-0 h-20 w-44 sm:h-24 sm:w-52 md:h-28 md:w-60 rounded-2xl bg-white border border-black/[0.08] dark:border-white/10 shadow-[0_4px_16px_rgba(21,16,12,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_28px_rgba(210,57,42,0.14)] hover:border-[#D2392A]/50 transition-all duration-300 flex items-center justify-center p-2.5 sm:p-3.5 cursor-pointer select-none overflow-hidden"
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
@@ -204,7 +204,7 @@ export default function GalleryClients() {
                     alt={client.name}
                     fill
                     sizes="(max-width: 640px) 176px, (max-width: 768px) 208px, 240px"
-                    className="object-contain p-2 filter brightness-0 opacity-70 group-hover:opacity-100 group-hover:scale-105 dark:brightness-100 dark:opacity-85 dark:group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain p-1.5 sm:p-2 group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
