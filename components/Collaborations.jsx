@@ -105,59 +105,75 @@ export default function Collaborations() {
               </div>
 
               {/* Right Card: Sirad Creative Agency (Advanced Tech & Digital Engineering) */}
-              <div className="lg:col-span-6 rounded-[28px] sm:rounded-[36px] bg-[#0A1617] text-white border border-white/[0.14] p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col justify-between group hover:border-[#D2392A]/50 transition-all duration-300">
-                <div>
+              <div className="relative overflow-hidden lg:col-span-6 rounded-[28px] sm:rounded-[36px] bg-[#070D0A] text-white border border-[#A3E635]/25 p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-between group hover:border-[#A3E635]/60 hover:shadow-[0_24px_60px_rgba(163,230,53,0.14)] transition-all duration-300">
+                
+                {/* Background Subtle Fading Dithered S Watermark (الحرف المتلاشي) */}
+                <div className="absolute -top-10 -end-10 w-64 h-64 sm:w-80 sm:h-80 pointer-events-none opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                  <img
+                    src="/assets/images/sirad-dither-s.png"
+                    alt=""
+                    className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(163,230,53,0.4)]"
+                  />
+                </div>
+
+                {/* Subtle Ambient Radial Glow */}
+                <div className="absolute top-0 end-0 w-72 h-72 bg-[#A3E635]/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10">
                   <div className="flex items-center justify-between gap-3 mb-6">
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-white/10 text-white border border-white/20">
-                      <Cpu size={14} className="text-[#D2392A]" />
+                    <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-[#A3E635]/15 text-[#A3E635] border border-[#A3E635]/30">
+                      <Cpu size={14} className="text-[#A3E635]" />
                       {t.collab.siradRole.badge}
                     </span>
-                    <span className="text-xs font-mono font-bold text-white/40">
+                    <span className="text-xs font-mono font-bold text-[#A3E635]/70">
                       PARTNER 02
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center justify-between gap-4 mb-5">
                     <div>
-                      <h3
-                        className="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase"
-                        style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-                      >
-                        SIRAD<span className="text-[#D2392A]">.</span>
-                      </h3>
-                      <span className="text-xs sm:text-sm font-semibold text-white/60 block mt-0.5">
-                        Creative Agency & Technology Powerhouse
-                      </span>
+                      {/* Sirad Official White Wordmark */}
+                      <img
+                        src="/assets/images/sirad-logo-white.png"
+                        alt="Sirad Creative Agency"
+                        className="h-8 sm:h-9 md:h-10 object-contain mb-2"
+                        loading="lazy"
+                      />
+                      <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wide">
+                        <span className="text-white">Digital</span>
+                        <span className="text-[#A3E635]">Done</span>
+                        <span className="text-white">Right.</span>
+                      </div>
                     </div>
 
-                    {/* Sirad High-Res Logo Badge */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-[20px] overflow-hidden bg-black border border-white/20 p-2 shrink-0 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    {/* Sirad Fading S (الحرف المتلاشي) Badge */}
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-[20px] overflow-hidden bg-black/85 border border-[#A3E635]/35 p-2 shrink-0 shadow-[0_8px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:border-[#A3E635]/70 transition-all duration-300 flex items-center justify-center">
                       <img
-                        src="/assets/images/sirad-collab-logo.png"
-                        alt="Sirad Creative Agency Logo"
-                        className="w-full h-full object-contain"
+                        src="/assets/images/sirad-dither-s.png"
+                        alt="Sirad Symbol"
+                        className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(163,230,53,0.5)]"
                         loading="lazy"
                       />
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm md:text-[14.5px] leading-relaxed text-[#D7E2EA]/75 font-normal mb-6">
+                  <p className="text-xs sm:text-sm md:text-[14.5px] leading-relaxed text-[#D7E2EA]/85 font-normal mb-6">
                     {t.collab.siradRole.desc}
                   </p>
 
                   <div className="space-y-2.5 pt-4 border-t border-white/10">
                     {t.collab.siradRole.points.map((pt, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] font-medium text-white/90">
-                        <CheckCircle2 size={16} className="text-[#D2392A] shrink-0 mt-0.5" />
+                      <div key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] font-medium text-white/95">
+                        <CheckCircle2 size={16} className="text-[#A3E635] shrink-0 mt-0.5" />
                         <span>{pt}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-white/70">
+                <div className="relative z-10 mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-white/70">
                   <span>{isRTL ? "الدور في الشراكة" : "Role"}</span>
-                  <span className="text-[#D2392A]">{isRTL ? "التكنولوجيا المتقدمة والحلول الرقمية" : "Technology & Digital Architecture"}</span>
+                  <span className="text-[#A3E635] font-extrabold">{isRTL ? "التكنولوجيا المتقدمة والحلول الرقمية" : "Technology & Digital Architecture"}</span>
                 </div>
               </div>
             </div>
