@@ -21,102 +21,144 @@ interface ProjectItem {
   metricsEn: { label: string; value: string }[];
   metricsAr: { label: string; value: string }[];
   link: string;
-  images: {
-    img1: string;
-    img2: string;
-  };
+  image: string;
 }
 
 const PROJECTS: ProjectItem[] = [
   {
     num: "01",
-    nameEn: "Nextlevel Studio",
-    nameAr: "استوديو نيكست ليفل",
-    categoryEn: "3D & Web Experience",
-    categoryAr: "ويب وتجارب ثلاثية الأبعاد",
-    headlineEn: "An immersive web universe merging real-time 3D shaders with fluid storytelling.",
-    headlineAr: "بيئة ويب تفاعلية تدمج الشيدرز ثلاثية الأبعاد بالسرد القصصي السلس.",
+    nameEn: "3D Modeling",
+    nameAr: "النمذجة ثلاثية الأبعاد",
+    categoryEn: "Spatial Assets & Geometry",
+    categoryAr: "مجسمات وبيئات ثلاثية الأبعاد",
+    headlineEn: "High-fidelity 3D assets and procedural worlds engineered for commercial impact.",
+    headlineAr: "بناء مجسمات وعوالم ثلاثية الأبعاد بدقة فائقة مخصصة للمنتجات والإعلانات.",
     descEn:
-      "We engineered a spatial digital experience tailored for Nextlevel Studio's international rollout. By combining procedural 3D environments, physics-based motion, and conversion-engineered interactions, the platform elevated brand authority and multiplied user engagement.",
+      "From bespoke product geometries to sprawling virtual environments, we build high-precision 3D assets optimized for cinematic lighting, interactive platforms, and scroll-stopping visuals.",
     descAr:
-      "صممنا وبنينا تجربة رقمية تفاعلية تمزج بين البيئات ثلاثية الأبعاد والحركة الفيزيائية وواجهات الاستخدام الذكية، مما ساهم في مضاعفة متوسط مدة تفاعل الزوار وترسيخ ريادة الاستوديو عالمياً.",
-    tagsEn: ["3D Environment", "WebGL Shaders", "Fluid Motion", "Interactive UI"],
-    tagsAr: ["بيئات ثلاثية الأبعاد", "شيدرز WebGL", "حركة سلسة", "واجهات تفاعلية"],
+      "نصمم ونبني مجسمات وعوالم ثلاثية الأبعاد متناهية الدقة، مجهزة للإضاءة السينمائية والتطبيقات التفاعلية لترتقي بمظهر المنتجات وتخطف انتباه العملاء من النظرة الأولى.",
+    tagsEn: ["Hard-surface Modeling", "Spatial Environments", "Product Geometry", "CGI Assets"],
+    tagsAr: ["نمذجة مجسمات", "بيئات ثلاثية الأبعاد", "هندسة منتجات", "أصول سينمائية"],
     metricsEn: [
-      { label: "Deliverables", value: "3D Web & Shaders" },
-      { label: "Client Sector", value: "Digital Studio" },
-      { label: "Impact", value: "+320% Dwell Time" },
+      { label: "Deliverables", value: "Sub-D Models" },
+      { label: "Optimization", value: "Real-time & CGI" },
+      { label: "Impact", value: "+300% Engagement" },
     ],
     metricsAr: [
-      { label: "المخرجات", value: "موقع ويب ثلاثي الأبعاد" },
-      { label: "القطاع", value: "استوديو رقمي" },
-      { label: "الأثر", value: "+320% تفاعل" },
+      { label: "المخرجات", value: "مجسمات عالية الدقة" },
+      { label: "المعالجة", value: "جاهزة للسينما والويب" },
+      { label: "الأثر", value: "+300% تفاعل" },
     ],
-    link: "https://asmamasaid.com",
-    images: {
-      img1: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
-      img2: "/assets/images/service-5-web.png",
-    },
+    link: "/contact",
+    image: "/assets/images/service-1-3d.png",
   },
   {
     num: "02",
-    nameEn: "Aura Brand Identity",
-    nameAr: "هوية علامة أورا",
-    categoryEn: "Brand System & Motion",
-    categoryAr: "أنظمة الهوية والموشن جرافيك",
-    headlineEn: "Crafting an authoritative, living visual identity engineered to withstand market shifts.",
-    headlineAr: "هندسة هوية بصرية حية ذات حضور استثنائي تدوم وتواكب تطور الأسواق.",
+    nameEn: "Rendering",
+    nameAr: "الرندرة الواقعية",
+    categoryEn: "Photorealistic CGI & Lighting",
+    categoryAr: "إخراج واقعي ومحاكاة خامات",
+    headlineEn: "Hyper-realistic illumination, tactile materials, and studio-grade photography.",
+    headlineAr: "إخراج فوتوغرافي واقعي يبرز أدق تفاصيل المواد والخامات والإضاءة.",
     descEn:
-      "Aura required an unmistakable identity capable of scaling across global physical and digital touchpoints. We designed a kinetic typographic system, sculptural 3D brand marks, and comprehensive design guidelines that empowered their internal teams to communicate with absolute clarity.",
+      "We replace costly physical production with CGI rendering that looks indistinguishable from reality. Custom shaders, macro lens simulations, and bespoke light setups turn products into pure art.",
     descAr:
-      "صممنا لأورا منظومة هوية بصرية كاملة تمتد من الشعارات الحركية والتيبوغرافي المخصص إلى الأصول ثلاثية الأبعاد وأدلة التطبيق الدقيقة، لتمنح العلامة صوتاً مميزاً وحضوراً مؤثراً على جميع المنصات.",
-    tagsEn: ["Kinetic Identity", "Custom Type", "3D Brand Assets", "Design System"],
-    tagsAr: ["هوية حركية", "خطوط مخصصة", "مجسمات ثلاثية الأبعاد", "نظام التصميم"],
+      "نبتكر صوراً واقعية تنافس الكاميرات الاحترافية بدقة فائقة. محاكاة ذكية لانعكاسات الزجاج والمعادن والأقمشة تمنح منتجاتك فخامة تليق بأقوى الحملات الإعلانية.",
+    tagsEn: ["Ray Tracing", "PBR Materials", "Studio Lighting", "8K Resolution"],
+    tagsAr: ["تتبع الأشعة", "خامات فيزيائية", "إضاءة استوديو", "دقة 8K فائقة"],
     metricsEn: [
-      { label: "Deliverables", value: "Identity System" },
-      { label: "Client Sector", value: "Fintech & Lifestyle" },
-      { label: "Impact", value: "Global Rollout" },
+      { label: "Resolution", value: "8K Ultra-HD" },
+      { label: "Turnaround", value: "Zero Studio Friction" },
+      { label: "Visual Fidelity", value: "100% Photoreal" },
     ],
     metricsAr: [
-      { label: "المخرجات", value: "منظومة هوية متكاملة" },
-      { label: "القطاع", value: "تكنولوجيا مالية ونمط حياة" },
-      { label: "الأثر", value: "إطلاق عالمي" },
+      { label: "الدقة", value: "8K فائقة الجودة" },
+      { label: "السرعة", value: "بدون مصاريف تصوير" },
+      { label: "الواقعية", value: "100% تطابق واقعي" },
     ],
-    link: "https://asmamasaid.com",
-    images: {
-      img1: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=900&q=80",
-      img2: "/assets/images/service-4-branding.png",
-    },
+    link: "/contact",
+    image: "/assets/images/service-2-render.png",
   },
   {
     num: "03",
-    nameEn: "Solaris Digital",
-    nameAr: "سولاريس ديجيتال",
-    categoryEn: "Photorealistic CGI & Film",
-    categoryAr: "رندرة سينمائية وإنتاج CGI",
-    headlineEn: "Photorealistic product simulations with cinematic lighting and tactile precision.",
-    headlineAr: "محاكاة منتجات واقعية بإضاءة سينمائية ودقة متناهية في تفاصيل الخامات.",
+    nameEn: "Motion Design",
+    nameAr: "تصميم الحركة والأنيميشن",
+    categoryEn: "Kinetic Direction & Animation",
+    categoryAr: "موشن جرافيك وتحريك سينمائي",
+    headlineEn: "Dynamic physics, expressive kinetic type, and commercial promo animation.",
+    headlineAr: "تحريك احترافي وموشن جرافيك ديناميكي يضفي طاقة وحيوية للعلامات التجارية.",
     descEn:
-      "To unveil Solaris' flagship hardware, we generated high-end CGI commercial keyframes, microscopic texture close-ups, and macro lighting simulations. The resulting visual assets became the cornerstone of their global launch campaign, achieving widespread acclaim and record pre-orders.",
+      "We turn static concepts into hypnotic motion. High-energy launch videos, kinetic typography, and snappy product loops engineered to hook viewers within the opening two seconds.",
     descAr:
-      "لإطلاق منتج سولاريس الرائد، أنشأنا حملة إعلانية سينمائية ثلاثية الأبعاد تعتمد على محاكاة الإضاءة الدقيقة والتفاصيل المجهرية للمواد، محققة أرقام طلب مسبق قياسية واستحساناً واسعاً في السوق.",
-    tagsEn: ["Photorealistic CGI", "Lighting Simulation", "4K Animation", "Commercial Film"],
-    tagsAr: ["رندرة CGI واقعية", "محاكاة الإضاءة", "أنيميشن 4K", "فيلم تجاري"],
+      "نبث الحيوية في أفكار علامتك التجارية من خلال فيديوهات إطلاق حماسية وتحريك تيبوغرافي مصمم لإيقاف التمرير ورفع نسب المشاهدة من أول ثانيتين.",
+    tagsEn: ["Kinetic Typography", "Physics Simulation", "Launch Reels", "60 FPS Animation"],
+    tagsAr: ["تيبوغرافي حركي", "محاكاة حركة فيزيائية", "ريلز إطلاق", "حركة 60 إطار"],
     metricsEn: [
-      { label: "Deliverables", value: "CGI Launch Assets" },
-      { label: "Client Sector", value: "Next-gen Hardware" },
-      { label: "Impact", value: "+180% Pre-orders" },
+      { label: "Pacing", value: "60 FPS Fluid" },
+      { label: "Hook Rate", value: "< 2s Stop Scroll" },
+      { label: "Engagement", value: "+4.2x Retention" },
     ],
     metricsAr: [
-      { label: "المخرجات", value: "أصول إطلاق CGI" },
-      { label: "القطاع", value: "أجهزة متطورة" },
-      { label: "الأثر", value: "+180% طلبات مسبقة" },
+      { label: "الانسيابية", value: "60 إطار/ثانية" },
+      { label: "الجذب", value: "أقل من ثانيتين" },
+      { label: "المشاهدة", value: "+4.2x استبقاء" },
     ],
-    link: "https://asmamasaid.com",
-    images: {
-      img1: "/assets/images/service-1-3d.png",
-      img2: "/assets/images/service-2-render.png",
-    },
+    link: "/contact",
+    image: "/assets/images/service-3-motion.png",
+  },
+  {
+    num: "04",
+    nameEn: "Branding",
+    nameAr: "الهوية البصرية والبراندينج",
+    categoryEn: "Identity Systems & Strategy",
+    categoryAr: "أنظمة الهوية والاستراتيجية",
+    headlineEn: "Complete brand systems built to stand out, command respect, and scale globally.",
+    headlineAr: "صناعة أنظمة بصرية متكاملة وشعارات حركية تضمن حضوراً فريداً ومؤثراً.",
+    descEn:
+      "Far beyond a logo: we design comprehensive identity universes. From typographic rules and color architectures to digital guidelines, packaging, and brand voice that unifies your entire presence.",
+    descAr:
+      "أكثر من مجرد شعار: نبني منظومة هوية كاملة تشمل التيبوغرافي، باليت الألوان، تصميم المطبوعات والتغليف، ونبرة الصوت التي تجعل علامتك تفرض هيبتها في أي سوق.",
+    tagsEn: ["Identity Systems", "Bespoke Typography", "Packaging", "Brand Guidelines"],
+    tagsAr: ["أنظمة الهوية", "خطوط وهوية مخصصة", "تصميم تغليف", "أدلة العلامة"],
+    metricsEn: [
+      { label: "Scope", value: "Complete System" },
+      { label: "Market Reach", value: "Cairo & Dubai" },
+      { label: "Equity", value: "+250% Brand Value" },
+    ],
+    metricsAr: [
+      { label: "النطاق", value: "منظومة بصرية شاملة" },
+      { label: "الانتشار", value: "القاهرة ودبي" },
+      { label: "القيمة", value: "+250% ولاء وقيمة" },
+    ],
+    link: "/contact",
+    image: "/assets/images/service-4-branding.png",
+  },
+  {
+    num: "05",
+    nameEn: "Web Design",
+    nameAr: "تصميم الويب والتجارب الرقمية",
+    categoryEn: "Interactive UX/UI & WebGL",
+    categoryAr: "واجهات تفاعلية وتجربة مستخدم",
+    headlineEn: "Conversion-engineered digital experiences merging smooth 3D with flawless speed.",
+    headlineAr: "تصميم وتطوير مواقع وتطبيقات تفاعلية تجمع بين الإبهار البصري وسرعة الأداء.",
+    descEn:
+      "We build modern web flagships that look like living works of art and convert like precision machines. Lightning-fast response times, bespoke micro-interactions, and flawless mobile responsiveness.",
+    descAr:
+      "نبني واجهات وتجارب ويب مبتكرة تجمع بين اللمسات ثلاثية الأبعاد والتنقل الفوري وتجربة المستخدم المصممة لتحويل كل زائر إلى عميل حقيقي.",
+    tagsEn: ["Interactive Web", "Fluid Micro-motion", "Mobile-First", "Conversion UX"],
+    tagsAr: ["ويب تفاعلي", "حركة ميكرو سلسة", "متوافق مع الموبايل", "تحويل مبيعات"],
+    metricsEn: [
+      { label: "Speed", value: "99+ Lighthouse" },
+      { label: "Conversion", value: "+180% Inquiries" },
+      { label: "Experience", value: "Award Grade" },
+    ],
+    metricsAr: [
+      { label: "السرعة", value: "99+ على Lighthouse" },
+      { label: "التحويل", value: "+180% استفسارات" },
+      { label: "التجربة", value: "مستوى عالمي" },
+    ],
+    link: "/contact",
+    image: "/assets/images/service-5-web.png",
   },
 ];
 
@@ -134,39 +176,40 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
     offset: ["start start", "end start"],
   });
 
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03;
+  const targetScale = 1 - (totalCards - 1 - index) * 0.02;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 1, 0.75]);
 
   return (
     <div
       ref={containerRef}
-      className="min-h-[700px] sm:min-h-[760px] md:min-h-[85vh] flex items-start justify-center sticky pb-10"
+      className="min-h-[82vh] sm:min-h-[90vh] flex items-start justify-center sticky pb-14"
       style={{
-        top: `calc(5.5rem + ${index * 30}px)`,
+        top: `calc(5rem + ${index * 14}px)`,
       }}
     >
       <motion.div
-        style={{ scale }}
-        className="w-full max-w-6xl rounded-[32px] sm:rounded-[44px] md:rounded-[52px] border-2 border-[#D7E2EA]/30 bg-[#0C0C0C] p-5 sm:p-7 md:p-9 shadow-[0_30px_70px_rgba(0,0,0,0.85)] flex flex-col gap-5 sm:gap-6 text-white"
+        style={{ scale, opacity }}
+        className="w-full max-w-5xl xl:max-w-6xl rounded-[28px] sm:rounded-[38px] md:rounded-[44px] border border-white/[0.14] bg-[#091516] p-5 sm:p-7 md:p-8 shadow-[0_25px_65px_rgba(0,0,0,0.85)] flex flex-col gap-4 sm:gap-5 text-white"
       >
-        {/* Top row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 sm:pb-5">
-          <div className="flex items-baseline gap-3 sm:gap-5">
+        {/* Top Header Row */}
+        <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 border-b border-white/10 pb-3.5 sm:pb-4">
+          <div className="flex items-baseline gap-3 sm:gap-4">
             <span
-              className="font-black text-[#D7E2EA] leading-none select-none tracking-tight"
+              className="font-black text-[#D2392A] leading-none select-none tracking-tight"
               style={{
-                fontSize: "clamp(2.2rem, 5vw, 4rem)",
+                fontSize: "clamp(2rem, 4vw, 3.2rem)",
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
               }}
             >
               {project.num}
             </span>
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#D7E2EA]/60 font-semibold block">
+              <span className="text-[11px] sm:text-xs uppercase tracking-widest text-white/50 font-semibold block">
                 {isRTL ? project.categoryAr : project.categoryEn}
               </span>
               <h3
-                className="text-lg sm:text-2xl md:text-3xl font-bold uppercase text-[#D7E2EA] tracking-wide"
+                className="text-base sm:text-xl md:text-2xl font-bold uppercase text-[#F2E6DC] tracking-wide"
                 style={{
                   fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
                 }}
@@ -176,67 +219,59 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
             </div>
           </div>
 
-          <LiveProjectButton label={isRTL ? "زيارة المشروع" : "Live Project"} href={project.link} />
+          <LiveProjectButton
+            label={isRTL ? "ابدأ مشروعك" : "Start Project"}
+            href="/contact"
+            className="!px-5 !py-2 sm:!px-7 sm:!py-2.5 !text-xs sm:!text-sm hover:!bg-[#D2392A] hover:!border-[#D2392A] hover:!text-white transition-all"
+          />
         </div>
 
-        {/* Bottom row: 2 Small Images + Content Grid */}
+        {/* Content Row: Single Featured Visual + Editorial Capabilities */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
-          {/* Left: 2 Small Images Column */}
-          <div className="lg:col-span-5 flex flex-row lg:flex-col gap-4 sm:gap-5">
-            <div className="flex-1 relative overflow-hidden rounded-[20px] sm:rounded-[26px] border border-white/10 h-[140px] sm:h-[180px] lg:h-[200px] bg-white/[0.03] group">
-              <img
-                src={project.images.img1}
-                alt={`${project.nameEn} View 1`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <span className="absolute bottom-2.5 start-2.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-medium bg-black/60 backdrop-blur-md text-white/90 border border-white/10">
-                01 / {isRTL ? "معاينة بصرية" : "Visual Frame"}
-              </span>
-            </div>
-            <div className="flex-1 relative overflow-hidden rounded-[20px] sm:rounded-[26px] border border-white/10 h-[140px] sm:h-[180px] lg:h-[200px] bg-white/[0.03] group">
-              <img
-                src={project.images.img2}
-                alt={`${project.nameEn} View 2`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <span className="absolute bottom-2.5 start-2.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-medium bg-black/60 backdrop-blur-md text-white/90 border border-white/10">
-                02 / {isRTL ? "تفاصيل التنفيذ" : "Execution"}
-              </span>
-            </div>
+          {/* Left: Featured Visual Showcase Frame */}
+          <div className="lg:col-span-5 relative overflow-hidden rounded-[20px] sm:rounded-[24px] border border-white/10 h-[220px] sm:h-[260px] lg:h-[310px] bg-black/40 group">
+            <img
+              src={project.image}
+              alt={`${project.nameEn} Visual Showcase`}
+              className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+            <span className="absolute bottom-3 start-3 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-black/70 backdrop-blur-md text-white/90 border border-white/10">
+              {project.num} · {isRTL ? project.categoryAr : project.categoryEn}
+            </span>
           </div>
 
-          {/* Right: Rich Content Column */}
-          <div className="lg:col-span-7 flex flex-col justify-between rounded-[20px] sm:rounded-[26px] bg-white/[0.03] border border-white/10 p-5 sm:p-7 md:p-8 backdrop-blur-sm">
+          {/* Right: Rich Capabilities & Execution Column */}
+          <div className="lg:col-span-7 flex flex-col justify-between rounded-[20px] sm:rounded-[24px] bg-white/[0.03] border border-white/10 p-5 sm:p-6 backdrop-blur-sm">
             <div>
               {/* Eyebrow */}
-              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
                 <span className="w-3.5 sm:w-4 h-[2px] bg-[#D2392A] shrink-0" />
                 <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#D2392A]">
-                  {isRTL ? "دراسة حالة وتنفيذ" : "CASE STUDY & EXECUTION"}
+                  {isRTL ? "القدرات والتنفيذ الفعلي" : "CAPABILITIES & EXECUTION"}
                 </span>
               </div>
 
               {/* Headline */}
               <h4
-                className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-snug tracking-tight mb-3"
+                className="text-base sm:text-lg md:text-xl font-bold text-white leading-snug tracking-tight mb-2 sm:mb-2.5"
                 style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
               >
                 {isRTL ? project.headlineAr : project.headlineEn}
               </h4>
 
-              {/* Description paragraph */}
-              <p className="text-xs sm:text-sm md:text-[14.5px] leading-relaxed text-[#D7E2EA]/75 font-normal max-w-xl">
+              {/* Description */}
+              <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#D7E2EA]/75 font-normal max-w-xl">
                 {isRTL ? project.descAr : project.descEn}
               </p>
 
               {/* Deliverables / Tags Pills */}
-              <div className="flex flex-wrap gap-2 my-4 sm:my-5">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 my-3 sm:my-3.5">
                 {(isRTL ? project.tagsAr : project.tagsEn).map((tag, tIdx) => (
                   <span
                     key={tIdx}
-                    className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-white/[0.05] border border-white/10 text-[#D7E2EA]/90 tracking-wide"
+                    className="inline-flex items-center px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-white/[0.05] border border-white/10 text-[#D7E2EA]/90 tracking-wide"
                   >
                     {tag}
                   </span>
@@ -245,13 +280,13 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
             </div>
 
             {/* Bottom Meta & Impact Stats */}
-            <div className="pt-3 sm:pt-4 border-t border-white/10 grid grid-cols-3 gap-2 sm:gap-4 text-start">
+            <div className="pt-2.5 sm:pt-3 border-t border-white/10 grid grid-cols-3 gap-2 sm:gap-3 text-start">
               {(isRTL ? project.metricsAr : project.metricsEn).map((metric, mIdx) => (
                 <div key={mIdx}>
-                  <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-white/50 font-medium">
+                  <span className="block text-[9.5px] sm:text-[10.5px] uppercase tracking-wider text-white/50 font-medium">
                     {metric.label}
                   </span>
-                  <span className="block text-xs sm:text-sm font-bold text-[#FAF6F0] mt-0.5 truncate">
+                  <span className="block text-xs sm:text-[13px] font-bold text-[#FAF6F0] mt-0.5 truncate">
                     {metric.value}
                   </span>
                 </div>
@@ -279,22 +314,22 @@ export default function ProjectsSection() {
             <div className="flex items-center gap-2 mb-3">
               <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block" />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#15100C]/70 dark:text-[#F2E6DC]/70">
-                {isRTL ? "مشاريع وتطبيقات" : "SELECTED WORK IN ACTION"}
+                {isRTL ? "خدماتنا بالأرقام والتنفيذ" : "SERVICES IN ACTION"}
               </span>
             </div>
             <h2
               className="hero-heading font-black uppercase tracking-tight leading-none text-[#15100C] dark:text-[#F2E6DC]"
               style={{
-                fontSize: "clamp(2.5rem, 8vw, 90px)",
+                fontSize: "clamp(2.5rem, 8vw, 84px)",
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
               }}
             >
-              {isRTL ? "أعمالنا على أرض الواقع" : "WORK IN ACTION"}
+              {isRTL ? "خدماتنا على أرض الواقع" : "DISCIPLINES IN ACTION"}
             </h2>
             <p className="mt-4 text-sm sm:text-base md:text-lg text-[#15100C]/70 dark:text-[#F2E6DC]/70 max-w-xl font-normal">
               {isRTL
-                ? "نماذج واقعية لكيفية تحويل خدماتنا إلى تجارب بصرية استثنائية وقيمة ملموسة لعملائنا."
-                : "Real-world examples of how our 3D, branding, and motion services transform client visions into standout market presence."}
+                ? "استكشف كيف نحوّل كل خدمة من خدماتنا الخمس إلى نتائج وحضور استثنائي على أرض الواقع."
+                : "Explore how our 5 core disciplines translate into real-world impact, prestige, and growth."}
             </p>
           </div>
         </FadeIn>
