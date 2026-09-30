@@ -404,7 +404,7 @@ export default function Contact({ isPage = false }) {
             <FadeIn delay={0.25} y={30}>
               <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden rounded-[26px] sm:rounded-[32px] md:rounded-[36px] border border-black/[0.06] dark:border-white/10 bg-[#0C0C0C]/5 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] group">
                 <img
-                  src="/assets/images/contact-studio.png"
+                  src="/assets/images/contact-studio.webp"
                   alt="As Mama Said Creative Studio Workspace"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   loading="lazy"

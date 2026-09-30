@@ -110,7 +110,7 @@ export default function Collaborations() {
                 {/* Background Dithered S Logo behind the text (خلفية الكلام جوا الكرت) */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none z-0">
                   <img
-                    src="/assets/images/sirad-dither-s.png"
+                    src="/assets/images/sirad-dither-s.webp"
                     alt=""
                     className="w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] md:w-[620px] md:h-[620px] lg:w-[720px] lg:h-[720px] max-w-none object-contain opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_45px_rgba(163,230,53,0.35)] translate-y-2"
                   />

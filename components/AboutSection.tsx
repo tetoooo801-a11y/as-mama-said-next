@@ -77,7 +77,7 @@ export default function AboutSection() {
             {/* 1. Large Director Photo (Left) */}
             <div className="md:col-span-12 lg:col-span-7 relative overflow-hidden rounded-[26px] sm:rounded-[32px] md:rounded-[38px] shadow-[0_12px_36px_rgba(0,0,0,0.06)] min-h-[300px] sm:min-h-[400px] lg:min-h-[460px] group">
               <img
-                src="/assets/images/about-director.png"
+                src="/assets/images/about-director.webp"
                 alt="As Mama Said Studio Director"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               />
@@ -113,7 +113,7 @@ export default function AboutSection() {
               {/* Top: Portrait Sculpture Photo */}
               <div className="relative overflow-hidden rounded-[22px] sm:rounded-[28px] shadow-[0_8px_25px_rgba(0,0,0,0.06)] h-[220px] sm:h-[260px] lg:h-[290px] group">
                 <img
-                  src="/assets/images/about-sculpture.png"
+                  src="/assets/images/about-sculpture.webp"
                   alt="Craft and Sculpture"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />

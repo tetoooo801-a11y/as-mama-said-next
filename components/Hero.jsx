@@ -142,7 +142,7 @@ export default function Hero() {
             <img
               className="studio-bg"
               id="studioBg"
-              src="/assets/images/hero-mama-studio.jpg"
+              src="/assets/images/hero-mama-studio.webp"
               alt="As Mama Said Studio"
             />
 
@@ -156,7 +156,7 @@ export default function Hero() {
               className="monitor-stand-overlay"
               id="monitorStand"
               ref={standRef}
-              src="/assets/images/monitor-stand.png"
+              src="/assets/images/monitor-stand.webp"
               alt="Monitor Stand"
             />
 
@@ -179,7 +179,7 @@ export default function Hero() {
                 className="tv-bezel-overlay"
                 id="tvBezel"
                 ref={tvBezelRef}
-                src="/assets/images/monitor-panel.png"
+                src="/assets/images/monitor-panel.webp"
                 alt="Modern Desktop Monitor"
               />
             </div>
@@ -188,7 +188,7 @@ export default function Hero() {
               className="desk-foreground-overlay"
               id="deskForeground"
               ref={deskFgRef}
-              src="/assets/images/hero-desk-foreground.png"
+              src="/assets/images/hero-desk-foreground.webp"
               alt=""
             />
           </div>
