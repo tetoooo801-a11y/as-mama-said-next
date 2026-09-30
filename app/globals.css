@@ -1274,6 +1274,22 @@ header.site-nav.scrolled {
   padding: 150px 0 130px;
   overflow: hidden;
 }
+.page-hero.compact {
+  min-height: clamp(230px, 32vh, 320px);
+  padding: 105px 0 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.page-hero.compact .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
 .page-hero .blob {
   position: absolute;
   border-radius: 50%;

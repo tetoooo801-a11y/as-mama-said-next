@@ -69,19 +69,10 @@ export default function AboutPage() {
       <Navbar />
 
       <main>
-        {/* Preserved Signature Dark Curved PageHero */}
+        {/* Compact Animated PageHero with Centered "ABOUT" & Living Wave Motion */}
         <PageHero
-          eyebrow={isRTL ? "عن الاستوديو" : "About the studio"}
-          title={
-            isRTL
-              ? "استوديو صغير بيتكلم بذكاء صاحبك المقرب."
-              : "A small studio that talks like your smartest friend."
-          }
-          subtitle={
-            isRTL
-              ? "كما قالت ماما — استوديو إبداعي متكامل يعمل بين القاهرة ودبي: هوية بصرية، محتوى، فيديو، وحملات ممولة."
-              : "As Mama Said is a creative studio working out of Cairo and Dubai — brand identity, content, film, and paid media for businesses that would rather be understood than shouted about."
-          }
+          compact={true}
+          title={isRTL ? "عن الاستوديو" : "ABOUT"}
           curveFill="var(--theme-bg, #FAF6F0)"
         />
 
