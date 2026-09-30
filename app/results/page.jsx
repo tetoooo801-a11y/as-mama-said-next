@@ -16,7 +16,7 @@ export default function ResultsPage() {
       <Navbar />
       <main>
         <PageHero
-          eyebrow={isRTL ? "أعمالنا" : "Our work"}
+          eyebrow={isRTL ? "المعرض" : "Gallery"}
           title={t.results.headTitle}
           subtitle={t.results.headDesc}
           curveFill="#F2E6DC"

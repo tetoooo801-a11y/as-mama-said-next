@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Home, Sparkles, Award, User, Send } from "lucide-react";
+import { Home, Sparkles, Images, User, Send } from "lucide-react";
 import { GlassmorphismNavBar } from "@/components/ui/glassmorphism-navbar";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -16,7 +16,7 @@ export default function Navbar() {
   const getActiveFromPath = (path) => {
     if (!path || path === "/") return "home";
     if (path.startsWith("/services") || path.startsWith("/collab")) return "services";
-    if (path.startsWith("/results")) return "results";
+    if (path.startsWith("/results") || path.startsWith("/gallery")) return "gallery";
     if (path.startsWith("/about")) return "about";
     if (path.startsWith("/contact")) return "contact";
     return "home";
@@ -28,7 +28,7 @@ export default function Navbar() {
     { id: "home", name: t.nav.home, url: "/", icon: Home },
     { id: "about", name: t.nav.about, url: "/about", icon: User },
     { id: "services", name: t.nav.services, url: "/services", icon: Sparkles },
-    { id: "results", name: t.nav.results, url: "/results", icon: Award },
+    { id: "gallery", name: t.nav.results, url: "/gallery", icon: Images },
     { id: "contact", name: t.nav.contact, url: "/contact", icon: Send },
   ];
 
@@ -45,7 +45,7 @@ export default function Navbar() {
     }
   };
 
-  const hasDarkHero = pathname === "/about" || pathname === "/results";
+  const hasDarkHero = pathname === "/about" || pathname === "/results" || pathname === "/gallery";
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
 
   useEffect(() => {

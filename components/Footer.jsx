@@ -13,7 +13,7 @@ export default function Footer() {
       links: [
         { label: t.nav.home, href: "/" },
         { label: t.nav.services, href: "/services" },
-        { label: t.nav.results, href: "/results" },
+        { label: t.nav.results, href: "/gallery" },
         { label: t.nav.about, href: "/about" },
         { label: t.nav.collab, href: "/services#collab" },
         { label: t.nav.contact, href: "/contact" },
