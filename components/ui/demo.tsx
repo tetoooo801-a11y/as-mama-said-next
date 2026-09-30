@@ -1,3 +1,5 @@
+"use client";
+
 import DitheredFooter from "@/components/ui/dithered-footer";
 
 export default function DitheredFooterDemo() {
