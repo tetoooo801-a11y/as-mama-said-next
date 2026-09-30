@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Volume2, VolumeX } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -66,25 +66,32 @@ interface AccordionItemProps {
   isRTL: boolean;
 }
 
-const AccordionItem = ({ item, isActive, onMouseEnter, isRTL }: AccordionItemProps) => {
+const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: AccordionItemProps & { sectionVisible: boolean }) => {
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [srcLoaded, setSrcLoaded] = useState(false);
 
-  React.useEffect(() => {
-    if (videoRef.current) {
-      if (isActive) {
-        const playPromise = videoRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Autoplay policy fallback
-          });
-        }
-      } else {
-        // When collapsed, maintain muted playback
-        setIsMuted(true);
-      }
+  // Load src only once the section is in view
+  useEffect(() => {
+    if (sectionVisible && !srcLoaded) {
+      setSrcLoaded(true);
     }
-  }, [isActive]);
+  }, [sectionVisible, srcLoaded]);
+
+  // Play active video, pause inactive ones
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !srcLoaded) return;
+    if (isActive) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      video.pause();
+      setIsMuted(true);
+    }
+  }, [isActive, srcLoaded]);
 
   const toggleSound = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -106,15 +113,14 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL }: AccordionItemPro
       onMouseEnter={onMouseEnter}
       onClick={onMouseEnter}
     >
-      {/* Background Reel Video */}
+      {/* Background Reel Video — lazy loaded when section enters viewport */}
       <video
         ref={videoRef}
-        src={item.videoUrl}
-        autoPlay
+        src={srcLoaded ? item.videoUrl : undefined}
         loop
         muted={isMuted}
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
@@ -171,13 +177,27 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL }: AccordionItemPro
 export function LandingAccordionItem() {
   const { isRTL } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [sectionVisible, setSectionVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Observe when the section enters the viewport to trigger video loading
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setSectionVisible(true); },
+      { rootMargin: "100px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleItemHover = (index: number) => {
     setActiveIndex(index);
   };
 
   return (
-    <section className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors py-12 sm:py-16 md:py-20 border-b border-black/[0.08] dark:border-white/10">
+    <section ref={sectionRef} className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors py-12 sm:py-16 md:py-20 border-b border-black/[0.08] dark:border-white/10">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Side: Text Content with "Welcome to our gallery" */}
@@ -221,6 +241,7 @@ export function LandingAccordionItem() {
                   isActive={index === activeIndex}
                   onMouseEnter={() => handleItemHover(index)}
                   isRTL={isRTL}
+                  sectionVisible={sectionVisible}
                 />
               ))}
             </div>
