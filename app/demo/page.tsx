@@ -1,10 +1,7 @@
-import FlowArtDefaultDemo from "@/components/ui/demo";
+"use client";
 
-export const metadata = {
-  title: "Story Scroll Demo | FlowArt",
-  description: "Interactive demo of the FlowArt Story Scroll component.",
-};
+import DitheredFooterDemo from "@/components/ui/demo";
 
 export default function DemoPage() {
-  return <FlowArtDefaultDemo />;
+  return <DitheredFooterDemo />;
 }
