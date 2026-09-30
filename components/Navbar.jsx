@@ -11,7 +11,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { language, toggleLanguage, t } = useLanguage();
-  const [isScrolled, setIsScrolled] = useState(false);
 
   // Purely URL-driven active item - does not move on scroll
   const getActiveFromPath = (path) => {
@@ -24,16 +23,6 @@ export default function Navbar() {
   };
 
   const activeSection = getActiveFromPath(pathname);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navItems = [
     { id: "home", name: t.nav.home, url: "/", icon: Home },
@@ -57,10 +46,7 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      className={`site-nav show ${isScrolled ? "scrolled" : ""}`}
-      id="siteNav"
-    >
+    <header className="site-nav show" id="siteNav">
       <Link
         href="/"
         onClick={handleLogoClick}

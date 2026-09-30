@@ -245,17 +245,24 @@ header.site-nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px clamp(20px, 5vw, 40px);
   opacity: 1; transform: translateY(0);
-  pointer-events: auto;
-  transition: padding .3s ease, background-color .3s ease, border-color .3s ease;
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: none;
 }
-header.site-nav.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+header.site-nav > * {
+  pointer-events: auto;
+}
+header.site-nav.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 header.site-nav.scrolled {
-  background: var(--theme-glass, rgba(250, 246, 240, 0.88));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--theme-border, rgba(0, 0, 0, 0.08));
-  padding-top: 12px;
-  padding-bottom: 12px;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
 }
 .nav-pill {
   display: flex; gap: 26px; padding: 10px 22px; border-radius: 100px;
