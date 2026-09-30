@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Contact from "@/components/Contact";
-import SimpleFooter from "@/components/SimpleFooter";
+import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -19,7 +19,7 @@ export default function ContactPage() {
       <main className="flex-1 flex flex-col justify-center pt-16 sm:pt-20 lg:pt-24">
         <Contact isPage={true} />
       </main>
-      <SimpleFooter />
+      <Footer />
     </div>
   );
 }

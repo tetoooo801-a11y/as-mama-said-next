@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import SharedCta from "@/components/SharedCta";
-import SimpleFooter from "@/components/SimpleFooter";
+import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -50,7 +50,7 @@ export default function AboutPage() {
 
         <SharedCta />
       </main>
-      <SimpleFooter />
+      <Footer />
     </>
   );
 }
