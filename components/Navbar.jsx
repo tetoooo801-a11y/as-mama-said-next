@@ -45,6 +45,21 @@ export default function Navbar() {
     }
   };
 
+  const hasDarkHero = pathname === "/about" || pathname === "/results";
+  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleScroll = () => {
+      setIsScrolledPastHero(window.scrollY > 250);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
+  const logoColor = hasDarkHero && !isScrolledPastHero ? "#FAF6F0" : "var(--theme-text)";
+
   return (
     <header className="site-nav show" id="siteNav">
       <Link
@@ -53,7 +68,7 @@ export default function Navbar() {
         className="logo small transition-colors duration-300"
         style={{
           textDecoration: "none",
-          color: "var(--theme-text)",
+          color: logoColor,
         }}
       >
         AS MAMA SAID<span className="dot-inline"></span>

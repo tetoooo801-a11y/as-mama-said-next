@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import PageHero from "@/components/PageHero";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import FadeIn from "@/components/ui/FadeIn";
@@ -67,8 +68,25 @@ export default function AboutPage() {
       <SmoothScroll />
       <Navbar />
 
-      <main className="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-24">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 flex flex-col gap-20 sm:gap-28 md:gap-32">
+      <main>
+        {/* Preserved Signature Dark Curved PageHero */}
+        <PageHero
+          eyebrow={isRTL ? "عن الاستوديو" : "About the studio"}
+          title={
+            isRTL
+              ? "استوديو صغير بيتكلم بذكاء صاحبك المقرب."
+              : "A small studio that talks like your smartest friend."
+          }
+          subtitle={
+            isRTL
+              ? "كما قالت ماما — استوديو إبداعي متكامل يعمل بين القاهرة ودبي: هوية بصرية، محتوى، فيديو، وحملات ممولة."
+              : "As Mama Said is a creative studio working out of Cairo and Dubai — brand identity, content, film, and paid media for businesses that would rather be understood than shouted about."
+          }
+          curveFill="var(--theme-bg, #FAF6F0)"
+        />
+
+        <div className="pt-8 sm:pt-14 pb-16 sm:pb-24">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 flex flex-col gap-20 sm:gap-28 md:gap-32">
           {/* ============================================================== */}
           {/* SECTION 1: HERO / WHO WE ARE                                   */}
           {/* ============================================================== */}
@@ -359,7 +377,8 @@ export default function AboutPage() {
             </div>
           </FadeIn>
         </div>
-      </main>
+      </div>
+    </main>
 
       <Footer />
     </div>
