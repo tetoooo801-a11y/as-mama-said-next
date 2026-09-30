@@ -132,17 +132,21 @@ export default function Collaborations() {
 
                   <div className="flex items-center justify-between gap-4 mb-5">
                     <div>
-                      {/* Sirad Official White Wordmark */}
-                      <img
-                        src="/assets/images/sirad-logo-white.png"
-                        alt="Sirad Creative Agency"
-                        className="h-8 sm:h-9 md:h-10 object-contain mb-2"
-                        loading="lazy"
-                      />
-                      <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wide">
+                      {/* Sirad Official White Wordmark & Sub-label */}
+                      <div className="flex items-center gap-3 mb-2">
+                        <img
+                          src="/assets/images/sirad-logo-white.png"
+                          alt="Sirad"
+                          className="h-7 sm:h-8 md:h-9 object-contain"
+                          loading="lazy"
+                        />
+                        <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] uppercase text-white/60 border-s border-white/20 ps-2.5 leading-tight py-0.5">
+                          CREATIVE<br />AGENCY
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs sm:text-sm font-black tracking-wide">
                         <span className="text-white">Digital</span>
-                        <span className="text-[#A3E635]">Done</span>
-                        <span className="text-white">Right.</span>
+                        <span className="text-[#A3E635]">Done Right.</span>
                       </div>
                     </div>
 
