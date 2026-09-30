@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import LandingAccordionItem from "@/components/ui/interactive-image-accordion";
+import Results from "@/components/Results";
 import SharedCta from "@/components/SharedCta";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -27,6 +28,9 @@ export default function ResultsPage() {
 
         {/* Interactive Image Accordion - Welcome to our gallery */}
         <LandingAccordionItem />
+
+        {/* Studio Live Reels & Phone Showcase */}
+        <Results />
 
         <section className="proj-grid-section flex-1">
           <div className="wrap proj-grid">
