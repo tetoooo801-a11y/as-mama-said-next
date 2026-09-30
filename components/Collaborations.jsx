@@ -107,12 +107,12 @@ export default function Collaborations() {
               {/* Right Card: Sirad Creative Agency (Advanced Tech & Digital Engineering) */}
               <div className="relative overflow-hidden lg:col-span-6 rounded-[28px] sm:rounded-[36px] bg-[#070D0A] text-white border border-[#A3E635]/25 p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col justify-between group hover:border-[#A3E635]/60 hover:shadow-[0_24px_60px_rgba(163,230,53,0.14)] transition-all duration-300">
                 
-                {/* Background Subtle Fading Dithered S Watermark (الحرف المتلاشي) */}
-                <div className="absolute -top-10 -end-10 w-64 h-64 sm:w-80 sm:h-80 pointer-events-none opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                {/* Background Dithered S Logo behind the text (خلفية الكلام جوا الكرت) */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none z-0">
                   <img
                     src="/assets/images/sirad-dither-s.png"
                     alt=""
-                    className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(163,230,53,0.4)]"
+                    className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-500 filter drop-shadow-[0_0_35px_rgba(163,230,53,0.35)] translate-y-6"
                   />
                 </div>
 
@@ -130,34 +130,22 @@ export default function Collaborations() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 mb-5">
-                    <div>
-                      {/* Sirad Official White Wordmark & Sub-label */}
-                      <div className="flex items-center gap-3 mb-2">
-                        <img
-                          src="/assets/images/sirad-logo-white.png"
-                          alt="Sirad"
-                          className="h-7 sm:h-8 md:h-9 object-contain"
-                          loading="lazy"
-                        />
-                        <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] uppercase text-white/60 border-s border-white/20 ps-2.5 leading-tight py-0.5">
-                          CREATIVE<br />AGENCY
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-xs sm:text-sm font-black tracking-wide">
-                        <span className="text-white">Digital</span>
-                        <span className="text-[#A3E635]">Done Right.</span>
-                      </div>
-                    </div>
-
-                    {/* Sirad Fading S (الحرف المتلاشي) Badge */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-[20px] overflow-hidden bg-black/85 border border-[#A3E635]/35 p-2 shrink-0 shadow-[0_8px_20px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:border-[#A3E635]/70 transition-all duration-300 flex items-center justify-center">
+                  <div className="mb-5">
+                    {/* Sirad Official White Wordmark & Sub-label */}
+                    <div className="flex items-center gap-3 mb-2">
                       <img
-                        src="/assets/images/sirad-dither-s.png"
-                        alt="Sirad Symbol"
-                        className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(163,230,53,0.5)]"
+                        src="/assets/images/sirad-logo-white.png"
+                        alt="Sirad"
+                        className="h-7 sm:h-8 md:h-9 object-contain"
                         loading="lazy"
                       />
+                      <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.22em] uppercase text-white/60 border-s border-white/20 ps-2.5 leading-tight py-0.5">
+                        CREATIVE<br />AGENCY
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs sm:text-sm font-black tracking-wide">
+                      <span className="text-white">Digital</span>
+                      <span className="text-[#A3E635]">Done Right.</span>
                     </div>
                   </div>
 

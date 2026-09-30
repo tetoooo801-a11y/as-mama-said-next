@@ -118,6 +118,33 @@ export default function GalleryClients() {
           ))}
         </div>
 
+        {/* All Verified Clients Tags Cloud */}
+        {section.allClients && section.allClients.length > 0 && (
+          <div className="mt-14 sm:mt-18 pt-10 border-t border-black/[0.08] dark:border-white/10">
+            <div className="text-center mb-6">
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#D2392A] block mb-1">
+                {isRTL ? "شبكة الشراكات الموسعة عبر مصر والخليج" : "FURTHER PARTNERSHIPS ACROSS EGYPT AND THE GULF"}
+              </span>
+              <p className="text-xs sm:text-sm text-[#15100C]/60 dark:text-[#F2E6DC]/60">
+                {isRTL
+                  ? "مؤسسات تعليمية، شركات مساهمة، براندات عالمية، وشخصيات عامة"
+                  : "Multinationals, public figures, universities, and leading regional enterprises"}
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 max-w-5xl mx-auto">
+              {section.allClients.map((cName: string, cIdx: number) => (
+                <span
+                  key={cIdx}
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-[#0c1c1e] border border-black/[0.06] dark:border-white/10 text-[#15100C]/80 dark:text-[#F2E6DC]/80 hover:border-[#D2392A]/50 hover:text-[#D2392A] shadow-sm transition-all select-none"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D2392A]" />
+                  <span>{cName}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Bottom CTA Card */}
         <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl bg-[#D2392A]/[0.04] dark:bg-[#D2392A]/[0.08] border border-[#D2392A]/20 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-start">
           <div>
@@ -126,8 +153,8 @@ export default function GalleryClients() {
             </h4>
             <p className="text-xs sm:text-sm text-[#15100C]/70 dark:text-[#F2E6DC]/70">
               {isRTL
-                ? "دعنا نبدأ مشروعك القادم ونبني حضوراً مرئياً سينمائياً يستحق المشاهدة."
-                : "Let's craft your next visual identity, viral reel campaign, or commercial film."}
+                ? "دعنا نبدأ بالسؤال الصحيح ونبني حضوراً واستراتيجية تسويقية تقود السوق."
+                : "Let's start with the right question and build work that performs."}
             </p>
           </div>
           <Link

@@ -248,6 +248,42 @@ export default function Contact({ isPage = false }) {
               </div>
             </FadeIn>
 
+            {/* Direct Business Enquiries & Regional Desks (Official Profile 2026) */}
+            <FadeIn delay={0.25} y={20}>
+              <div className="mt-4 p-4 sm:p-5 rounded-[22px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/90 border border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3 text-center sm:text-start">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#D2392A] animate-pulse shrink-0 hidden sm:block" />
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D2392A] block">
+                      {isRTL ? "استفسارات الأعمال والتعاقدات المباشرة" : "DIRECT BUSINESS ENQUIRIES"}
+                    </span>
+                    <span className="text-[11.5px] text-[#15100C]/65 dark:text-[#F2E6DC]/65 font-medium">
+                      EGYPT · DUBAI · SAUDI ARABIA · QATAR
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs font-bold text-[#15100C] dark:text-[#F2E6DC]">
+                  <a
+                    href="https://wa.me/201092927390"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 hover:border-[#D2392A] hover:text-[#D2392A] transition-colors"
+                  >
+                    <span>🇪🇬 +20 109 292 7390</span>
+                  </a>
+                  <a
+                    href="https://wa.me/971557889692"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 hover:border-[#D2392A] hover:text-[#D2392A] transition-colors"
+                  >
+                    <span>🇦🇪 +971 55 788 9692</span>
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
+
             {/* Seamless Interactive Form Accordion */}
             <AnimatePresence>
               {formOpen && activeCat && (

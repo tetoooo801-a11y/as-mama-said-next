@@ -8,10 +8,10 @@ export default function AboutSection() {
   const { isRTL } = useLanguage();
 
   const englishText =
-    "With more than five years of experience in 3D craft and design, we focus on branding, cinematic video, and digital experience. We truly enjoy collaborating with businesses that aim to stand out and present their best image. Let's build something incredible together!";
+    "We were doing marketing before marketing moved online. As Mama Said is a strategy-led creative, production, and performance agency with more than 20 years of marketing experience — built in traditional media and sharpened through every shift since. We understand marketing as a business discipline first and a platform second — rooted in business, relevant to audiences, and built to perform across Egypt, UAE, Saudi Arabia, and Qatar.";
 
   const arabicText =
-    "مع أكثر من خمس سنوات من الخبرة في التصميم ثلاثي الأبعاد وصناعة الهوية البصرية، نركز على تحويل الأفكار الجريئة إلى أعمال سينمائية وتجارب رقمية استثنائية. نسعد دائماً بالتعاون مع العلامات التي تسعى للتميز وتقديم أفضل ما لديها. دعنا نبني شيئاً مبهراً معاً!";
+    "بدأنا في عالم التسويق قبل حتى أن ينتقل التسويق إلى الإنترنت. استوديو «As Mama Said» وكالة متكاملة تقودها الاستراتيجية في مجالات الإبداع، الإنتاج الإعلامي، وإدارة الأداء التسويقي، بخبرة تمتد لأكثر من 20 عاماً. نفهم التسويق كعلم تجاري وركيزة أعمال أولاً ثم كمنصة، لنقدم أعمالاً متجذرة في قلب النشاط التجاري ومبنية لتحقيق أعلى أداء ونتائج عبر مصر والإمارات والسعودية وقطر.";
 
   const approaches = [
     {
@@ -122,15 +122,15 @@ export default function AboutSection() {
               {/* Bottom: Stat Box */}
               <div className="flex flex-col justify-center pt-2 sm:pt-4">
                 <div
-                  className="font-black text-5xl sm:text-6xl lg:text-[4.2rem] text-[#15100C] dark:text-[#F2E6DC] leading-none tracking-tight"
+                  className="font-black text-5xl sm:text-6xl lg:text-[4.2rem] text-[#D2392A] leading-none tracking-tight"
                   style={{
                     fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
                   }}
                 >
-                  5+
+                  20+
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#15100C]/60 dark:text-[#F2E6DC]/60 mt-2 sm:mt-2.5 leading-snug">
-                  {isRTL ? "سنوات من الخبرة" : "YEARS OF EXPERIENCE"}
+                <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#15100C]/70 dark:text-[#F2E6DC]/70 mt-2 sm:mt-2.5 leading-snug">
+                  {isRTL ? "عاماً من الخبرة التسويقية" : "YEARS OF MARKETING HERITAGE"}
                 </div>
               </div>
             </div>
