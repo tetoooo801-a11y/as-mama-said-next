@@ -145,7 +145,7 @@ export default function Results() {
       {/* Actions */}
       <div className="results-actions">
         <a
-          href="https://www.instagram.com/asmamasaid/"
+          href="https://www.instagram.com/as.mama.said"
           target="_blank"
           rel="noopener noreferrer"
           className="ig-badge"
@@ -219,7 +219,7 @@ export default function Results() {
 
         {/* Instagram link */}
         <a
-          href="https://www.instagram.com/asmamasaid/"
+          href="https://www.instagram.com/as.mama.said"
           target="_blank"
           rel="noopener noreferrer"
           className="reel-fs-ig"
