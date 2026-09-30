@@ -280,7 +280,7 @@ header.site-nav.scrolled {
 
 /* ---------- HERO ---------- */
 #hero-pin {
-  position: relative; height: 420vh; background: var(--theme-bg);
+  position: relative; height: 220vh; background: var(--theme-bg);
 }
 #hero-stage {
   position: sticky; top: 0; height: 100vh; width: 100%;
@@ -1355,7 +1355,7 @@ header.site-nav.scrolled {
     padding-top: 36px;
   }
   .footer-grid { grid-template-columns: 1fr; }
-  #hero-pin { height: 520vh; }
+  #hero-pin { height: 280vh; }
   .hero-copy { max-width: 92vw; }
 }
 

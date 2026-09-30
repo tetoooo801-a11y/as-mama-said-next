@@ -57,7 +57,7 @@ export default function Hero() {
             end: "bottom bottom",
             pin: stage,
             pinSpacing: false,
-            scrub: 0.5,
+            scrub: 0.15,
           },
         });
 
