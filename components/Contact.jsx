@@ -137,7 +137,7 @@ export default function Contact({ isPage = false }) {
 
                 {/* 3. Facebook */}
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/share/1DfcDiWsnK/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
