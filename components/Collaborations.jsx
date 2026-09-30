@@ -295,38 +295,6 @@ export default function Collaborations() {
           </div>
         </FadeIn>
 
-        {/* ============================================================== */}
-        {/* 7. ALLIANCE QUOTE & JOINT CTA CARD                             */}
-        {/* ============================================================== */}
-        <FadeIn delay={0.45} y={20}>
-          <div className="collab-quote-card rounded-[28px] sm:rounded-[36px] bg-[#0A1617] text-white border border-white/[0.12] p-7 sm:p-10 md:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.6)]">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-white/10">
-              <div className="logo collab-big-logo text-xl sm:text-2xl font-black tracking-tight" style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}>
-                AS MAMA SAID <span className="text-[#D2392A]">×</span> SIRAD
-              </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                {isRTL ? "مكتب العمليات المشتركة" : "Joint Operations Room"}
-              </span>
-            </div>
-
-            <p className="collab-quote-text text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-[#F2E6DC] mb-8" style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}>
-              “{t.collab.quote}”
-            </p>
-
-            <div className="collab-action-row flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-white/10">
-              <span className="collab-action-text text-xs sm:text-sm md:text-[15px] font-medium text-white/80 max-w-xl">
-                {t.collab.ctaText}
-              </span>
-              <Link
-                href="/contact"
-                className="collab-cta-btn inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 rounded-full bg-[#D2392A] text-white text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-[#b82f22] transition-colors shrink-0 shadow-lg cursor-pointer"
-              >
-                <span>{t.collab.ctaBtn}</span>
-                <ArrowUpRight size={16} className={isRTL ? "rotate-180" : ""} />
-              </Link>
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
