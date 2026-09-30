@@ -112,7 +112,7 @@ export default function Collaborations() {
                   <img
                     src="/assets/images/sirad-dither-s.png"
                     alt=""
-                    className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-500 filter drop-shadow-[0_0_35px_rgba(163,230,53,0.35)] translate-y-6"
+                    className="w-[380px] h-[380px] sm:w-[500px] sm:h-[500px] md:w-[620px] md:h-[620px] lg:w-[720px] lg:h-[720px] max-w-none object-contain opacity-25 group-hover:opacity-35 group-hover:scale-105 transition-all duration-700 filter drop-shadow-[0_0_45px_rgba(163,230,53,0.35)] translate-y-2"
                   />
                 </div>
 
