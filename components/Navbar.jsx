@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,6 +14,11 @@ export default function Navbar() {
   const router = useRouter();
   const { language, toggleLanguage, t, isRTL } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -171,114 +177,118 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE FULL-SCREEN NAVIGATION DRAWER */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.24, ease: "easeOut" }}
-            className="fixed inset-0 z-[999] bg-[#061516]/98 backdrop-blur-2xl text-[#F2E6DC] flex flex-col justify-between p-6 sm:p-8 pointer-events-auto"
-            dir={isRTL ? "rtl" : "ltr"}
-          >
-            {/* Drawer Header */}
-            <div className="flex items-center justify-between w-full pb-6 border-b border-white/10">
-              <Link
-                href="/"
-                onClick={handleLogoClick}
-                className="flex items-center"
-                aria-label="As Mama Said"
+      {/* MOBILE FULL-SCREEN NAVIGATION DRAWER (MOUNTED TO BODY TO COVER FULL VIEWPORT) */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="fixed inset-0 z-[99999] bg-white text-[#15100C] flex flex-col justify-between p-6 sm:p-8 pointer-events-auto h-[100dvh] w-screen overflow-y-auto"
+                dir={isRTL ? "rtl" : "ltr"}
               >
-                <img
-                  src="/assets/images/ams-logo-darkbg.webp"
-                  alt="As Mama Said"
-                  width={48}
-                  height={42}
-                  className="h-10 w-auto object-contain"
-                />
-              </Link>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all"
-                aria-label="Close menu"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            {/* Navigation Links */}
-            <nav className="flex flex-col gap-3 py-6 my-auto">
-              {navItems.map((item, idx) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      if (item.url === "/" && pathname === "/") {
-                        if (typeof window !== "undefined" && window.__lenis) {
-                          window.__lenis.scrollTo(0, { duration: 1.2 });
-                        } else {
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }
-                      } else {
-                        router.push(item.url);
-                      }
-                    }}
-                    className={`flex items-center justify-between text-start py-2.5 px-3 rounded-xl transition-colors select-none ${
-                      isActive
-                        ? "text-[#D2392A] bg-white/5 font-bold"
-                        : "text-[#F2E6DC]/85 hover:text-white hover:bg-white/5"
-                    }`}
+                {/* Drawer Header */}
+                <div className="flex items-center justify-between w-full pb-5 border-b border-black/10 shrink-0">
+                  <Link
+                    href="/"
+                    onClick={handleLogoClick}
+                    className="flex items-center"
+                    aria-label="As Mama Said"
                   >
-                    <div className="flex items-center gap-3">
-                      {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-[#D2392A] shrink-0" />
-                      )}
-                      <span
-                        className="text-2xl font-black uppercase tracking-tight"
-                        style={{
-                          fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    </div>
-                    <span className="text-xs text-white/35 font-mono">
-                      0{idx + 1}
-                    </span>
+                    <img
+                      src="/assets/images/ams-logo-lightbg.webp"
+                      alt="As Mama Said"
+                      width={48}
+                      height={42}
+                      className="h-10 w-auto object-contain"
+                    />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-[#15100C] hover:bg-black/10 active:scale-95 transition-all"
+                    aria-label="Close menu"
+                  >
+                    <X size={20} />
                   </button>
-                );
-              })}
-            </nav>
+                </div>
 
-            {/* Bottom Drawer Actions */}
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
-              {/* Language Switcher */}
-              <button
-                type="button"
-                onClick={toggleLanguage}
-                className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-white/80 transition-colors"
-              >
-                <Globe size={15} />
-                <span>{language === "en" ? "العربية" : "English"}</span>
-              </button>
+                {/* Navigation Links */}
+                <nav className="flex flex-col gap-2.5 py-6 my-auto">
+                  {navItems.map((item, idx) => {
+                    const isActive = activeSection === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+                          if (item.url === "/" && pathname === "/") {
+                            if (typeof window !== "undefined" && window.__lenis) {
+                              window.__lenis.scrollTo(0, { duration: 1.2 });
+                            } else {
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                          } else {
+                            router.push(item.url);
+                          }
+                        }}
+                        className={`flex items-center justify-between text-start py-3 px-3.5 rounded-xl transition-colors select-none ${
+                          isActive
+                            ? "text-[#D2392A] bg-black/[0.04] font-bold"
+                            : "text-[#15100C]/85 hover:text-[#D2392A] hover:bg-black/[0.02]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          {isActive && (
+                            <span className="w-2 h-2 rounded-full bg-[#D2392A] shrink-0" />
+                          )}
+                          <span
+                            className="text-2xl sm:text-3xl font-black uppercase tracking-tight"
+                            style={{
+                              fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                            }}
+                          >
+                            {item.name}
+                          </span>
+                        </div>
+                        <span className="text-xs text-black/35 font-mono">
+                          0{idx + 1}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </nav>
 
-              {/* Main Contact CTA Button */}
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3.5 rounded-xl bg-[#D2392A] text-white font-bold text-sm tracking-wide text-center shadow-lg active:scale-95 transition-transform"
-              >
-                {t.nav.cta}
-              </Link>
-            </div>
-          </motion.div>
+                {/* Bottom Drawer Actions */}
+                <div className="pt-5 border-t border-black/10 flex flex-col gap-3 shrink-0">
+                  {/* Language Switcher */}
+                  <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-black/5 hover:bg-black/10 text-xs font-semibold text-[#15100C] transition-colors"
+                  >
+                    <Globe size={15} />
+                    <span>{language === "en" ? "العربية" : "English"}</span>
+                  </button>
+
+                  {/* Main Contact CTA Button */}
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full py-3.5 rounded-xl bg-[#D2392A] text-white font-bold text-sm tracking-wide text-center shadow-md active:scale-95 transition-transform"
+                  >
+                    {t.nav.cta}
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </header>
   );
 }
