@@ -297,17 +297,17 @@ export default function AboutPage() {
             </FadeIn>
 
             <FadeIn delay={0.2} y={20}>
-              <div className="w-full py-6 flex flex-wrap items-center justify-between gap-6 sm:gap-8 lg:gap-10">
+              <div className="w-full py-4 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 items-center">
                 {realClientLogos.map((client, idx) => (
                   <div
                     key={idx}
                     title={client.name}
-                    className="flex items-center justify-center p-2 group transition-all duration-300 select-none cursor-pointer"
+                    className="group relative h-14 sm:h-16 rounded-xl bg-white border border-black/[0.08] dark:border-white/10 shadow-[0_2px_8px_rgba(21,16,12,0.04)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_20px_rgba(210,57,42,0.12)] hover:border-[#D2392A]/50 transition-all duration-300 flex items-center justify-center p-2.5 select-none cursor-pointer overflow-hidden hover:-translate-y-0.5"
                   >
                     <img
                       src={client.logo}
                       alt={client.name}
-                      className="h-7 sm:h-8 md:h-9 w-auto max-w-[125px] object-contain brightness-0 dark:brightness-0 dark:invert opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
