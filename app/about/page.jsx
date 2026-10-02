@@ -9,10 +9,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import FadeIn from "@/components/ui/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
 import {
-  PenTool,
-  Video,
-  Megaphone,
-  TrendingUp,
   Users,
   Rocket,
   Globe,
@@ -23,19 +19,6 @@ import {
 export default function AboutPage() {
   const { t, isRTL } = useLanguage();
 
-  const getServiceIcon = (id) => {
-    switch (id) {
-      case "brand":
-        return <PenTool size={20} strokeWidth={2} />;
-      case "content":
-        return <Video size={20} strokeWidth={2} />;
-      case "media":
-        return <Megaphone size={20} strokeWidth={2} />;
-      case "strategy":
-      default:
-        return <TrendingUp size={20} strokeWidth={2} />;
-    }
-  };
 
   const getStatIcon = (iconName) => {
     switch (iconName) {
@@ -175,10 +158,6 @@ export default function AboutPage() {
                         : "lg:px-8"
                     }`}
                   >
-                    {/* Dark rounded square badge */}
-                    <div className="w-12 h-12 rounded-[14px] bg-[#0c1b1c] text-[#D2392A] flex items-center justify-center mb-5 shrink-0 shadow-md">
-                      {getServiceIcon(svc.id)}
-                    </div>
                     <h3 className="font-bold text-lg sm:text-xl text-[#15100C] dark:text-[#F2E6DC] mb-2.5">
                       {svc.title}
                     </h3>
