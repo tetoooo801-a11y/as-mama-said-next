@@ -105,9 +105,9 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
   return (
     <div
       className={`
-        relative h-[360px] sm:h-[420px] md:h-[460px] rounded-2xl overflow-hidden cursor-pointer
+        relative h-[280px] sm:h-[360px] md:h-[420px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out select-none shrink-0 bg-black
-        ${isActive ? "w-[220px] sm:w-[280px] md:w-[340px]" : "w-[52px] sm:w-[58px] md:w-[64px]"}
+        ${isActive ? "w-[190px] sm:w-[240px] md:w-[300px]" : "w-[46px] sm:w-[52px] md:w-[60px]"}
         border border-black/[0.08] dark:border-white/10 shadow-lg group
       `}
       onMouseEnter={onMouseEnter}
