@@ -98,27 +98,23 @@ export default function Hero() {
 
       /* =========================================================
          MOBILE / TABLET (<=1023px) — الخيار ب: إحداثيات منفصلة
-         - tvFrame = fullscreen (100% x 100%)
-         - عناصر الديسكتوب مخفية (bezel, stand, shadow, desk fg)
-         - copy يظهر فوراً بـ fade-in
-         - لا يوجد scroll pin ثقيل
+         
+         المنطق:
+         - CSS بالفعل بيضبط studio-stage على 100vw×100dvh
+         - CSS بيخفي studio-bg
+         - #tvFrame CSS الأصلي: width:100vw; height:100vh; left:50%; top:50%; transform:translate(-50%,-50%)
+         - كل اللي محتاجينه هو إخفاء عناصر الديسكتوب وإظهار الـ copy
          ========================================================= */
       mm.add("(max-width: 1023px)", () => {
-        // إخفاء عناصر الديسكتوب فوراً
-        gsap.set([tvBezel, deskForeground, baseShadow, stand], {
+        // إخفاء عناصر الديسكتوب فوراً — الـ CSS بالفعل بيخفي studio-bg
+        gsap.set([tvBezel, baseShadow, stand], {
           opacity: 0,
           visibility: "hidden",
         });
+        gsap.set(deskForeground, { opacity: 0, visibility: "hidden" });
 
-        // tvFrame يملأ الشاشة كلها (إحداثيات موبايل)
-        gsap.set(tvFrame, {
-          width: "100%",
-          height: "100%",
-          left: "0%",
-          top: "0%",
-        });
-
-        // tvScreen يملأ الـ tvFrame كاملاً
+        // tvScreen يملأ الـ tvFrame كاملاً بدون border-radius
+        // (tvFrame CSS الأصلي = 100vw × 100vh، هنخليه يشتغل)
         gsap.set(tvScreen, {
           left: "0%",
           top: "0%",
@@ -161,16 +157,15 @@ export default function Hero() {
          ========================================================= */
       if (reduceMotion) {
         const isMobile = window.innerWidth < 1024;
-        if (isMobile) {
-          gsap.set(tvFrame, { width: "100%", height: "100%", left: "0%", top: "0%" });
-          gsap.set(tvScreen, { left: "0%", top: "0%", width: "100%", height: "100%", borderRadius: "0px" });
-          gsap.set([tvBezel, deskForeground, baseShadow, stand], { opacity: 0, visibility: "hidden" });
-        } else {
+        if (!isMobile) {
           gsap.set(tvFrame, { width: "25.88%", height: "20.97%", left: "28.00%", top: "49.50%" });
           gsap.set(tvScreen, { left: "1.97%", top: "3.66%", width: "96.06%", height: "92.24%", borderRadius: "4px" });
           gsap.set(tvBezel, { opacity: 1 });
           gsap.set(deskForeground, { opacity: 1 });
           gsap.set(baseShadow, { opacity: 1 });
+        } else {
+          gsap.set([tvBezel, deskForeground, baseShadow, stand], { opacity: 0, visibility: "hidden" });
+          gsap.set(tvScreen, { left: "0%", top: "0%", width: "100%", height: "100%", borderRadius: "0px" });
         }
         gsap.set(glow, { opacity: 0.35 });
         gsap.set(copy, { opacity: 1, y: 0 });

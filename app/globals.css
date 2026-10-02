@@ -1368,8 +1368,21 @@ header.site-nav.scrolled {
    MOBILE FIX — max-width: 1023px (كل ما دون الديسكتوب)
    ==================================================== */
 @media (max-width: 1023px) {
-  /* Hero: تصغير الـ pin height على التابلت */
+  /* Hero pin height على التابلت */
   #hero-pin { height: 200vh; }
+
+  /* studio-stage يبقى بحجم الشاشة الفعلي على الموبايل
+     بدل ما يستخدم معادلة الديسكتوب (100vh * 1024/682)
+     اللي بتطلع أعرض من الشاشة على portrait */
+  .studio-stage {
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  /* إخفاء صورة الاستوديو — الفيديو هو الـ background على الموبايل */
+  .studio-bg {
+    display: none;
+  }
 
   /* Pill Nav: منع الـ overflow على الموبايل */
   .pill-nav {
