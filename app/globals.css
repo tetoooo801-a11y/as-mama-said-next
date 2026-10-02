@@ -1629,6 +1629,16 @@ header.site-nav.scrolled {
   padding: 150px 0 130px;
   overflow: hidden;
 }
+@media (max-width: 1023px) {
+  .page-hero {
+    padding: clamp(100px, 14vh, 150px) 0 clamp(80px, 10vh, 130px);
+  }
+}
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 90px 0 70px;
+  }
+}
 .page-hero.compact {
   min-height: clamp(230px, 32vh, 320px);
   padding: 105px 0 65px;
@@ -1636,6 +1646,12 @@ header.site-nav.scrolled {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+@media (max-width: 480px) {
+  .page-hero.compact {
+    padding: 85px 0 55px;
+    min-height: clamp(180px, 26vh, 280px);
+  }
 }
 .page-hero.compact .wrap {
   display: flex;

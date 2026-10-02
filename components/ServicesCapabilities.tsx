@@ -228,26 +228,31 @@ export default function ServicesCapabilities() {
         </FadeIn>
 
         {/* Desktop / Tablet Tab Selector Pills */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 sm:pb-6 mb-8 sm:mb-12 no-scrollbar">
-          {DISCIPLINES.map((item, idx) => {
-            const ItemIcon = item.icon;
-            const isCurrent = activeTab === idx;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setActiveTab(idx)}
-                className={`relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shrink-0 flex items-center gap-2 cursor-pointer select-none ${
-                  isCurrent
-                    ? "bg-[#D2392A] text-white shadow-[0_8px_24px_rgba(210,57,42,0.3)]"
-                    : "bg-[#FAF7F2] dark:bg-[#0c1b1c] text-[#15100C]/80 dark:text-[#F2E6DC]/80 border border-black/[0.08] dark:border-white/10 hover:border-[#D2392A]/50"
-                }`}
-              >
-                <ItemIcon size={15} strokeWidth={2.3} />
-                <span>{isRTL ? item.nameAr : item.nameEn}</span>
-              </button>
-            );
-          })}
+        <div className="relative">
+          {/* Fade masks for mobile scroll hint */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-[#FAF6F0] dark:from-[#061516] to-transparent z-10 sm:hidden" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-[#FAF6F0] dark:from-[#061516] to-transparent z-10 sm:hidden" />
+          <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 sm:pb-6 mb-8 sm:mb-12 no-scrollbar">
+            {DISCIPLINES.map((item, idx) => {
+              const ItemIcon = item.icon;
+              const isCurrent = activeTab === idx;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setActiveTab(idx)}
+                  className={`relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shrink-0 flex items-center gap-2 cursor-pointer select-none ${
+                    isCurrent
+                      ? "bg-[#D2392A] text-white shadow-[0_8px_24px_rgba(210,57,42,0.3)]"
+                      : "bg-[#FAF7F2] dark:bg-[#0c1b1c] text-[#15100C]/80 dark:text-[#F2E6DC]/80 border border-black/[0.08] dark:border-white/10 hover:border-[#D2392A]/50"
+                  }`}
+                >
+                  <ItemIcon size={15} strokeWidth={2.3} />
+                  <span>{isRTL ? item.nameAr : item.nameEn}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Selected Discipline Deep-Dive Box */}

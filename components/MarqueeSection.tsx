@@ -89,7 +89,9 @@ export default function MarqueeSection() {
           if (sectionRef.current) {
             const rect = sectionRef.current.getBoundingClientRect();
             const sectionTop = window.scrollY + rect.top;
-            const currentOffset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+            // تخفيف الـ parallax على الموبايل (0.15) مقارنة بالديسكتوب (0.3)
+            const multiplier = window.innerWidth < 1024 ? 0.15 : 0.3;
+            const currentOffset = (window.scrollY - sectionTop + window.innerHeight) * multiplier;
             setOffset(currentOffset);
           }
           ticking = false;

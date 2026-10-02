@@ -242,7 +242,7 @@ export default function GalleryClients() {
           </div>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#D2392A] hover:bg-[#b82f22] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors shadow-md shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#D2392A] hover:bg-[#b82f22] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors shadow-md shrink-0 cursor-pointer w-full sm:w-auto justify-center sm:justify-start"
           >
             <span>{isRTL ? "ابدأ مشروعك معنا" : "Start Your Project"}</span>
             <ArrowUpRight size={16} className={isRTL ? "rotate-[-90deg]" : ""} />
