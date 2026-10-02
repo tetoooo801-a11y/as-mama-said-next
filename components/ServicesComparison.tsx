@@ -103,9 +103,7 @@ export default function ServicesComparison() {
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
               }}
             >
-              {isRTL
-                ? "ليه تختار استوديو «ماما» بدلاً من الوكالات التقليدية؟"
-                : "Why Choose As Mama Said Over Traditional Agencies?"}
+              {isRTL ? "لماذا تختارنا؟" : "Why Choose Us"}
             </h2>
             <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl font-normal leading-relaxed">
               {isRTL
