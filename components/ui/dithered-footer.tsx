@@ -171,8 +171,8 @@ export default function DitheredFooter({
         >
             <style>{STYLES}</style>
 
-            <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-6 pb-16 pt-16 sm:gap-x-10 sm:px-8 md:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
-                <div className="col-span-2 md:col-span-1">
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-y-10 px-5 pt-12 pb-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 sm:px-8 sm:py-16 md:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
+                <div className="col-span-1 sm:col-span-2 md:col-span-1">
                     <a
                         href={brandHref}
                         className={`inline-block transition-opacity hover:opacity-85 ${focus}`}
@@ -188,7 +188,7 @@ export default function DitheredFooter({
                     </a>
                     <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">{tagline}</p>
 
-                    <form className="mt-8 max-w-sm" onSubmit={submit}>
+                    <form className="mt-7 sm:mt-8 max-w-sm" onSubmit={submit}>
                         {/* A visible label, not a placeholder: placeholders vanish while you type. */}
                         <label htmlFor="df-email" className="block text-sm font-medium">{subscribeTitle}</label>
                         <div className="mt-2 flex gap-2">
@@ -217,8 +217,8 @@ export default function DitheredFooter({
 
                 {columns.map((col) => (
                     <nav key={col.title} aria-label={col.title}>
-                        <p className="text-sm font-medium text-foreground">{col.title}</p>
-                        <ul className="mt-4 space-y-3 [@media(pointer:coarse)]:space-y-0">
+                        <p className="text-sm font-semibold text-foreground tracking-wide">{col.title}</p>
+                        <ul className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3 [@media(pointer:coarse)]:space-y-0">
                             {col.links.map((l) => (
                                 <li key={l.label}>
                                     <a href={l.href} className={`rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground ${focus} ${coarse}`}>{l.label}</a>
@@ -231,14 +231,14 @@ export default function DitheredFooter({
 
             {/* The name is not drawn: it is the gap in the dots. It is solid where the
                 field is dense and dissolves as the dots thin out towards the top. */}
-            <div aria-hidden="true" className="df-band relative h-48 sm:h-56 md:h-64 overflow-hidden" onPointerMove={onMove} onPointerLeave={onLeave}>
+            <div aria-hidden="true" className="df-band relative h-40 sm:h-56 md:h-64 overflow-hidden" onPointerMove={onMove} onPointerLeave={onLeave}>
                 <div ref={field} className="df-field">
                     {/* One tile wider than the band, slid left by exactly one tile, so the loop is seamless. */}
                     <div className="df-dots" />
                 </div>
                 <p
                     dir="ltr"
-                    className="df-mark pointer-events-none absolute -bottom-[0.05em] left-4 sm:left-8 rtl:left-4 rtl:right-auto select-none whitespace-nowrap text-[clamp(2.2rem,10.8vw,9.5rem)] font-black leading-[0.85] tracking-[-0.04em] text-background uppercase"
+                    className="df-mark pointer-events-none absolute -bottom-[0.05em] left-4 sm:left-8 rtl:left-4 rtl:right-auto select-none whitespace-nowrap text-[clamp(2rem,9.5vw,9.5rem)] font-black leading-[0.85] tracking-[-0.04em] text-background uppercase"
                     style={{
                         fontFamily: "var(--font-montserrat), 'Montserrat', sans-serif",
                     }}
@@ -248,7 +248,7 @@ export default function DitheredFooter({
             </div>
 
             <div className="border-t border-border">
-                <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+                <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-5 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs sm:text-sm">
                         <span className="m-0 leading-none whitespace-nowrap">{copyright}</span>
                         {legal.map((l) => (

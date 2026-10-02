@@ -48,8 +48,8 @@ export default function Contact({ isPage = false }) {
     <section
       id="contact"
       className={`relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors ${
-        isPage ? "pt-6 sm:pt-10 md:pt-14 pb-14 sm:pb-20" : "py-20 sm:py-28 md:py-32"
-      } px-5 sm:px-8 md:px-12`}
+        isPage ? "pt-6 sm:pt-10 md:pt-14 pb-14 sm:pb-20" : "py-14 sm:py-24 md:py-32"
+      } px-4 sm:px-8 md:px-12`}
     >
       <div className="max-w-7xl mx-auto">
         {/* Main 2-Column Grid */}
@@ -58,7 +58,7 @@ export default function Contact({ isPage = false }) {
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center">
             <FadeIn delay={0.1} y={20}>
               {/* Eyebrow */}
-              <div className="flex items-center gap-2.5 mb-3 sm:mb-4">
+              <div className="flex items-center gap-2.5 mb-2.5 sm:mb-4">
                 <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
                 <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#15100C]/75 dark:text-[#F2E6DC]/75">
                   {isRTL ? "تواصل معنا" : "GET IN TOUCH"}
@@ -69,7 +69,7 @@ export default function Contact({ isPage = false }) {
               <h2
                 className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.04] sm:leading-[1.02] mb-3 sm:mb-4"
                 style={{
-                  fontSize: "clamp(2.5rem, 5.2vw, 4.5rem)",
+                  fontSize: "clamp(2.1rem, 5.2vw, 4.5rem)",
                   fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
                 }}
               >
@@ -77,37 +77,37 @@ export default function Contact({ isPage = false }) {
               </h2>
 
               {/* Supporting Paragraph */}
-              <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/70 dark:text-[#F2E6DC]/70 font-normal max-w-xl mb-7 sm:mb-9">
+              <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/70 dark:text-[#F2E6DC]/70 font-normal max-w-xl mb-6 sm:mb-9">
                 {t.contact.sub}
               </p>
             </FadeIn>
 
-            {/* 6 Contact Option Cards Grid */}
+            {/* 6 Contact Option Cards Grid: 2 columns on mobile, 3 on desktop */}
             <FadeIn delay={0.2} y={25}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-3.5">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3.5">
                 {/* 1. Instagram */}
                 <a
                   href="https://www.instagram.com/as.mama.said"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
+                  className="group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
                   aria-label="Instagram Profile"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                         <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                       </svg>
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {isRTL ? "إنستغرام" : "Instagram"}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0"
+                    size={14}
+                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0 hidden xs:block"
                   />
                 </a>
 
@@ -116,22 +116,22 @@ export default function Contact({ isPage = false }) {
                   href="https://www.tiktok.com/@as.mama.said"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
+                  className="group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
                   aria-label="TikTok Profile"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .57.04.84.11V9.33a6.33 6.33 0 0 0-.84-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.19 8.19 0 0 0 4.88 1.6v-3.48a4.85 4.85 0 0 1-1.11-.14z" />
                       </svg>
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {isRTL ? "تيك توك" : "TikTok"}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0"
+                    size={14}
+                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0 hidden xs:block"
                   />
                 </a>
 
@@ -140,22 +140,22 @@ export default function Contact({ isPage = false }) {
                   href="https://www.facebook.com/share/1DfcDiWsnK/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
+                  className="group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 select-none"
                   aria-label="Facebook Profile"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                       </svg>
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {isRTL ? "فيسبوك" : "Facebook"}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0"
+                    size={14}
+                    className="text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] transition-all duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180 shrink-0 hidden xs:block"
                   />
                 </a>
 
@@ -163,24 +163,24 @@ export default function Contact({ isPage = false }) {
                 <button
                   type="button"
                   onClick={() => handleInquirySelect("marketing")}
-                  className={`group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
+                  className={`group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
                     activeCat === "marketing" && formOpen
                       ? "bg-white dark:bg-[#0c1b1c] border-[#D2392A] shadow-[0_8px_24px_rgba(210,57,42,0.12)] ring-1 ring-[#D2392A]/40"
                       : "bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:-translate-y-0.5"
                   }`}
                   aria-expanded={activeCat === "marketing" && formOpen}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <Mail size={17} strokeWidth={2} />
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <Mail size={16} strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {t.contact.cats.marketing}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 ${
+                    size={14}
+                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 hidden xs:block ${
                       activeCat === "marketing" && formOpen
                         ? "text-[#D2392A] translate-x-1 rtl:-translate-x-1"
                         : "text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
@@ -192,24 +192,24 @@ export default function Contact({ isPage = false }) {
                 <button
                   type="button"
                   onClick={() => handleInquirySelect("tech")}
-                  className={`group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
+                  className={`group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
                     activeCat === "tech" && formOpen
                       ? "bg-white dark:bg-[#0c1b1c] border-[#D2392A] shadow-[0_8px_24px_rgba(210,57,42,0.12)] ring-1 ring-[#D2392A]/40"
                       : "bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:-translate-y-0.5"
                   }`}
                   aria-expanded={activeCat === "tech" && formOpen}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <Asterisk size={19} strokeWidth={2.5} />
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <Asterisk size={17} strokeWidth={2.5} />
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {t.contact.cats.tech}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 ${
+                    size={14}
+                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 hidden xs:block ${
                       activeCat === "tech" && formOpen
                         ? "text-[#D2392A] translate-x-1 rtl:-translate-x-1"
                         : "text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
@@ -221,24 +221,24 @@ export default function Contact({ isPage = false }) {
                 <button
                   type="button"
                   onClick={() => handleInquirySelect("business")}
-                  className={`group relative flex items-center justify-between gap-2.5 px-3.5 sm:px-4 py-3.5 sm:py-4 rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
+                  className={`group relative flex items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4 rounded-2xl sm:rounded-[20px] transition-all duration-300 text-start select-none cursor-pointer border ${
                     activeCat === "business" && formOpen
                       ? "bg-white dark:bg-[#0c1b1c] border-[#D2392A] shadow-[0_8px_24px_rgba(210,57,42,0.12)] ring-1 ring-[#D2392A]/40"
                       : "bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border-black/[0.06] dark:border-white/10 hover:border-[#D2392A]/50 hover:bg-white dark:hover:bg-[#0c1b1c] hover:shadow-[0_8px_24px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:-translate-y-0.5"
                   }`}
                   aria-expanded={activeCat === "business" && formOpen}
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                      <Briefcase size={17} strokeWidth={2} />
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center bg-[#D2392A]/[0.08] dark:bg-[#D2392A]/[0.16] text-[#D2392A] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <Briefcase size={16} strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
+                    <span className="text-[11.5px] sm:text-[13.5px] font-semibold text-[#15100C] dark:text-[#F2E6DC] truncate">
                       {t.contact.cats.business}
                     </span>
                   </div>
                   <ArrowRight
-                    size={15}
-                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 ${
+                    size={14}
+                    className={`transition-all duration-300 shrink-0 rtl:rotate-180 hidden xs:block ${
                       activeCat === "business" && formOpen
                         ? "text-[#D2392A] translate-x-1 rtl:-translate-x-1"
                         : "text-[#15100C]/35 dark:text-[#F2E6DC]/35 group-hover:text-[#D2392A] group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
@@ -402,7 +402,7 @@ export default function Contact({ isPage = false }) {
           {/* RIGHT SIDE: Large Creative Studio Visual Container */}
           <div className="lg:col-span-5 xl:col-span-5 flex items-center justify-center">
             <FadeIn delay={0.25} y={30}>
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden rounded-[26px] sm:rounded-[32px] md:rounded-[36px] border border-black/[0.06] dark:border-white/10 bg-[#0C0C0C]/5 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] group">
+              <div className="relative w-full aspect-[16/10] sm:aspect-[16/11] lg:aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-[32px] md:rounded-[36px] border border-black/[0.06] dark:border-white/10 bg-[#0C0C0C]/5 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] group">
                 <img
                   src="/assets/images/contact-studio.webp"
                   alt="As Mama Said Creative Studio Workspace"

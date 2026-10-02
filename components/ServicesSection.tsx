@@ -78,15 +78,15 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] px-5 sm:px-8 md:px-12 py-20 sm:py-28 md:py-32 transition-colors"
+      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] px-4 sm:px-8 md:px-12 py-14 sm:py-24 md:py-32 transition-colors"
     >
       <div className="max-w-6xl mx-auto">
         {/* Top Header Section */}
         <FadeIn delay={0.1} y={30}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center mb-12 sm:mb-16 md:mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center mb-10 sm:mb-16 md:mb-20">
             {/* Left side: Eyebrow + Heading */}
             <div className="lg:col-span-6 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
                 <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block" />
                 <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#15100C]/70 dark:text-[#F2E6DC]/70">
                   {isRTL ? "ما نقدمه" : "WHAT WE DO"}
@@ -95,7 +95,7 @@ export default function ServicesSection() {
               <h2
                 className="font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[0.95]"
                 style={{
-                  fontSize: "clamp(3.5rem, 8vw, 6.5rem)",
+                  fontSize: "clamp(2.4rem, 7.5vw, 6.5rem)",
                   fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
                 }}
               >
@@ -104,7 +104,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Right side: Intro Paragraph */}
-            <div className="lg:col-span-6 lg:border-l border-black/10 dark:border-white/10 rtl:lg:border-l-0 rtl:lg:border-r lg:pl-10 rtl:lg:pl-0 rtl:lg:pr-10 flex items-center">
+            <div className="lg:col-span-6 lg:border-l border-black/10 dark:border-white/10 rtl:lg:border-l-0 rtl:lg:border-r lg:pl-10 rtl:lg:pl-0 rtl:lg:pr-10 flex items-center mt-2 lg:mt-0">
               <p className="text-sm sm:text-base md:text-[1.05rem] leading-relaxed text-[#15100C]/80 dark:text-[#F2E6DC]/80 font-normal max-w-lg">
                 {isRTL
                   ? "نحوّل الأفكار إلى قصص بصرية ملهمة. من الـ 3D والموشن جرافيك إلى الهوية البصرية وتصميم الويب، نبني تجارب رقمية تأسر الأنظار وتعمل بأعلى كفاءة."
@@ -115,16 +115,16 @@ export default function ServicesSection() {
         </FadeIn>
 
         {/* 5 Horizontal Editorial Cards */}
-        <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
+        <div className="flex flex-col gap-3.5 sm:gap-5 md:gap-6">
           {SERVICES.map((item, idx) => (
             <FadeIn key={item.num} delay={idx * 0.08} y={25}>
-              <div className="group relative rounded-[22px] sm:rounded-[28px] md:rounded-[32px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 p-5 sm:p-7 md:p-8 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_12px_36px_rgba(0,0,0,0.3)] hover:border-black/15 dark:hover:border-white/20">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6 lg:gap-8">
+              <div className="group relative rounded-2xl sm:rounded-[28px] md:rounded-[32px] bg-[#FAF7F2] dark:bg-[#0c1b1c]/80 border border-black/[0.06] dark:border-white/10 p-4 sm:p-7 md:p-8 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.04)] dark:hover:shadow-[0_12px_36px_rgba(0,0,0,0.3)] hover:border-black/15 dark:hover:border-white/20">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 lg:gap-8">
                   {/* Left: Coral Dash + Large Number */}
                   <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-                    <span className="w-3.5 sm:w-5 h-[2px] bg-[#D2392A] shrink-0" />
+                    <span className="w-3 sm:w-5 h-[2px] bg-[#D2392A] shrink-0" />
                     <span
-                      className="font-black text-4xl sm:text-5xl md:text-6xl text-[#15100C] dark:text-[#F2E6DC] leading-none tracking-tight select-none"
+                      className="font-black text-3xl sm:text-5xl md:text-6xl text-[#15100C] dark:text-[#F2E6DC] leading-none tracking-tight select-none"
                       style={{
                         fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
                       }}
@@ -151,7 +151,7 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Right: Visual Image Container */}
-                  <div className="shrink-0 self-end md:self-center overflow-hidden rounded-[16px] sm:rounded-[20px] border border-black/5 dark:border-white/10 shadow-sm w-full sm:w-[170px] md:w-[210px] aspect-[16/10] bg-black/5 dark:bg-white/5">
+                  <div className="shrink-0 self-center overflow-hidden rounded-xl sm:rounded-[20px] border border-black/5 dark:border-white/10 shadow-sm w-full sm:w-[170px] md:w-[210px] h-[160px] sm:h-auto sm:aspect-[16/10] bg-black/5 dark:bg-white/5">
                     <img
                       src={item.image}
                       alt={item.alt}

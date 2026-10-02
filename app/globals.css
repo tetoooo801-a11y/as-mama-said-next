@@ -1405,8 +1405,39 @@ header.site-nav.scrolled {
     animation-play-state: paused;
   }
 
-  /* Hero pin height على التابلت */
-  #hero-pin { height: 200vh; }
+  /* Hero pin height على الموبايل والتابلت */
+  #hero-pin { height: 130vh; }
+
+  /* Site Nav padding على الموبايل */
+  header.site-nav {
+    padding: 12px 14px;
+  }
+
+  /* Hero copy typography and positioning على الموبايل */
+  .hero-copy {
+    max-width: 92vw;
+    padding: 0 16px;
+  }
+  .hero-copy .line1 {
+    font-size: clamp(30px, 8.2vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .hero-copy .line2 {
+    margin-top: 14px;
+    font-size: clamp(13px, 3.6vw, 16px);
+    line-height: 1.45;
+    max-width: 92vw;
+  }
+
+  /* استجابة حقول الإدخال بدون زوم تلقائي على iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 
   /* studio-stage يبقى بحجم الشاشة الفعلي على الموبايل
      بدل ما يستخدم معادلة الديسكتوب (100vh * 1024/682)
@@ -1478,7 +1509,7 @@ header.site-nav.scrolled {
 
 @media (max-width: 480px) {
   /* Hero pin: الموبايل الصغير */
-  #hero-pin { height: 250vh; }
+  #hero-pin { height: 130vh; }
 
   /* Pill nav على موبايل صغير */
   .pill-nav__item {
