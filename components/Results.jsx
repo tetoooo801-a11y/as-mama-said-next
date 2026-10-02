@@ -112,34 +112,12 @@ export default function Results() {
       <div className="kicker">{t.results.kicker}</div>
 
       <p className="results-lead">{t.results.sideDesc}</p>
-      {t.results.paragraph2 && (
-        <p className="results-subtext">{t.results.paragraph2}</p>
-      )}
 
       {/* Reel context note */}
       {t.results.reelsList?.[index]?.highlight && (
         <div className="reel-highlight-box">
           <span className="reel-highlight-tag">{isRTL ? "ملاحظة إنتاجية" : "Production Note"}</span>
           <p className="reel-highlight-text">{t.results.reelsList[index].highlight}</p>
-        </div>
-      )}
-
-      {/* Production features */}
-      {t.results.features && (
-        <div className="results-features">
-          {t.results.features.map((feat, fIdx) => (
-            <div key={fIdx} className="results-feature-item">
-              <div className="results-feature-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div className="results-feature-text">
-                <strong>{feat.title}</strong>
-                <span>{feat.desc}</span>
-              </div>
-            </div>
-          ))}
         </div>
       )}
 
@@ -151,17 +129,6 @@ export default function Results() {
               <span className="results-stat-num">{stat.num}</span>
               <span className="results-stat-label">{stat.label}</span>
             </div>
-          ))}
-        </div>
-      )}
-
-      {/* Tags */}
-      {t.results.tags && (
-        <div className="results-tags-wrap">
-          {t.results.tags.map((tag, tIdx) => (
-            <span key={tIdx} className="results-tag-pill">
-              {tag}
-            </span>
           ))}
         </div>
       )}
