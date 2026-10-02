@@ -71,27 +71,66 @@ export default function Navbar() {
     }
   };
 
-  const hasDarkHero =
-    pathname === "/" ||
-    pathname === "/about" ||
-    pathname === "/services" ||
-    pathname === "/results" ||
-    pathname === "/gallery" ||
-    pathname === "/contact";
-
-  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+  const [isOverDarkHero, setIsOverDarkHero] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const handleScroll = () => {
-      setIsScrolledPastHero(window.scrollY > 250);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
 
-  const isOverDarkHero = !isScrolledPastHero || hasDarkHero;
+    const checkHeroPosition = () => {
+      if (pathname === "/") {
+        const heroStage = document.getElementById("hero-stage");
+        const heroPin = document.getElementById("hero-pin");
+        if (heroStage && heroPin) {
+          const stageRect = heroStage.getBoundingClientRect();
+          const pinRect = heroPin.getBoundingClientRect();
+          // Logo bottom is ~66px from top.
+          // Inside the hero, both stage and pin cover the logo.
+          // When the hero finishes and scrolls past the logo, both edges are <= 60px.
+          setIsOverDarkHero(stageRect.bottom > 60 && pinRect.bottom > 60);
+        } else if (heroStage || heroPin) {
+          const rect = (heroStage || heroPin).getBoundingClientRect();
+          setIsOverDarkHero(rect.bottom > 60);
+        } else {
+          setIsOverDarkHero(window.scrollY < 600);
+        }
+      } else {
+        const pageHero = document.querySelector(".page-hero");
+        if (pageHero) {
+          const rect = pageHero.getBoundingClientRect();
+          setIsOverDarkHero(rect.bottom > 60);
+        } else {
+          // If no hero section exists on this page, logo is outside hero
+          setIsOverDarkHero(false);
+        }
+      }
+    };
+
+    checkHeroPosition();
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkHeroPosition();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    const t1 = setTimeout(checkHeroPosition, 50);
+    const t2 = setTimeout(checkHeroPosition, 250);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [pathname]);
 
   return (
     <header className="site-nav show" id="siteNav">
@@ -100,25 +139,31 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={handleLogoClick}
-          className="flex items-center transition-transform duration-300 hover:scale-105 shrink-0"
+          className="relative flex items-center transition-transform duration-300 hover:scale-105 shrink-0 h-11 sm:h-12"
           aria-label="As Mama Said"
         >
+          {/* White logo (visible when over hero or in dark mode) */}
           <img
             src="/assets/images/ams-logo-darkbg.webp"
             alt="As Mama Said"
             width={54}
             height={48}
             className={`h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 ${
-              isOverDarkHero ? "block" : "hidden dark:block"
+              isOverDarkHero
+                ? "opacity-100"
+                : "opacity-0 dark:opacity-100 pointer-events-none"
             }`}
           />
+          {/* Black logo (visible when outside hero in light mode) */}
           <img
             src="/assets/images/ams-logo-lightbg.webp"
             alt="As Mama Said"
             width={54}
             height={48}
-            className={`h-11 sm:h-12 w-auto object-contain transition-opacity duration-300 ${
-              isOverDarkHero ? "hidden" : "block dark:hidden"
+            className={`h-11 sm:h-12 w-auto object-contain absolute inset-0 transition-opacity duration-300 ${
+              isOverDarkHero
+                ? "opacity-0 pointer-events-none"
+                : "opacity-100 dark:opacity-0"
             }`}
           />
         </Link>
