@@ -283,7 +283,7 @@ header.site-nav.scrolled {
   position: relative; height: 220vh; background: var(--theme-bg);
 }
 #hero-stage {
-  position: sticky; top: 0; height: 100vh; width: 100%;
+  position: sticky; top: 0; height: 100vh; height: 100dvh; width: 100%;
   overflow: hidden;
   border-bottom-left-radius: clamp(44px, 6vw, 84px);
   border-bottom-right-radius: clamp(44px, 6vw, 84px);
@@ -810,6 +810,11 @@ header.site-nav.scrolled {
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-top: 2px;
+}
+@media (max-width: 480px) {
+  .results-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .results-stat-card {
@@ -1357,6 +1362,96 @@ header.site-nav.scrolled {
   .footer-grid { grid-template-columns: 1fr; }
   #hero-pin { height: 280vh; }
   .hero-copy { max-width: 92vw; }
+}
+
+/* ====================================================
+   MOBILE FIX — max-width: 1023px (كل ما دون الديسكتوب)
+   ==================================================== */
+@media (max-width: 1023px) {
+  /* Hero: تصغير الـ pin height على التابلت */
+  #hero-pin { height: 200vh; }
+
+  /* Pill Nav: منع الـ overflow على الموبايل */
+  .pill-nav {
+    padding: 10px clamp(8px, 2.5vw, 20px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pill-nav__inner {
+    flex-wrap: nowrap;
+    gap: 4px;
+    min-width: max-content;
+  }
+  .pill-nav__item {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .pill-nav__brand {
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* svc-card: تخفيف padding */
+  .svc-card {
+    padding: 24px 20px;
+  }
+
+  /* proj-card: تخفيف padding */
+  .proj-card {
+    padding: 22px 18px;
+  }
+
+  /* Blobs: تصغير على الموبايل */
+  .blob-a {
+    width: clamp(200px, 60vw, 420px);
+    height: clamp(200px, 60vw, 420px);
+  }
+  .blob-b {
+    width: clamp(150px, 45vw, 300px);
+    height: clamp(150px, 45vw, 300px);
+  }
+
+  /* Scroll cue: تكبير touch target */
+  .scroll-cue {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px;
+    right: clamp(16px, 4vw, 40px);
+    bottom: clamp(24px, 4vh, 48px);
+  }
+
+  /* collab-partners-grid: إصلاح الـ override */
+  .collab-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero pin: الموبايل الصغير */
+  #hero-pin { height: 250vh; }
+
+  /* Pill nav على موبايل صغير */
+  .pill-nav__item {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  /* collab-partners-grid: عمود واحد */
+  .collab-partners-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* cat-btn: تكبير للمس */
+  .cat-btn {
+    padding: 14px 20px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+
+  /* Legacy contact sub */
+  .legacy-contact .sub {
+    font-size: 15px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -30,15 +30,12 @@ export default function Hero() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
-      const heroVideo = videoRef.current;
       const tvFrame = tvFrameRef.current;
       const tvScreen = tvScreenRef.current;
       const tvBezel = tvBezelRef.current;
       const stand = standRef.current;
       const baseShadow = shadowRef.current;
       const deskForeground = deskFgRef.current;
-      const overlay = overlayRef.current;
-      const scan = scanRef.current;
       const glow = glowRef.current;
       const copy = copyRef.current;
       const cue = cueRef.current;
@@ -49,7 +46,10 @@ export default function Hero() {
 
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 1px)", () => {
+      /* =========================================================
+         DESKTOP (>=1024px) — الأنيميشن الأصلي كامل بدون أي تغيير
+         ========================================================= */
+      mm.add("(min-width: 1024px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container,
@@ -92,25 +92,86 @@ export default function Hero() {
           .to(glow, { opacity: 0.35, duration: 0.5 }, 0.45)
           .to(copy, { opacity: 1, y: 0, duration: 0.6 }, 0.75)
           .to(cue, { opacity: 0, duration: 0.3 }, 0.7);
+
+        return () => {};
       });
 
-      if (reduceMotion) {
+      /* =========================================================
+         MOBILE / TABLET (<=1023px) — الخيار ب: إحداثيات منفصلة
+         - tvFrame = fullscreen (100% x 100%)
+         - عناصر الديسكتوب مخفية (bezel, stand, shadow, desk fg)
+         - copy يظهر فوراً بـ fade-in
+         - لا يوجد scroll pin ثقيل
+         ========================================================= */
+      mm.add("(max-width: 1023px)", () => {
+        // إخفاء عناصر الديسكتوب فوراً
+        gsap.set([tvBezel, deskForeground, baseShadow, stand], {
+          opacity: 0,
+          visibility: "hidden",
+        });
+
+        // tvFrame يملأ الشاشة كلها (إحداثيات موبايل)
         gsap.set(tvFrame, {
-          width: "25.88%",
-          height: "20.97%",
-          left: "28.00%",
-          top: "49.50%",
+          width: "100%",
+          height: "100%",
+          left: "0%",
+          top: "0%",
         });
+
+        // tvScreen يملأ الـ tvFrame كاملاً
         gsap.set(tvScreen, {
-          left: "1.97%",
-          top: "3.66%",
-          width: "96.06%",
-          height: "92.24%",
-          borderRadius: "4px",
+          left: "0%",
+          top: "0%",
+          width: "100%",
+          height: "100%",
+          borderRadius: "0px",
         });
-        gsap.set(tvBezel, { opacity: 1 });
-        gsap.set(deskForeground, { opacity: 1 });
-        gsap.set(baseShadow, { opacity: 1 });
+
+        // copy يظهر فوراً مع fade-in بسيط
+        gsap.set(copy, { opacity: 0, y: 20 });
+        gsap.to(copy, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          delay: 0.4,
+        });
+
+        // Scroll cue يختفي بعد أول scroll
+        if (cue) {
+          ScrollTrigger.create({
+            trigger: container,
+            start: "top top",
+            end: "20% top",
+            onLeave: () => gsap.to(cue, { opacity: 0, duration: 0.3 }),
+            onEnterBack: () => gsap.to(cue, { opacity: 1, duration: 0.3 }),
+          });
+        }
+
+        // Glow خفيف
+        if (glow) {
+          gsap.to(glow, { opacity: 0.2, duration: 1.2, delay: 0.6 });
+        }
+
+        return () => {};
+      });
+
+      /* =========================================================
+         Reduced Motion — لكل المقاسات
+         ========================================================= */
+      if (reduceMotion) {
+        const isMobile = window.innerWidth < 1024;
+        if (isMobile) {
+          gsap.set(tvFrame, { width: "100%", height: "100%", left: "0%", top: "0%" });
+          gsap.set(tvScreen, { left: "0%", top: "0%", width: "100%", height: "100%", borderRadius: "0px" });
+          gsap.set([tvBezel, deskForeground, baseShadow, stand], { opacity: 0, visibility: "hidden" });
+        } else {
+          gsap.set(tvFrame, { width: "25.88%", height: "20.97%", left: "28.00%", top: "49.50%" });
+          gsap.set(tvScreen, { left: "1.97%", top: "3.66%", width: "96.06%", height: "92.24%", borderRadius: "4px" });
+          gsap.set(tvBezel, { opacity: 1 });
+          gsap.set(deskForeground, { opacity: 1 });
+          gsap.set(baseShadow, { opacity: 1 });
+        }
         gsap.set(glow, { opacity: 0.35 });
         gsap.set(copy, { opacity: 1, y: 0 });
       }
