@@ -5,10 +5,26 @@ import { useLanguage } from "@/context/LanguageContext";
 
 // ─── Reel URLs ────────────────────────────────────────────────────────────────
 const REELS = [
-  { url: "https://www.instagram.com/reel/DctKRD0sJaT/", label: "Reel 01" },
-  { url: "https://www.instagram.com/reel/DcRXXRosQdE/", label: "Reel 02" },
-  { url: "https://www.instagram.com/reel/DcJ3MLYqgJq/", label: "Reel 03" },
-  { url: "https://www.instagram.com/reel/Davqu8NxqJk/", label: "Reel 04" },
+  {
+    url: "https://www.instagram.com/reel/DctKRD0sJaT/",
+    label: "Reel 01",
+    image: "/assets/images/service-3-motion.png",
+  },
+  {
+    url: "https://www.instagram.com/reel/DcRXXRosQdE/",
+    label: "Reel 02",
+    image: "/assets/images/service-1-3d.png",
+  },
+  {
+    url: "https://www.instagram.com/reel/DcJ3MLYqgJq/",
+    label: "Reel 03",
+    image: "/assets/images/service-2-render.png",
+  },
+  {
+    url: "https://www.instagram.com/reel/Davqu8NxqJk/",
+    label: "Reel 04",
+    image: "/assets/images/service-4-branding.png",
+  },
 ];
 
 function toEmbedUrl(url) {
@@ -35,6 +51,11 @@ export default function Results() {
 
   const total = REELS.length;
   const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
+
+  const prevIndex = (index - 1 + total) % total;
+  const nextIndex = (index + 1) % total;
+  const prevReel = REELS[prevIndex];
+  const nextReel = REELS[nextIndex];
 
   const go = (dir) => {
     if (transitioning) return;
@@ -311,18 +332,69 @@ export default function Results() {
           </div>
 
           <div className="reel-layout">
-            {/* Phone mockup */}
+            {/* Phone mockup with left and right peek cards */}
             <div className="phone-mockup-wrap">
-              <div className="phone-shell">
-                <div className="phone-notch"><div className="phone-notch-pill" /></div>
-
-                <div className={`phone-screen ${transitioning ? "phone-fade-out" : "phone-fade-in"}`}>
-                  <div className="reel-clip-wrap">
-                    <ReelFrame className="reel-iframe" />
+              <div className="phone-carousel-stage">
+                {/* Left Peek (Previous Reel Image) */}
+                <div
+                  className="phone-peek-card phone-peek--left"
+                  onClick={() => go(-1)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Previous reel: ${prevReel.label}`}
+                  title={prevReel.label}
+                >
+                  <img
+                    src={prevReel.image}
+                    alt={prevReel.label}
+                    className="phone-peek-img"
+                  />
+                  <div className="phone-peek-overlay">
+                    <span className="phone-peek-tag">{prevReel.label}</span>
+                    <div className="phone-peek-play">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 3 20 12 6 21 6 3" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
-                <div className="phone-home-bar" />
+                {/* Center Phone Shell */}
+                <div className="phone-shell">
+                  <div className="phone-notch"><div className="phone-notch-pill" /></div>
+
+                  <div className={`phone-screen ${transitioning ? "phone-fade-out" : "phone-fade-in"}`}>
+                    <div className="reel-clip-wrap">
+                      <ReelFrame className="reel-iframe" />
+                    </div>
+                  </div>
+
+                  <div className="phone-home-bar" />
+                </div>
+
+                {/* Right Peek (Next Reel Image) */}
+                <div
+                  className="phone-peek-card phone-peek--right"
+                  onClick={() => go(1)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Next reel: ${nextReel.label}`}
+                  title={nextReel.label}
+                >
+                  <img
+                    src={nextReel.image}
+                    alt={nextReel.label}
+                    className="phone-peek-img"
+                  />
+                  <div className="phone-peek-overlay">
+                    <span className="phone-peek-tag">{nextReel.label}</span>
+                    <div className="phone-peek-play">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 3 20 12 6 21 6 3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Nav */}
