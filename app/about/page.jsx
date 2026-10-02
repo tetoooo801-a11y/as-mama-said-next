@@ -312,8 +312,12 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Shared CTA Band (identical to Services page) */}
-      <SharedCta />
+      {/* Shared CTA Band */}
+      <SharedCta
+        title={t.about.ctaTitle}
+        subtitle={t.about.ctaSub}
+        buttonText={t.about.ctaBtn}
+      />
     </main>
 
       <Footer />
