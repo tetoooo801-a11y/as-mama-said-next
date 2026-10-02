@@ -2,22 +2,36 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import FadeIn from "@/components/ui/FadeIn";
 
 export default function SharedCta() {
   const { t, isRTL } = useLanguage();
 
   return (
-    <section className="wrap">
-      <div className="cta-band">
-        <h2>
-          {isRTL
-            ? "عندك فكرة تستحق تتقال وتتعمل صح؟"
-            : "Got something worth saying properly?"}
-        </h2>
-        <Link href="/contact" className="btn">
-          {t.nav.cta}
-        </Link>
-      </div>
+    <section className="w-full px-5 sm:px-8 md:px-12 py-10 sm:py-14">
+      <FadeIn delay={0.1} y={20}>
+        <div className="w-full max-w-5xl mx-auto rounded-[28px] sm:rounded-[36px] md:rounded-[40px] bg-[#071818] border border-white/10 text-center py-12 sm:py-14 md:py-16 px-6 sm:px-12 shadow-[0_20px_50px_rgba(0,0,0,0.18)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.45)] relative overflow-hidden flex flex-col items-center justify-center">
+          <h2
+            className="text-[#F2E6DC] font-black leading-[1.12] sm:leading-[1.1] tracking-tight max-w-[15ch] mx-auto text-center"
+            style={{
+              fontSize: "clamp(2rem, 4.2vw, 3.2rem)",
+              fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+            }}
+          >
+            {isRTL
+              ? "عندك فكرة تستحق تتقال وتتعمل صح؟"
+              : "Got something worth saying properly?"}
+          </h2>
+          <div className="mt-6 sm:mt-7">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-[#D2392A] hover:bg-[#b82f22] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md active:scale-95 transition-all duration-200 select-none"
+            >
+              {t.nav.cta}
+            </Link>
+          </div>
+        </div>
+      </FadeIn>
     </section>
   );
 }
