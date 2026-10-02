@@ -225,30 +225,6 @@ export default function GalleryClients() {
           </span>
         </div>
 
-        {/* Bottom CTA Card */}
-        <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl bg-[#D2392A]/[0.04] dark:bg-[#D2392A]/[0.08] border border-[#D2392A]/20 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-start">
-          <div>
-            <h4
-              className="text-lg sm:text-xl font-bold text-[#15100C] dark:text-[#F2E6DC] mb-1"
-              style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-            >
-              {isRTL ? "هل ترغب في انضمام علامتك التجارية لشركائنا؟" : "Want to see your brand in our client portfolio?"}
-            </h4>
-            <p className="text-xs sm:text-sm text-[#15100C]/70 dark:text-[#F2E6DC]/70">
-              {isRTL
-                ? "دعنا نبدأ بالسؤال الصحيح ونبني حضوراً واستراتيجية تسويقية تقود السوق."
-                : "Let's start with the right question and build work that performs."}
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#D2392A] hover:bg-[#b82f22] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors shadow-md shrink-0 cursor-pointer w-full sm:w-auto justify-center sm:justify-start"
-          >
-            <span>{isRTL ? "ابدأ مشروعك معنا" : "Start Your Project"}</span>
-            <ArrowUpRight size={16} className={isRTL ? "rotate-[-90deg]" : ""} />
-          </Link>
-        </div>
-
       </div>
     </section>
   );

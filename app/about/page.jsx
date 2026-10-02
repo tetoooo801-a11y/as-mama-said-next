@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
+import SharedCta from "@/components/SharedCta";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import FadeIn from "@/components/ui/FadeIn";
@@ -329,46 +330,11 @@ export default function AboutPage() {
             </FadeIn>
           </section>
 
-          {/* ============================================================== */}
-          {/* SECTION 6: SHARED CTA CARD                                     */}
-          {/* ============================================================== */}
-          <FadeIn delay={0.25} y={30}>
-            <div className="rounded-[24px] sm:rounded-[32px] bg-[#07191a] text-white p-7 sm:p-9 lg:p-12 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 relative overflow-hidden shadow-2xl">
-              {/* Decorative Mesh Glow */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-[#D2392A]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-              <div className="absolute bottom-0 left-0 w-60 h-60 bg-white/[0.04] rounded-full blur-2xl pointer-events-none -ml-10 -mb-10" />
-
-              {/* Left headline */}
-              <div className="relative z-10 max-w-sm text-center md:text-start">
-                <h3
-                  className="font-black text-2xl sm:text-3xl lg:text-[2rem] leading-tight text-white tracking-tight"
-                  style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-                >
-                  {t.about.ctaTitle}
-                </h3>
-              </div>
-
-              {/* Center Supporting Text */}
-              <div className="relative z-10 max-w-md text-center md:text-start">
-                <p className="text-sm sm:text-base text-white/75 leading-relaxed font-normal">
-                  {t.about.ctaSub}
-                </p>
-              </div>
-
-              {/* Right Button */}
-              <div className="relative z-10 shrink-0">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#D2392A] text-white font-bold text-sm tracking-wide shadow-lg hover:bg-[#b82f22] active:scale-95 transition-all duration-200"
-                >
-                  <span>{t.about.ctaBtn}</span>
-                  <ArrowRight size={15} className="rtl:rotate-180" />
-                </Link>
-              </div>
-            </div>
-          </FadeIn>
         </div>
       </div>
+
+      {/* Shared CTA Band (identical to Services page) */}
+      <SharedCta />
     </main>
 
       <Footer />
