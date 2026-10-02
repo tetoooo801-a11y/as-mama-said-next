@@ -36,6 +36,7 @@ export default function Hero() {
       const stand = standRef.current;
       const baseShadow = shadowRef.current;
       const deskForeground = deskFgRef.current;
+      const overlay = overlayRef.current;
       const glow = glowRef.current;
       const copy = copyRef.current;
       const cue = cueRef.current;
@@ -47,9 +48,12 @@ export default function Hero() {
       const mm = gsap.matchMedia();
 
       /* =========================================================
-         DESKTOP (>=1024px) — الأنيميشن الأصلي كامل بدون أي تغيير
+         DESKTOP (>=1024px) — الأنيميشن الأصلي كامل مع ظهور الشادو على السلوجان فقط
          ========================================================= */
       mm.add("(min-width: 1024px)", () => {
+        // الشادو يبدأ بـ 0 حتى يظهر الفيديو واضحاً في البداية
+        gsap.set(overlay, { opacity: 0 });
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: container,
@@ -90,6 +94,7 @@ export default function Hero() {
           .to(deskForeground, { opacity: 1, duration: 0.8 }, 0.25)
           .to(baseShadow, { opacity: 1, duration: 0.8 }, 0.25)
           .to(glow, { opacity: 0.35, duration: 0.5 }, 0.45)
+          .to(overlay, { opacity: 1, duration: 0.6 }, 0.65)
           .to(copy, { opacity: 1, y: 0, duration: 0.6 }, 0.75)
           .to(cue, { opacity: 0, duration: 0.3 }, 0.7);
 
@@ -106,6 +111,7 @@ export default function Hero() {
          - كل اللي محتاجينه هو إخفاء عناصر الديسكتوب وإظهار الـ copy
          ========================================================= */
       mm.add("(max-width: 1023px)", () => {
+        gsap.set(overlay, { opacity: 1 });
         // إخفاء عناصر الديسكتوب فوراً — الـ CSS بالفعل بيخفي studio-bg
         gsap.set([tvBezel, baseShadow, stand], {
           opacity: 0,
@@ -248,6 +254,13 @@ export default function Hero() {
               alt=""
             />
           </div>
+
+          <div
+            className="hero-dark-overlay"
+            id="heroDarkOverlay"
+            ref={overlayRef}
+            aria-hidden="true"
+          />
 
           <div className="hero-copy-wrap">
             <div className="hero-copy" id="heroCopy" ref={copyRef}>

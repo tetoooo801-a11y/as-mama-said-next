@@ -290,8 +290,7 @@ header.site-nav.scrolled {
   box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.14);
   z-index: 10;
 }
-#hero-stage::after {
-  content: "";
+.hero-dark-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -299,6 +298,7 @@ header.site-nav.scrolled {
   background: rgba(0, 0, 0, 0.45);
   pointer-events: none;
   z-index: 15;
+  opacity: 0;
 }
 .studio-stage {
   position: absolute; left: 50%; top: 50%;
@@ -1404,6 +1404,9 @@ header.site-nav.scrolled {
 
   /* Hero pin height على الموبايل والتابلت */
   #hero-pin { height: 130vh; }
+
+  /* Hero dark overlay دائما ظاهر على الموبايل */
+  .hero-dark-overlay { opacity: 1; }
 
   /* Site Nav padding على الموبايل */
   header.site-nav {
