@@ -10,6 +10,7 @@ export default function Contact({ isPage = false }) {
   const { t, isRTL } = useLanguage();
   const [activeCat, setActiveCat] = useState(null);
   const [formOpen, setFormOpen] = useState(false);
+  const [mobileFormOpen, setMobileFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,10 +49,150 @@ export default function Contact({ isPage = false }) {
     <section
       id="contact"
       className={`relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors ${
-        isPage ? "pt-6 sm:pt-10 md:pt-14 pb-14 sm:pb-20" : "py-14 sm:py-24 md:py-32"
-      } px-4 sm:px-8 md:px-12`}
+        isPage ? "pt-6 sm:pt-10 md:pt-14 pb-14 sm:pb-20" : "py-12 sm:py-20 md:py-32"
+      }`}
     >
-      <div className="max-w-7xl mx-auto">
+      {/* =========================================================
+          MOBILE VIEW (md:hidden) — Condensed reference layout:
+          - Red dot + LET'S WORK TOGETHER
+          - Short subtitle
+          - Prominent Send Us a Message CTA button (toggles form)
+          - Regional WhatsApp desks & quick social channels
+          - Consistent px-6 padding (never touches edges!)
+          ========================================================= */}
+      <div className="block md:hidden px-6 max-w-lg mx-auto">
+        <FadeIn delay={0.1} y={20}>
+          {/* Header with Red Dot */}
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-3 h-3 rounded-full bg-[#D2392A] shrink-0" />
+            <h2
+              className="text-2xl font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-none"
+              style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
+            >
+              {isRTL ? "لنعمل معاً" : "LET'S WORK TOGETHER"}
+            </h2>
+          </div>
+
+          {/* Short Subtitle */}
+          <p className="text-[14px] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal mb-5">
+            {isRTL
+              ? "عندك فكرة مشروع أو استفسار؟ نحب نسمع منك ونبدأ العمل."
+              : "Have a project in mind? We'd love to hear from you."}
+          </p>
+
+          {/* Primary CTA Button */}
+          <button
+            type="button"
+            onClick={() => setMobileFormOpen(!mobileFormOpen)}
+            className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-2xl bg-[#D2392A] text-white font-bold text-sm tracking-wide shadow-md active:scale-95 transition-all select-none"
+          >
+            <span>
+              {mobileFormOpen
+                ? (isRTL ? "إغلاق النموذج" : "Close Form")
+                : (isRTL ? "أرسل لنا رسالة ←" : "Send Us a Message →")}
+            </span>
+          </button>
+
+          {/* Expandable Mobile Form */}
+          <AnimatePresence>
+            {mobileFormOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="rounded-2xl bg-white dark:bg-[#0c1b1c] border border-black/10 dark:border-white/10 p-4 shadow-md">
+                  {submitted ? (
+                    <div className="flex flex-col items-center justify-center py-4 text-center">
+                      <div className="w-10 h-10 rounded-full bg-[#D2392A]/10 text-[#D2392A] flex items-center justify-center mb-2">
+                        <CheckCircle2 size={20} />
+                      </div>
+                      <h4 className="text-base font-bold text-[#15100C] dark:text-[#F2E6DC] mb-1">
+                        {isRTL ? "تم إرسال رسالتك بنجاح!" : "Message Sent Successfully!"}
+                      </h4>
+                      <p className="text-xs text-[#15100C]/70 dark:text-[#F2E6DC]/70">
+                        {t.contact.successNote}
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                      <div>
+                        <input
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder={t.contact.namePlaceholder}
+                          required
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          value={company}
+                          onChange={(e) => setCompany(e.target.value)}
+                          placeholder={t.contact.companyPlaceholder}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
+                        />
+                      </div>
+                      <div>
+                        <textarea
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          placeholder={t.contact.tellUsPlaceholder}
+                          rows={3}
+                          required
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A] resize-none"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-2.5 rounded-xl bg-[#D2392A] text-white font-semibold text-xs tracking-wide shadow active:scale-95 transition-all flex items-center justify-center gap-2"
+                      >
+                        <span>{isSubmitting ? (isRTL ? "جارِ الإرسال..." : "Sending...") : t.contact.submit}</span>
+                        <Send size={13} className="rtl:rotate-180" />
+                      </button>
+                    </form>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Direct Regional WhatsApp Desks */}
+          <div className="mt-5 p-3.5 rounded-2xl bg-[#FAF7F2] dark:bg-[#0c1b1c]/90 border border-black/[0.06] dark:border-white/10">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D2392A] block mb-2">
+              {isRTL ? "التعاقدات المباشرة" : "DIRECT BUSINESS ENQUIRIES"}
+            </span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-[#15100C] dark:text-[#F2E6DC]">
+              <a
+                href="https://wa.me/201092927390"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 hover:border-[#D2392A] transition-colors"
+              >
+                <span>🇪🇬 +20 109 292 7390</span>
+              </a>
+              <a
+                href="https://wa.me/971557889692"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 hover:border-[#D2392A] transition-colors"
+              >
+                <span>🇦🇪 +971 55 788 9692</span>
+              </a>
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+
+      {/* =========================================================
+          DESKTOP VIEW (hidden md:block) — Full rich layout untouched
+          ========================================================= */}
+      <div className="hidden md:block max-w-7xl mx-auto px-8 md:px-12">
         {/* Main 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
           {/* LEFT SIDE: Content & Interactive Cards */}

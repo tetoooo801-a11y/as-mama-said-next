@@ -51,6 +51,9 @@ export default function Results() {
   const current = REELS[index];
   const embedUrl = toEmbedUrl(current.url);
 
+  const [showDetails, setShowDetails] = useState(false);
+  const [isPlayingMobile, setIsPlayingMobile] = useState(false);
+
   // ─── Shared iframe (re-mounts on index change to load new reel) ───────────
   const ReelFrame = ({ className }) => (
     <iframe
@@ -181,63 +184,119 @@ export default function Results() {
     <section id="results" className="reels-section">
 
       {/* ══════════════════════════════════════════════════════════════
-          MOBILE VIEW  ≤ 767px
-          Full-screen video — no phone mockup, no Instagram UI visible.
-          The iframe is wider than the viewport (128vw centred) so the
-          9:16 video fills 100dvh.  overflow:hidden on the wrapper
-          clips the Instagram header (top) and footer (bottom).
+          MOBILE VIEW  < 768px (Condensed visual reference layout)
+          - Single-column flow with consistent px-6 padding
+          - Dark highlight card with visual media & 20+ projects stat
+          - Reel switcher controls (Reel 01, 02, etc.)
+          - Expandable production details without trapping scroll
       ══════════════════════════════════════════════════════════════ */}
-      <div className="reel-mobile-view" aria-label="Reel mobile view">
+      <div className="block md:hidden px-6 py-10 max-w-lg mx-auto">
+        <div className="rounded-2xl sm:rounded-[24px] bg-[#0c1b1c] text-[#F2E6DC] border border-white/10 p-4 sm:p-5 shadow-lg overflow-hidden">
+          {/* Media frame */}
+          <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-black/60 border border-white/10 mb-4 group">
+            {isPlayingMobile ? (
+              <ReelFrame className="w-full h-full border-none" />
+            ) : (
+              <div className="relative w-full h-full flex items-center justify-center bg-black/40">
+                <img
+                  src="/assets/images/service-3-motion.png"
+                  alt="Reel highlight visual"
+                  className="w-full h-full object-cover opacity-60"
+                />
+                <button
+                  type="button"
+                  onClick={() => setIsPlayingMobile(true)}
+                  className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-[#D2392A] text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform"
+                  aria-label="Play reel"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </button>
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-sm text-[11px] font-bold tracking-wider text-white border border-white/15">
+                  {current.label}: {t.results.reelsList?.[index]?.category || "Featured Reel"}
+                </div>
+              </div>
+            )}
+          </div>
 
-        {/* Full-screen video container */}
-        <div className={`reel-fs-container ${transitioning ? "reel-fs-out" : "reel-fs-in"}`}>
-          <ReelFrame className="reel-fs-iframe" />
-        </div>
+          {/* Red Stat & Short Highlight Text */}
+          <div className="mb-4">
+            <span
+              className="block font-black text-3xl sm:text-4xl text-[#D2392A] leading-tight"
+              style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
+            >
+              20+
+            </span>
+            <p className="text-xs sm:text-sm text-[#F2E6DC]/80 font-normal leading-relaxed mt-0.5">
+              {isRTL
+                ? "مشاريع وعلامات تجارية وقصص صنعناها بإتقان لتترك أثراً حقيقياً."
+                : "Projects, brands, and stories we've brought to life on screen."}
+            </p>
+          </div>
 
-        {/* Overlay controls (tap-safe zones on left/right) */}
-        <div className="reel-fs-controls">
-          <button className="reel-fs-zone reel-fs-zone--left"  onClick={() => go(-1)} aria-label="Previous reel" id="reelMobilePrev" />
-          <button className="reel-fs-zone reel-fs-zone--right" onClick={() => go(1)}  aria-label="Next reel"     id="reelMobileNext" />
-        </div>
+          {/* Reel Switcher Buttons */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-white/10 mb-3.5 scrollbar-none">
+            {REELS.map((r, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  goTo(i);
+                  setIsPlayingMobile(false);
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
+                  i === index
+                    ? "bg-[#D2392A] text-white"
+                    : "bg-white/5 hover:bg-white/10 text-white/70"
+                }`}
+              >
+                {r.label}
+              </button>
+            ))}
+          </div>
 
-        {/* Dots */}
-        <div className="reel-fs-dots" role="tablist">
-          {REELS.map((_, i) => (
+          {/* Action Row */}
+          <div className="flex items-center justify-between gap-2">
+            <a
+              href="https://www.instagram.com/as.mama.said"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-white/80 hover:text-[#D2392A] transition-colors"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+              <span>@asmamasaid</span>
+            </a>
+
             <button
-              key={i}
-              role="tab"
-              aria-selected={i === index}
-              className={`reel-fs-dot ${i === index ? "reel-fs-dot--active" : ""}`}
-              onClick={() => goTo(i)}
-              aria-label={`Reel ${i + 1}`}
-            />
-          ))}
-        </div>
+              type="button"
+              onClick={() => setShowDetails(!showDetails)}
+              className="text-xs text-[#D2392A] hover:underline font-medium"
+            >
+              {showDetails ? (isRTL ? "إخفاء التفاصيل" : "Hide details") : (isRTL ? "تفاصيل الإنتاج +" : "Production details +")}
+            </button>
+          </div>
 
-        {/* Counter */}
-        <span className="reel-fs-counter">{pad(index + 1)} / {pad(total)}</span>
-
-        {/* Instagram link */}
-        <a
-          href="https://www.instagram.com/as.mama.said"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="reel-fs-ig"
-          id="igLinkMobile"
-          aria-label="View on Instagram"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Mobile info panel below the full-screen reel */}
-      <div className="reel-mobile-info">
-        <div className="wrap">
-          <ContentSide />
+          {/* Expandable Secondary Details */}
+          {showDetails && (
+            <div className="mt-4 pt-4 border-t border-white/10 text-xs text-white/70 space-y-3 animate-fadeIn">
+              <p className="leading-relaxed">{t.results.sideDesc}</p>
+              {t.results.stats && (
+                <div className="grid grid-cols-3 gap-2 pt-1 text-center">
+                  {t.results.stats.map((stat, sIdx) => (
+                    <div key={sIdx} className="p-2 rounded-lg bg-white/5 border border-white/5">
+                      <div className="text-sm font-bold text-[#D2392A]">{stat.num}</div>
+                      <div className="text-[10px] text-white/60 truncate">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
