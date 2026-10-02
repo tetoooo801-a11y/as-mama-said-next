@@ -2,14 +2,12 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Compass, Sparkles, Rocket, Clock, CheckCircle2, ArrowRight } from "lucide-react";
+import { Search, Compass, Sparkles, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface PipelineStep {
   step: string;
-  durationEn: string;
-  durationAr: string;
   titleEn: string;
   titleAr: string;
   taglineEn: string;
@@ -24,8 +22,6 @@ interface PipelineStep {
 const STEPS: PipelineStep[] = [
   {
     step: "01",
-    durationEn: "Week 01",
-    durationAr: "الأسبوع الأول",
     titleEn: "Discovery & Creative Strategy",
     titleAr: "الاستكشاف وبناء الاستراتيجية",
     taglineEn: "Decoding the brand DNA and setting the aesthetic benchmark.",
@@ -38,20 +34,18 @@ const STEPS: PipelineStep[] = [
       "Visual Moodboards & Art Direction",
       "Strategic Narrative Script",
       "Technical Scope & Architecture",
-      "Timeline & Milestone Roadmap",
+      "Milestone & Delivery Roadmap",
     ],
     deliverablesAr: [
       "لوحات الإلهام والتوجه الفني",
       "السيناريو والسرد الإبداعي",
       "المواصفات الفنية للمشروع",
-      "الجدول الزمني ومراحل التسليم",
+      "خطة مراحل الإنتاج والتسليم",
     ],
     icon: Search,
   },
   {
     step: "02",
-    durationEn: "Weeks 02–03",
-    durationAr: "الأسبوعان 02–03",
     titleEn: "3D Prototyping & Look Dev",
     titleAr: "النمذجة والتطوير البصري (Look Dev)",
     taglineEn: "Giving physical weight and tangible form to abstract visions.",
@@ -76,8 +70,6 @@ const STEPS: PipelineStep[] = [
   },
   {
     step: "03",
-    durationEn: "Weeks 03–05",
-    durationAr: "الأسابيع 03–05",
     titleEn: "Craft, Motion & 8K Rendering",
     titleAr: "الإنتاج الدقيق، التحريك والرندرة الفائقة",
     taglineEn: "Where cinematic fidelity and technical obsession converge.",
@@ -102,8 +94,6 @@ const STEPS: PipelineStep[] = [
   },
   {
     step: "04",
-    durationEn: "Week 06",
-    durationAr: "الأسبوع 06",
     titleEn: "Multi-Channel Rollout & Delivery",
     titleAr: "الإطلاق وتسليم أصول الحملة الكاملة",
     taglineEn: "Engineered to perform across screens, feeds, and massive billboards.",
@@ -160,8 +150,8 @@ export default function ServicesPipeline() {
             </h2>
             <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl font-normal leading-relaxed">
               {isRTL
-                ? "بدون عشوائية أو تعديلات لا تنتهي. إطار عمل مدروس من 4 مراحل يضمن خروج كل مشروع بأعلى درجات الإتقان الفني والالتزام الدقيق بالمواعيد."
-                : "No guesswork or infinite revision loops. A disciplined 4-phase creative framework engineered to turn ambitious briefs into market-defining assets on schedule."}
+                ? "بدون عشوائية أو تعديلات لا تنتهي. إطار عمل مدروس من 4 مراحل يضمن خروج كل مشروع بأعلى درجات الإتقان الفني والتنفيذ الاحترافي."
+                : "No guesswork or infinite revision loops. A disciplined 4-phase creative framework engineered to turn ambitious briefs into market-defining assets with uncompromising craft."}
             </p>
           </div>
         </FadeIn>
@@ -176,13 +166,13 @@ export default function ServicesPipeline() {
                 key={s.step}
                 type="button"
                 onClick={() => setActiveStep(idx)}
-                className={`relative text-start p-4 sm:p-5 rounded-[22px] sm:rounded-[26px] border transition-all duration-300 cursor-pointer select-none flex flex-col justify-between min-h-[110px] sm:min-h-[130px] ${
+                className={`relative text-start p-4 sm:p-5 rounded-[22px] sm:rounded-[26px] border transition-all duration-300 cursor-pointer select-none flex flex-col justify-between min-h-[105px] sm:min-h-[120px] ${
                   isActive
                     ? "bg-[#0A1617] text-white border-[#D2392A] shadow-[0_12px_32px_rgba(210,57,42,0.18)]"
                     : "bg-[#FAF7F2] dark:bg-[#0c1b1c]/60 text-[#15100C] dark:text-[#F2E6DC] border-black/[0.08] dark:border-white/10 hover:border-[#D2392A]/40"
                 }`}
               >
-                <div className="flex items-center justify-between gap-2 w-full mb-2">
+                <div className="flex items-center justify-between gap-2 w-full mb-2.5">
                   <span
                     className={`font-black tracking-tight leading-none text-xl sm:text-2xl ${
                       isActive ? "text-[#D2392A]" : "text-[#15100C]/40 dark:text-white/40"
@@ -201,10 +191,7 @@ export default function ServicesPipeline() {
                 </div>
 
                 <div>
-                  <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider block opacity-60 mb-0.5">
-                    {isRTL ? s.durationAr : s.durationEn}
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold block leading-snug line-clamp-1">
+                  <span className="text-xs sm:text-sm font-bold block leading-snug line-clamp-2">
                     {isRTL ? s.titleAr : s.titleEn}
                   </span>
                 </div>
@@ -236,11 +223,11 @@ export default function ServicesPipeline() {
               <div className="lg:col-span-7 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D2392A] text-white">
-                      {isRTL ? STEPS[activeStep].durationAr : STEPS[activeStep].durationEn}
+                    <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D2392A] text-white">
+                      {isRTL ? `المرحلة ${STEPS[activeStep].step}` : `Phase ${STEPS[activeStep].step}`}
                     </span>
                     <span className="text-xs sm:text-sm font-semibold text-[#15100C]/60 dark:text-white/60">
-                      Phase {STEPS[activeStep].step} of 04
+                      {isRTL ? "من أصل 4 مراحل إبداعية" : "of 04 Creative Phases"}
                     </span>
                   </div>
 
