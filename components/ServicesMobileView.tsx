@@ -317,146 +317,149 @@ export default function ServicesMobileView() {
       </section>
 
       {/* -------------------------------------------------------------------- */}
-      {/* M3: FEATURED ALLIANCE: SIRAD × AS MAMA SAID (Center Stage Spotlight) */}
+      {/* M3: FEATURED ALLIANCE: SIRAD × AS MAMA SAID (Condensed & High-Impact) */}
       {/* -------------------------------------------------------------------- */}
       <section
         id="collab"
         style={{ backgroundColor: "#050B08", color: "#ffffff" }}
-        className="relative z-10 w-full bg-[#050B08] text-white px-4 py-10 sm:py-14 border-y border-[#A3E635]/30 overflow-hidden"
+        className="relative z-10 w-full bg-[#050B08] text-white px-4 py-8 border-y border-[#A3E635]/30 overflow-hidden"
       >
         {/* Subtle Cyber Grid & Watermark */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#a3e6350a_1px,transparent_1px),linear-gradient(to_bottom,#a3e6350a_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 opacity-20 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#a3e6350a_1px,transparent_1px),linear-gradient(to_bottom,#a3e6350a_1px,transparent_1px)] bg-[size:32px_32px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-15 pointer-events-none">
             <img
               src="/assets/images/sirad-dither-s.webp"
               alt=""
-              className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(163,230,53,0.35)]"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(163,230,53,0.3)]"
             />
           </div>
-          <div className="absolute -top-20 -end-20 w-60 h-60 bg-[#A3E635]/15 rounded-full blur-3xl" />
+          <div className="absolute -top-16 -end-16 w-48 h-48 bg-[#A3E635]/15 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-lg mx-auto flex flex-col">
-          {/* Top Pill */}
-          <div className="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-[#A3E635]/20 text-[11px] font-mono">
+        <div className="relative z-10 max-w-lg mx-auto flex flex-col gap-4">
+          {/* 1. Header (Compact Alliance Status) */}
+          <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-[#A3E635]/20 text-[10.5px] font-mono">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#A3E635] animate-ping" />
               <span className="text-[#A3E635] font-bold tracking-wider uppercase">
-                {isRTL ? "تحالف استراتيجي نشط" : "ACTIVE JOINT ALLIANCE"}
+                {isRTL ? "تحالف استراتيجي" : "STRATEGIC ALLIANCE"}
               </span>
             </div>
-            <span className="text-white/60 uppercase font-semibold">
+            <span className="text-white/60 font-semibold tracking-wider">
               CAIRO · DUBAI
             </span>
           </div>
 
-          {/* Section Main Title */}
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-[#A3E635]/20 text-[#A3E635] border border-[#A3E635]/40 mb-3 shadow-[0_0_15px_rgba(163,230,53,0.2)]">
-              <Cpu size={13} className="text-[#A3E635]" />
-              <span>{isRTL ? "الشريك التقني الحصري" : "EXCLUSIVE TECH PARTNER"}</span>
-            </div>
+          <div className="text-center">
             <h2
-              className="text-2xl sm:text-3xl font-black uppercase text-white leading-tight mb-2 tracking-tight"
+              className="text-2xl sm:text-3xl font-black uppercase text-white leading-tight tracking-tight mb-1"
               style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
             >
               AS MAMA SAID <span className="text-[#A3E635]">×</span> SIRAD
             </h2>
-            <p className="text-xs text-[#A3E635] font-bold leading-snug">
-              {t.collab.tagline}
+            <p className="text-xs text-[#A3E635] font-bold">
+              {isRTL
+                ? "الإخراج الإبداعي والإنتاج البصري مقترناً بالهندسة الرقمية المتقدمة"
+                : "Creative Direction & 3D Visuals Powered by Advanced Digital Tech"}
             </p>
           </div>
 
-          {/* Sirad Showcase Card */}
-          <div className="rounded-[24px] bg-gradient-to-b from-[#0e2419] via-[#07130e] to-[#040806] border-2 border-[#A3E635]/50 p-5 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.8)] mb-6 relative overflow-hidden">
-            {/* Sirad Logo & Brand Mark */}
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <div className="flex items-center gap-2.5">
+          {/* 2. Unified High-Tech Partner Card */}
+          <div className="rounded-2xl bg-gradient-to-b from-[#0c2419] via-[#07140e] to-[#040806] border border-[#A3E635]/40 p-4 shadow-[0_15px_35px_rgba(0,0,0,0.85)] relative overflow-hidden">
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2">
                 <img
                   src="/assets/images/sirad-logo-white.png"
                   alt="Sirad Creative Agency"
-                  className="h-7 w-auto object-contain"
+                  className="h-6 w-auto object-contain"
                   loading="lazy"
                 />
-                <span className="text-[9.5px] font-bold tracking-[0.2em] uppercase text-white/80 border-s border-white/20 ps-2 leading-tight">
+                <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/80 border-s border-white/20 ps-2 leading-tight">
                   CREATIVE<br />AGENCY
                 </span>
               </div>
-              <div className="flex items-center gap-1 text-[11px] font-black tracking-wide">
-                <span className="text-white">Digital</span>
-                <span className="text-[#A3E635]">Done Right.</span>
-              </div>
+              <span className="px-2.5 py-0.5 rounded-full bg-[#A3E635]/15 border border-[#A3E635]/40 text-[#A3E635] text-[10px] font-mono font-bold">
+                EST. CREATIVE TECH
+              </span>
             </div>
 
-            <p className="text-xs text-[#D7E2EA]/95 leading-relaxed mb-4 font-normal">
-              {t.collab.siradRole.desc}
+            <p className="text-xs text-[#D7E2EA]/90 leading-relaxed mb-3 font-normal">
+              {isRTL
+                ? "الشريك التقني والهندسي الحصري لتطوير المنصات الرقمية والتجارب التفاعلية ثلاثية الأبعاد بأعلى معايير السرعة والأداء."
+                : t.collab.siradRole.desc}
             </p>
 
-            {/* About Alliance Quote */}
-            <div className="p-3.5 rounded-xl bg-black/60 border border-[#A3E635]/30 mb-4">
-              <p className="text-[11.5px] text-[#D7E2EA] leading-relaxed">
-                <span className="text-[#A3E635] font-bold me-1">
-                  {isRTL ? "عن هذا التحالف:" : "About The Alliance:"}
-                </span>
-                {t.collab.allianceIntro}
-              </p>
-            </div>
-
-            {/* Sirad Tech Highlights Chips */}
-            <div className="grid grid-cols-2 gap-2 mb-4">
-              {t.collab.siradRole.points.slice(0, 4).map((pt, pIdx) => (
+            {/* 4 Compact Tech Pills */}
+            <div className="grid grid-cols-2 gap-1.5 mb-3.5">
+              {[
+                { en: "WebGL & 3D Canvas", ar: "تجارب 3D تفاعلية" },
+                { en: "Sub-Second Velocity", ar: "سرعة استجابة فائقة" },
+                { en: "Custom Architecture", ar: "أنظمة برمجية مخصصة" },
+                { en: "Lighthouse 99+ Standard", ar: "أداء عالمي 99+" },
+              ].map((pill, idx) => (
                 <div
-                  key={pIdx}
-                  className="p-2.5 rounded-lg bg-[#081510] border border-[#A3E635]/25 flex items-start gap-1.5"
+                  key={idx}
+                  className="p-1.5 px-2 rounded-lg bg-[#081510] border border-[#A3E635]/25 flex items-center gap-1.5"
                 >
-                  <CheckCircle2 size={13} className="text-[#A3E635] shrink-0 mt-0.5" />
-                  <span className="text-[10.5px] text-white font-medium leading-snug">
-                    {pt}
+                  <Zap size={11} className="text-[#A3E635] shrink-0" />
+                  <span className="text-[10px] text-white font-medium truncate">
+                    {isRTL ? pill.ar : pill.en}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Visit Website Button */}
+            {/* Link to Sirad */}
             <div className="pt-2 border-t border-white/10 flex items-center justify-between">
               <a
                 href="https://sirad.co"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#A3E635] hover:bg-[#84CC16] text-black font-black text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(163,230,53,0.3)] active:scale-95 transition-all"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#A3E635] hover:bg-[#84CC16] text-black font-black text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(163,230,53,0.3)] active:scale-95 transition-all"
               >
-                <span>{isRTL ? "موقع sirad.co" : "Explore sirad.co"}</span>
+                <span>{isRTL ? "موقع sirad.co" : "sirad.co"}</span>
                 <ArrowUpRight size={13} />
               </a>
-              <span className="text-[10.5px] font-mono text-white/50">
+              <span className="text-[10px] font-mono text-white/50">
                 {isRTL ? "شريك تقني معتمد" : "Official Tech Partner"}
               </span>
             </div>
           </div>
 
-          {/* 4 Synergy Pillars (Compact 2x2 Grid) */}
-          <div className="mb-6">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#A3E635] font-bold block text-center mb-3">
-              {isRTL ? "مزايا التحالف للعملاء" : "PARTNERSHIP ADVANTAGES"}
-            </span>
-            <div className="grid grid-cols-2 gap-2.5">
+          {/* 3. Horizontal Swiper for Synergy Advantages (Takes minimal height, fast to swipe) */}
+          <div>
+            <div className="flex items-center justify-between mb-2 px-1">
+              <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#A3E635] font-bold">
+                {isRTL ? "مزايا التحالف للعملاء" : "ALLIANCE ADVANTAGES"}
+              </span>
+              <span className="text-[9.5px] font-mono text-white/40">
+                {isRTL ? "اسحب للتمرير ←" : "Swipe →"}
+              </span>
+            </div>
+
+            <div className="flex items-stretch gap-2 overflow-x-auto pb-2 no-scrollbar snap-x snap-mandatory">
               {t.collab.synergies.map((syn, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-gradient-to-b from-[#0c2419] to-[#040906] border border-[#A3E635]/35 flex flex-col justify-between"
+                  className="snap-start shrink-0 w-[200px] p-3 rounded-xl bg-gradient-to-b from-[#0c2419] to-[#040906] border border-[#A3E635]/30 flex flex-col justify-between"
                 >
                   <div>
-                    <span className="inline-block w-6 h-6 rounded-md bg-[#A3E635]/20 text-[#A3E635] text-xs font-mono font-black text-center leading-6 mb-2 border border-[#A3E635]/40">
-                      {syn.num}
-                    </span>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="w-5 h-5 rounded bg-[#A3E635]/20 text-[#A3E635] text-[10.5px] font-mono font-bold flex items-center justify-center border border-[#A3E635]/40">
+                        {syn.num}
+                      </span>
+                      <span className="text-[9px] font-mono text-[#A3E635]/70 uppercase">
+                        SYNERGY
+                      </span>
+                    </div>
                     <h4
-                      className="text-xs font-black uppercase text-white mb-1 leading-snug"
+                      className="text-xs font-black uppercase text-white mb-1 leading-snug line-clamp-1"
                       style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
                     >
                       {syn.title}
                     </h4>
-                    <p className="text-[10.5px] text-[#D7E2EA]/85 leading-relaxed line-clamp-3">
+                    <p className="text-[10px] text-[#D7E2EA]/80 leading-relaxed line-clamp-2 font-normal">
                       {syn.desc}
                     </p>
                   </div>
@@ -465,21 +468,31 @@ export default function ServicesMobileView() {
             </div>
           </div>
 
-          {/* Alliance Key Metrics (Compact 4-Stat Strip) */}
-          <div className="rounded-2xl bg-gradient-to-r from-[#0a2016] via-[#050e09] to-[#0a2016] border border-[#A3E635]/35 p-4 grid grid-cols-2 gap-3 text-center">
-            {t.collab.stats?.map((stat, idx) => (
-              <div key={idx} className="p-2">
-                <span
-                  className="block text-2xl font-black text-[#A3E635] leading-tight mb-0.5"
-                  style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-                >
-                  {stat.value}
-                </span>
-                <span className="text-[10px] text-white/80 font-semibold block leading-tight">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+          {/* 4. Compact 4-Stat Strip + Contact CTA */}
+          <div className="rounded-xl bg-gradient-to-r from-[#0a2016] via-[#050e09] to-[#0a2016] border border-[#A3E635]/30 p-3 flex flex-col gap-3">
+            <div className="grid grid-cols-4 gap-1 text-center divide-x rtl:divide-x-reverse divide-[#A3E635]/20">
+              {t.collab.stats?.map((stat, idx) => (
+                <div key={idx} className="px-1">
+                  <span
+                    className="block text-lg font-black text-[#A3E635] leading-none mb-0.5"
+                    style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
+                  >
+                    {stat.value}
+                  </span>
+                  <span className="text-[8.5px] text-white/70 font-semibold block leading-tight truncate">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/contact"
+              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#A3E635] hover:bg-[#84CC16] text-black font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(163,230,53,0.3)] active:scale-98 transition-all"
+            >
+              <span>{t.collab.ctaBtn || (isRTL ? "ابدأ مشروعك مع التحالف" : "Start a Joint Project")}</span>
+              <ArrowRight size={13} className="rtl:rotate-180" />
+            </Link>
           </div>
         </div>
       </section>
