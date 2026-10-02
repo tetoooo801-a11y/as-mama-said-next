@@ -1364,10 +1364,47 @@ header.site-nav.scrolled {
   .hero-copy { max-width: 92vw; }
 }
 
+/* Mobile Marquee Keyframes */
+@keyframes mobile-marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes mobile-marquee-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* ====================================================
    MOBILE FIX — max-width: 1023px (كل ما دون الديسكتوب)
    ==================================================== */
 @media (max-width: 1023px) {
+  /* Marquee: تحريك تلقائي سلس ومستمر على الموبايل بدون تقطيع */
+  .marquee-track-mobile-1 {
+    display: flex;
+    width: max-content;
+    animation: mobile-marquee-left 32s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track-mobile-2 {
+    display: flex;
+    width: max-content;
+    animation: mobile-marquee-right 32s linear infinite;
+    will-change: transform;
+  }
+  .marquee-track-mobile-1:active,
+  .marquee-track-mobile-2:active {
+    animation-play-state: paused;
+  }
+
   /* Hero pin height على التابلت */
   #hero-pin { height: 200vh; }
 
