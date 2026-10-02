@@ -525,7 +525,7 @@ header.site-nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(340px, 34vw, 440px);
+  width: clamp(450px, 45vw, 600px);
 }
 
 .phone-shell {
@@ -538,8 +538,8 @@ header.site-nav.scrolled {
     0 0 0 1px rgba(255,255,255,0.08),
     0 0 0 7px #1c1c1e,
     0 0 0 8px rgba(255,255,255,0.06),
-    0 35px 70px rgba(0,0,0,0.55),
-    0 8px 24px rgba(0,0,0,0.35),
+    0 35px 70px rgba(0,0,0,0.65),
+    0 8px 24px rgba(0,0,0,0.4),
     inset 0 1px 0 rgba(255,255,255,0.12);
   padding: 9px;
   overflow: hidden;
@@ -551,41 +551,46 @@ header.site-nav.scrolled {
 .phone-peek-card {
   position: absolute;
   top: 50%;
-  width: clamp(170px, 16vw, 220px);
+  width: clamp(195px, 19vw, 245px);
   aspect-ratio: 9 / 19.5;
-  border-radius: clamp(26px, 2.8vw, 38px);
+  border-radius: clamp(28px, 3vw, 40px);
   background: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   cursor: pointer;
   z-index: 2;
-  opacity: 0.55;
+  opacity: 0.85;
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
 
 .phone-peek-card:hover {
-  opacity: 0.85;
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6);
+  opacity: 1;
 }
 
 .phone-peek--left {
   left: 0;
-  transform: translateY(-50%) scale(0.85);
+  transform: translateY(-50%) scale(0.88);
   transform-origin: center right;
+  box-shadow: -15px 25px 50px rgba(0, 0, 0, 0.55);
 }
 .phone-peek--left:hover {
-  transform: translateY(-50%) scale(0.88);
+  transform: translateY(-50%) scale(0.92);
 }
 
 .phone-peek--right {
   right: 0;
-  transform: translateY(-50%) scale(0.85);
+  transform: translateY(-50%) scale(0.88);
   transform-origin: center left;
+  box-shadow: 15px 25px 50px rgba(0, 0, 0, 0.55);
 }
 .phone-peek--right:hover {
-  transform: translateY(-50%) scale(0.88);
+  transform: translateY(-50%) scale(0.92);
+}
+
+.phone-peek--right .phone-peek-tag {
+  align-self: flex-end;
 }
 
 .phone-peek-img {
@@ -600,22 +605,22 @@ header.site-nav.scrolled {
 .phone-peek-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 45%, rgba(0,0,0,0.6) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 14px 12px;
+  padding: 16px 14px;
 }
 
 .phone-peek-tag {
   align-self: flex-start;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 100px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 10.5px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 11px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.04em;
@@ -623,25 +628,25 @@ header.site-nav.scrolled {
 
 .phone-peek-play {
   align-self: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: auto;
   margin-bottom: auto;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .phone-peek-card:hover .phone-peek-play {
-  transform: scale(1.12);
+  transform: scale(1.15);
   background: var(--red, #D2392A);
   border-color: var(--red, #D2392A);
 }
