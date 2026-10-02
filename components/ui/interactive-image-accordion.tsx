@@ -12,6 +12,7 @@ interface AccordionItemData {
   categoryEn: string;
   categoryAr: string;
   videoUrl: string;
+  posterUrl: string;
 }
 
 // --- Data for the studio gallery video accordion (from Downloads/Reals) ---
@@ -23,6 +24,7 @@ const accordionItems: AccordionItemData[] = [
     categoryEn: "Reel 01 • Spatial Geometry",
     categoryAr: "ريل 01 • مجسمات وبيئات",
     videoUrl: "/assets/videos/reels/1.mp4",
+    posterUrl: "/assets/videos/reels/1-poster.jpg",
   },
   {
     id: 2,
@@ -31,6 +33,7 @@ const accordionItems: AccordionItemData[] = [
     categoryEn: "Reel 02 • Lighting & Visuals",
     categoryAr: "ريل 02 • إضاءة وخامات",
     videoUrl: "/assets/videos/reels/2.mp4",
+    posterUrl: "/assets/videos/reels/2-poster.jpg",
   },
   {
     id: 3,
@@ -39,6 +42,7 @@ const accordionItems: AccordionItemData[] = [
     categoryEn: "Reel 03 • Kinetic Direction",
     categoryAr: "ريل 03 • إخراج حركي",
     videoUrl: "/assets/videos/reels/3.mp4",
+    posterUrl: "/assets/videos/reels/3-poster.jpg",
   },
   {
     id: 4,
@@ -47,6 +51,7 @@ const accordionItems: AccordionItemData[] = [
     categoryEn: "Reel 04 • Visual Systems",
     categoryAr: "ريل 04 • أنظمة الهوية",
     videoUrl: "/assets/videos/reels/4.mp4",
+    posterUrl: "/assets/videos/reels/4-poster.jpg",
   },
   {
     id: 5,
@@ -55,6 +60,7 @@ const accordionItems: AccordionItemData[] = [
     categoryEn: "Reel 05 • Interactive & Web",
     categoryAr: "ريل 05 • ويب وتطبيقات",
     videoUrl: "/assets/videos/reels/5.mp4",
+    posterUrl: "/assets/videos/reels/5-poster.jpg",
   },
 ];
 
@@ -62,13 +68,21 @@ const accordionItems: AccordionItemData[] = [
 interface AccordionItemProps {
   item: AccordionItemData;
   isActive: boolean;
-  onMouseEnter: () => void;
+  onActivate: () => void;
   isRTL: boolean;
+  sectionVisible: boolean;
 }
 
-const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: AccordionItemProps & { sectionVisible: boolean }) => {
-  const videoRef = React.useRef<HTMLVideoElement | null>(null);
+const AccordionItem = ({
+  item,
+  isActive,
+  onActivate,
+  isRTL,
+  sectionVisible,
+}: AccordionItemProps) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [srcLoaded, setSrcLoaded] = useState(false);
 
   // Load src only once the section is in view
@@ -82,13 +96,17 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !srcLoaded) return;
+
     if (isActive) {
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
       }
     } else {
       video.pause();
+      setIsPlaying(false);
       setIsMuted(true);
     }
   }, [isActive, srcLoaded]);
@@ -105,31 +123,44 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
   return (
     <div
       className={`
-        relative h-[280px] sm:h-[360px] md:h-[420px] rounded-2xl overflow-hidden cursor-pointer
-        transition-all duration-700 ease-in-out select-none shrink-0 bg-black
-        ${isActive ? "w-[190px] sm:w-[240px] md:w-[300px]" : "w-[46px] sm:w-[52px] md:w-[60px]"}
+        relative h-[300px] sm:h-[380px] md:h-[440px] rounded-2xl overflow-hidden cursor-pointer
+        transition-all duration-700 ease-in-out select-none shrink-0 bg-[#0C1B1C]
+        ${isActive ? "w-[200px] sm:w-[260px] md:w-[320px]" : "w-[52px] sm:w-[60px] md:w-[68px]"}
         border border-black/[0.08] dark:border-white/10 shadow-lg group
       `}
-      onMouseEnter={onMouseEnter}
-      onClick={onMouseEnter}
+      onMouseEnter={onActivate}
+      onClick={onActivate}
+      onTouchStart={onActivate}
     >
-      {/* Background Reel Video — lazy loaded when section enters viewport */}
+      {/* Background static poster frame (always visible, preventing any black box when inactive) */}
+      <img
+        src={item.posterUrl}
+        alt={isRTL ? item.titleAr : item.titleEn}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        loading="eager"
+      />
+
+      {/* Reel Video — starts playing when active, pauses and stays on frame when inactive */}
       <video
         ref={videoRef}
-        src={srcLoaded ? item.videoUrl : undefined}
+        src={srcLoaded ? `${item.videoUrl}#t=0.001` : undefined}
+        poster={item.posterUrl}
         loop
         muted={isMuted}
         playsInline
-        preload="none"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        preload="metadata"
+        onPlay={() => setIsPlaying(true)}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:scale-105 ${
+          isActive && isPlaying ? "opacity-100" : "opacity-0"
+        }`}
       />
 
-      {/* Dark overlay for text contrast */}
+      {/* Subtle overlay: transparent enough to showcase video content while keeping text crisp */}
       <div
         className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
           isActive
             ? "bg-gradient-to-t from-black/90 via-black/25 to-transparent"
-            : "bg-black/55 group-hover:bg-black/35"
+            : "bg-gradient-to-b from-black/45 via-black/15 to-black/65 group-hover:from-black/30 group-hover:via-black/10 group-hover:to-black/50"
         }`}
       />
 
@@ -138,7 +169,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
         <button
           onClick={toggleSound}
           aria-label={isMuted ? "Unmute reel" : "Mute reel"}
-          className="absolute top-3.5 end-3.5 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all duration-200"
+          className="absolute top-3.5 end-3.5 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/85 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all duration-200 cursor-pointer"
         >
           {isMuted ? (
             <VolumeX size={14} className="opacity-80" />
@@ -163,7 +194,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
         </div>
       ) : (
         <span
-          className="absolute text-white/80 group-hover:text-white text-xs sm:text-[13px] font-bold tracking-wider whitespace-nowrap bottom-24 left-1/2 -translate-x-1/2 rotate-90 transition-all duration-300 origin-center uppercase pointer-events-none"
+          className="absolute text-white/95 group-hover:text-white text-xs sm:text-[13px] font-bold tracking-wider whitespace-nowrap bottom-24 left-1/2 -translate-x-1/2 rotate-90 transition-all duration-300 origin-center uppercase pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]"
           style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
         >
           {isRTL ? item.titleAr : item.titleEn}
@@ -177,7 +208,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, isRTL, sectionVisible }: 
 export function LandingAccordionItem() {
   const { isRTL } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [sectionVisible, setSectionVisible] = useState(false);
+  const [sectionVisible, setSectionVisible] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Observe when the section enters the viewport to trigger video loading
@@ -185,19 +216,24 @@ export function LandingAccordionItem() {
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setSectionVisible(true); },
-      { rootMargin: "100px" }
+      ([entry]) => {
+        if (entry.isIntersecting) setSectionVisible(true);
+      },
+      { rootMargin: "200px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const handleItemHover = (index: number) => {
+  const handleItemActivate = (index: number) => {
     setActiveIndex(index);
   };
 
   return (
-    <section ref={sectionRef} className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors py-12 sm:py-16 md:py-20 border-b border-black/[0.08] dark:border-white/10">
+    <section
+      ref={sectionRef}
+      className="relative z-10 w-full bg-[#FAF6F0] dark:bg-[#061516] text-[#15100C] dark:text-[#F2E6DC] transition-colors py-12 sm:py-16 md:py-20 border-b border-black/[0.08] dark:border-white/10"
+    >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Side: Text Content with "Welcome to our gallery" */}
@@ -239,7 +275,7 @@ export function LandingAccordionItem() {
                   key={item.id}
                   item={item}
                   isActive={index === activeIndex}
-                  onMouseEnter={() => handleItemHover(index)}
+                  onActivate={() => handleItemActivate(index)}
                   isRTL={isRTL}
                   sectionVisible={sectionVisible}
                 />
