@@ -95,13 +95,23 @@ export default function Navbar() {
         }
       } else {
         const pageHero = document.querySelector(".page-hero");
+        const collabEl = document.getElementById("collab");
+        let isOver = false;
+
         if (pageHero) {
           const rect = pageHero.getBoundingClientRect();
-          setIsOverDarkHero(rect.bottom > 60);
-        } else {
-          // If no hero section exists on this page, logo is outside hero
-          setIsOverDarkHero(false);
+          if (rect.bottom > 60) isOver = true;
         }
+
+        if (collabEl) {
+          const cRect = collabEl.getBoundingClientRect();
+          // If navbar/logo is physically over the dark Sirad collab section
+          if (cRect.top <= 60 && cRect.bottom >= 20) {
+            isOver = true;
+          }
+        }
+
+        setIsOverDarkHero(isOver);
       }
     };
 
