@@ -103,8 +103,11 @@ export default function DitheredFooter({
 
     return (
         <footer
-            className="overflow-hidden border-t border-border bg-background text-foreground"
-            style={{ "--df-accent": accent } as CSSProperties}
+            className="overflow-hidden text-[#F2E6DC]"
+            style={{
+                background: "linear-gradient(150deg, #0c2626 0%, #081f20 55%, #061516 100%)",
+                "--df-accent": accent,
+            } as CSSProperties}
         >
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-y-8 px-5 py-8 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-10 sm:px-8 sm:py-10 md:grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(0,1fr))]">
                 <div className="col-span-1 sm:col-span-2 md:col-span-1">
@@ -116,15 +119,15 @@ export default function DitheredFooter({
                         {brand && typeof brand !== "string" ? (
                             brand
                         ) : (
-                            <span className="logo small" style={{ color: "var(--theme-text)" }}>
+                            <span className="logo small" style={{ color: "#F2E6DC" }}>
                                 {brand || "AS MAMA SAID"}<span className="dot-inline"></span>
                             </span>
                         )}
                     </a>
-                    <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-muted-foreground">{tagline}</p>
+                    <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-[#F2E6DC]/75">{tagline}</p>
 
                     <form className="mt-5 max-w-sm" onSubmit={submit}>
-                        <label htmlFor="df-email" className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">{subscribeTitle}</label>
+                        <label htmlFor="df-email" className="block text-xs font-semibold uppercase tracking-wider text-[#F2E6DC]/80">{subscribeTitle}</label>
                         <div className="mt-2 flex gap-2">
                             <input
                                 id="df-email"
@@ -133,16 +136,16 @@ export default function DitheredFooter({
                                 autoComplete="email"
                                 value={email}
                                 onChange={(e) => { setEmail(e.target.value); setState("idle"); }}
-                                className="h-9 min-w-0 flex-1 rounded-md border border-input bg-transparent px-3 text-sm transition-colors focus:border-[var(--df-accent)] focus:outline focus:outline-2 focus:outline-offset-0 focus:outline-[var(--df-accent)]"
+                                className="h-9 min-w-0 flex-1 rounded-md border border-white/20 bg-white/5 px-3 text-sm text-[#F2E6DC] placeholder:text-[#F2E6DC]/40 transition-colors focus:border-[var(--df-accent)] focus:outline focus:outline-2 focus:outline-offset-0 focus:outline-[var(--df-accent)]"
                             />
                             <button
                                 disabled={state === "sending"}
-                                className={`h-9 shrink-0 rounded-md bg-foreground px-4 text-xs font-semibold uppercase tracking-wider text-background transition hover:opacity-90 active:scale-[0.97] disabled:opacity-60 ${focus}`}
+                                className={`h-9 shrink-0 rounded-md bg-[#D2392A] px-4 text-xs font-semibold uppercase tracking-wider text-white transition hover:bg-[#b82f22] active:scale-[0.97] disabled:opacity-60 ${focus}`}
                             >
                                 {state === "sending" ? "..." : subscribeButton}
                             </button>
                         </div>
-                        <p role="status" className="mt-1.5 min-h-4 text-xs text-muted-foreground">
+                        <p role="status" className="mt-1.5 min-h-4 text-xs text-[#F2E6DC]/70">
                             {state === "done" && subscribeSuccess}
                             {state === "error" && subscribeError}
                         </p>
@@ -151,11 +154,11 @@ export default function DitheredFooter({
 
                 {columns.map((col) => (
                     <nav key={col.title} aria-label={col.title}>
-                        <p className="text-xs font-bold uppercase tracking-wider text-foreground">{col.title}</p>
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#F2E6DC]">{col.title}</p>
                         <ul className="mt-3 space-y-2">
                             {col.links.map((l) => (
                                 <li key={l.label}>
-                                    <a href={l.href} className={`rounded-sm text-sm text-muted-foreground transition-colors hover:text-foreground ${focus} ${coarse}`}>{l.label}</a>
+                                    <a href={l.href} className={`rounded-sm text-sm text-[#F2E6DC]/65 transition-colors hover:text-white ${focus} ${coarse}`}>{l.label}</a>
                                 </li>
                             ))}
                         </ul>
@@ -163,15 +166,15 @@ export default function DitheredFooter({
                 ))}
             </div>
 
-            <div className="border-t border-border">
-                <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="border-t border-white/10">
+                <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 text-xs text-[#F2E6DC]/60 sm:flex-row sm:items-center sm:justify-between sm:px-8">
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
                         <span className="m-0 leading-none whitespace-nowrap">{copyright}</span>
                         {legal.map((l) => (
                             <a
                                 key={l.label}
                                 href={l.href}
-                                className={`m-0 leading-none whitespace-nowrap rounded-sm transition-colors hover:text-foreground ${focus}`}
+                                className={`m-0 leading-none whitespace-nowrap rounded-sm transition-colors hover:text-white ${focus}`}
                             >
                                 {l.label}
                             </a>
@@ -179,9 +182,9 @@ export default function DitheredFooter({
                         {status && (
                             <a
                                 href={status.href}
-                                className={`m-0 inline-flex items-center gap-1.5 leading-none whitespace-nowrap rounded-sm transition-colors hover:text-foreground ${focus}`}
+                                className={`m-0 inline-flex items-center gap-1.5 leading-none whitespace-nowrap rounded-sm transition-colors hover:text-white ${focus}`}
                             >
-                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" aria-hidden="true" />
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" aria-hidden="true" />
                                 <span>{status.label}</span>
                             </a>
                         )}
@@ -193,21 +196,14 @@ export default function DitheredFooter({
                                 className={`m-0 inline-flex items-center gap-2 leading-none whitespace-nowrap rounded-sm transition-opacity hover:opacity-80 ${focus}`}
                                 aria-label={`${madeBy.text || "Made by"} ${madeBy.alt || "Sirad Creative Agency"}`}
                             >
-                                <span className="text-[11px] uppercase tracking-wider text-muted-foreground/80 font-medium">
+                                <span className="text-[11px] uppercase tracking-wider text-[#F2E6DC]/60 font-medium">
                                     {madeBy.text || "Made by"}
                                 </span>
-                                {madeBy.logoDark && (
-                                    <img
-                                        src={madeBy.logoDark}
-                                        alt={madeBy.alt || "Sirad"}
-                                        className="h-3.5 w-auto object-contain dark:hidden inline-block"
-                                    />
-                                )}
                                 {madeBy.logoWhite && (
                                     <img
                                         src={madeBy.logoWhite}
                                         alt={madeBy.alt || "Sirad"}
-                                        className="h-3.5 w-auto object-contain hidden dark:inline-block"
+                                        className="h-3.5 w-auto object-contain inline-block"
                                     />
                                 )}
                             </a>
@@ -221,13 +217,13 @@ export default function DitheredFooter({
                                 aria-label={s.label}
                                 target={s.href.startsWith("http") ? "_blank" : undefined}
                                 rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                                className={`grid h-8 w-8 place-items-center rounded-md transition-colors hover:bg-foreground/5 hover:text-foreground ${focus} [@media(pointer:coarse)]:h-10 [@media(pointer:coarse)]:w-10`}
+                                className={`grid h-8 w-8 place-items-center rounded-md text-[#F2E6DC]/75 transition-colors hover:bg-white/10 hover:text-white ${focus} [@media(pointer:coarse)]:h-10 [@media(pointer:coarse)]:w-10`}
                             >
                                 {s.icon}
                             </a>
                         ))}
-                        <span className="mx-2 h-4 w-px bg-border" aria-hidden="true" />
-                        <button type="button" onClick={toTop} className={`inline-flex items-center gap-1.5 rounded-sm px-1 text-xs transition-colors hover:text-foreground ${focus} ${coarse}`}>
+                        <span className="mx-2 h-4 w-px bg-white/10" aria-hidden="true" />
+                        <button type="button" onClick={toTop} className={`inline-flex items-center gap-1.5 rounded-sm px-1 text-xs text-[#F2E6DC]/75 transition-colors hover:text-white ${focus} ${coarse}`}>
                             {backToTop}
                             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6" /></svg>
                         </button>
