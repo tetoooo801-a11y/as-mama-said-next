@@ -34,14 +34,15 @@ export default function AboutPage() {
     }
   };
 
-  const brands = [
-    { name: "Bench>", font: "font-black tracking-tight text-xl" },
-    { name: "the glocal", font: "font-bold tracking-tighter text-lg lowercase" },
-    { name: "DAS", font: "font-black tracking-widest text-base px-2 py-0.5 border border-current rounded-sm" },
-    { name: "S A L T", font: "font-light tracking-[0.35em] text-sm uppercase" },
-    { name: "BRGR Burger", font: "font-black tracking-tight text-lg" },
-    { name: "Floward", font: "font-semibold tracking-wide text-base" },
-    { name: "Peak", font: "font-black tracking-wider text-base uppercase" },
+  const realClientLogos = [
+    { name: "Cadbury", logo: "/assets/images/clients/27_Cadbury.png" },
+    { name: "Hyde Park", logo: "/assets/images/clients/31_Hyde_Park_Development.png" },
+    { name: "KIKO Milano", logo: "/assets/images/clients/18_KIKO_Milano.png" },
+    { name: "Kenwood", logo: "/assets/images/clients/16_Kenwood.png" },
+    { name: "L'azurde", logo: "/assets/images/clients/28_LAzurde.png" },
+    { name: "Hyper One", logo: "/assets/images/clients/17_Hyper_1.png" },
+    { name: "Zewail City", logo: "/assets/images/clients/23_Zewail_City.png" },
+    { name: "Tie House", logo: "/assets/images/clients/01_Tie_House.png" },
   ];
 
   return (
@@ -296,13 +297,19 @@ export default function AboutPage() {
             </FadeIn>
 
             <FadeIn delay={0.2} y={20}>
-              <div className="w-full py-4 flex flex-wrap items-center justify-between gap-6 sm:gap-8 opacity-75 dark:opacity-85 grayscale hover:grayscale-0 transition-all duration-300">
-                {brands.map((b, idx) => (
+              <div className="w-full py-6 flex flex-wrap items-center justify-between gap-6 sm:gap-8 lg:gap-10">
+                {realClientLogos.map((client, idx) => (
                   <div
                     key={idx}
-                    className={`text-[#15100C] dark:text-[#F2E6DC] select-none hover:text-[#D2392A] dark:hover:text-[#D2392A] transition-colors ${b.font}`}
+                    title={client.name}
+                    className="flex items-center justify-center p-2 group transition-all duration-300 select-none cursor-pointer"
                   >
-                    {b.name}
+                    <img
+                      src={client.logo}
+                      alt={client.name}
+                      className="h-7 sm:h-8 md:h-9 w-auto max-w-[125px] object-contain brightness-0 dark:brightness-0 dark:invert opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                      loading="lazy"
+                    />
                   </div>
                 ))}
               </div>
