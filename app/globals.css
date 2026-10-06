@@ -726,6 +726,43 @@ header.site-nav.scrolled {
   display: block;
 }
 
+.reel-iframe-vimeo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #000;
+}
+
+.phone-quick-external-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 35;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+.phone-quick-external-badge:hover {
+  background: #D2392A;
+  border-color: #D2392A;
+  color: #fff;
+  transform: scale(1.04);
+}
+
 /* Home bar */
 .phone-home-bar {
   position: absolute;
