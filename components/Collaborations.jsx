@@ -18,6 +18,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Collaborations() {
@@ -334,7 +335,7 @@ export default function Collaborations() {
                     className="block text-2xl sm:text-3xl lg:text-4xl font-black text-[#A3E635] leading-tight mb-1 drop-shadow-[0_0_20px_rgba(163,230,53,0.35)]"
                     style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
                   >
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} delay={idx * 0.15} />
                   </span>
                   <span className="text-xs text-white/80 font-semibold block leading-snug">
                     {stat.label}

@@ -2,7 +2,7 @@
 
 import { useState, type CSSProperties, type FormEvent, type ReactNode } from "react";
 
-export type FooterLink = { label: string; href: string };
+export type FooterLink = { label: ReactNode; href: string; icon?: ReactNode };
 export type FooterColumn = { title: string; links: FooterLink[] };
 export type FooterSocial = { label: string; href: string; icon: ReactNode };
 
@@ -156,9 +156,15 @@ export default function DitheredFooter({
                     <nav key={col.title} aria-label={col.title}>
                         <p className="text-xs font-bold uppercase tracking-wider text-[#F2E6DC]">{col.title}</p>
                         <ul className="mt-3 space-y-2">
-                            {col.links.map((l) => (
-                                <li key={l.label}>
-                                    <a href={l.href} className={`rounded-sm text-sm text-[#F2E6DC]/65 transition-colors hover:text-white ${focus} ${coarse}`}>{l.label}</a>
+                            {col.links.map((l, i) => (
+                                <li key={typeof l.label === "string" ? l.label : i}>
+                                    <a
+                                        href={l.href}
+                                        className={`rounded-sm text-sm text-[#F2E6DC]/65 transition-colors hover:text-white inline-flex items-center gap-2 ${focus} ${coarse}`}
+                                    >
+                                        {l.icon}
+                                        <span>{l.label}</span>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -170,9 +176,9 @@ export default function DitheredFooter({
                 <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 text-xs text-[#F2E6DC]/60 sm:flex-row sm:items-center sm:justify-between sm:px-8">
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
                         <span className="m-0 leading-none whitespace-nowrap">{copyright}</span>
-                        {legal.map((l) => (
+                        {legal.map((l, idx) => (
                             <a
-                                key={l.label}
+                                key={typeof l.label === "string" ? l.label : idx}
                                 href={l.href}
                                 className={`m-0 leading-none whitespace-nowrap rounded-sm transition-colors hover:text-white ${focus}`}
                             >

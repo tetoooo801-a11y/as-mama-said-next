@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 // ─── Reel URLs ────────────────────────────────────────────────────────────────
 const REELS = [
@@ -126,7 +127,9 @@ export default function Results() {
         <div className="results-stats-grid">
           {t.results.stats.map((stat, sIdx) => (
             <div key={sIdx} className="results-stat-card">
-              <span className="results-stat-num">{stat.num}</span>
+              <span className="results-stat-num">
+                <AnimatedCounter value={stat.num} delay={sIdx * 0.15} />
+              </span>
               <span className="results-stat-label">{stat.label}</span>
             </div>
           ))}
@@ -277,7 +280,9 @@ export default function Results() {
                 <div className="grid grid-cols-3 gap-2 pt-1 text-center">
                   {t.results.stats.map((stat, sIdx) => (
                     <div key={sIdx} className="p-2 rounded-lg bg-white/5 border border-white/5">
-                      <div className="text-sm font-bold text-[#D2392A]">{stat.num}</div>
+                      <div className="text-sm font-bold text-[#D2392A]">
+                        <AnimatedCounter value={stat.num} delay={sIdx * 0.1} />
+                      </div>
                       <div className="text-[10px] text-white/60 truncate">{stat.label}</div>
                     </div>
                   ))}
@@ -293,9 +298,9 @@ export default function Results() {
       ══════════════════════════════════════════════════════════════ */}
       <div className="reel-desktop-view">
         <div className="wrap">
-          <div className="head">
-            <h2>{t.results.headTitle}</h2>
-            <p>{t.results.headDesc}</p>
+          <div className="head flex flex-col items-center text-center max-w-2xl mx-auto">
+            <h2 className="text-balance">{t.results.headTitle}</h2>
+            <p className="text-balance">{t.results.headDesc}</p>
           </div>
 
           <div className="reel-layout">

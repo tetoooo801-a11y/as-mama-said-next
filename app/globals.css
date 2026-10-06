@@ -498,9 +498,25 @@ header.site-nav.scrolled {
   position: relative; overflow: hidden;
   transition: background-color .35s ease, color .35s ease;
 }
-#reels .head, #results .head { margin-bottom: clamp(24px, 3.5vh, 40px); }
-#reels h2, #results h2 { font-size: clamp(32px, 4.5vw, 54px); color: var(--theme-text); }
-#reels .head p, #results .head p { margin-top: 12px; color: var(--theme-text-muted); font-size: 16.5px; max-width: 560px; }
+#reels .head, #results .head {
+  margin: 0 auto clamp(24px, 3.5vh, 40px) auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 680px;
+}
+#reels h2, #results h2 { font-size: clamp(32px, 4.5vw, 54px); color: var(--theme-text); text-align: center; }
+#reels .head p, #results .head p {
+  margin-top: 12px;
+  color: var(--theme-text-muted);
+  font-size: 16.5px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  text-wrap: balance;
+}
 
 /* layout */
 .reel-layout {

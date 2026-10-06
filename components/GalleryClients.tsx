@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Building2, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 interface ClientBrand {
   id: string;
@@ -115,17 +116,17 @@ export default function GalleryClients() {
           </div>
 
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.08] mb-3 sm:mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.08] mb-3 sm:mb-4 text-balance"
             style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
           >
             {section.title}
           </h2>
 
-          <p className="text-base sm:text-lg font-bold text-[#D2392A] mb-3">
+          <p className="text-base sm:text-lg font-bold text-[#D2392A] mb-3 text-balance">
             {section.tagline}
           </p>
 
-          <p className="text-sm sm:text-base text-[#15100C]/75 dark:text-[#F2E6DC]/75 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-[#15100C]/75 dark:text-[#F2E6DC]/75 leading-relaxed font-normal max-w-2xl mx-auto text-balance">
             {section.sub}
           </p>
 
@@ -133,7 +134,7 @@ export default function GalleryClients() {
           <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-8 w-full max-w-2xl pt-6 border-t border-black/[0.08] dark:border-white/10">
             <div className="flex flex-col items-center text-center">
               <span className="text-2xl sm:text-3xl font-black text-[#D2392A]" style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}>
-                {section.stat1Num}
+                <AnimatedCounter value={section.stat1Num} delay={0} />
               </span>
               <span className="text-[11px] sm:text-xs text-[#15100C]/70 dark:text-[#F2E6DC]/70 font-semibold mt-1">
                 {section.stat1Label}
@@ -141,7 +142,7 @@ export default function GalleryClients() {
             </div>
             <div className="flex flex-col items-center text-center border-x border-black/[0.08] dark:border-white/10 px-2">
               <span className="text-2xl sm:text-3xl font-black text-[#15100C] dark:text-[#F2E6DC]" style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}>
-                {section.stat2Num}
+                <AnimatedCounter value={section.stat2Num} delay={0.15} />
               </span>
               <span className="text-[11px] sm:text-xs text-[#15100C]/70 dark:text-[#F2E6DC]/70 font-semibold mt-1">
                 {section.stat2Label}
@@ -149,7 +150,7 @@ export default function GalleryClients() {
             </div>
             <div className="flex flex-col items-center text-center">
               <span className="text-2xl sm:text-3xl font-black text-[#D2392A]" style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}>
-                {section.stat3Num}
+                <AnimatedCounter value={section.stat3Num} delay={0.3} />
               </span>
               <span className="text-[11px] sm:text-xs text-[#15100C]/70 dark:text-[#F2E6DC]/70 font-semibold mt-1">
                 {section.stat3Label}
@@ -220,8 +221,8 @@ export default function GalleryClients() {
           <CheckCircle2 size={15} className="text-[#D2392A]" />
           <span>
             {isRTL
-              ? "34 علامة تجارية رائدة ومؤسسة دولية وثقت بخبرات سيراد التسويقية والإنتاجية"
-              : "34+ Leading brands and multinational institutions powered by CIRAD"}
+              ? "34 علامة تجارية رائدة ومؤسسة دولية وثقت بخبرات استوديو As Mama Said التسويقية والإنتاجية"
+              : "34+ Leading brands and multinational institutions powered by As Mama Said"}
           </span>
         </div>
 

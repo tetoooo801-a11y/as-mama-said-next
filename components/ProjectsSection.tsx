@@ -27,138 +27,321 @@ interface ProjectItem {
 const PROJECTS: ProjectItem[] = [
   {
     num: "01",
-    nameEn: "3D Modeling",
-    nameAr: "النمذجة ثلاثية الأبعاد",
-    categoryEn: "Spatial Assets & Geometry",
-    categoryAr: "مجسمات وبيئات ثلاثية الأبعاد",
-    headlineEn: "High-fidelity 3D assets and procedural worlds engineered for commercial impact.",
-    headlineAr: "بناء مجسمات وعوالم ثلاثية الأبعاد بدقة فائقة مخصصة للمنتجات والإعلانات.",
+    nameEn: "Strategy",
+    nameAr: "الاستراتيجية وبناء العلامة",
+    categoryEn: "Research & Market Positioning",
+    categoryAr: "أبحاث السوق والتموضع الاستراتيجي",
+    headlineEn: "Before we speak, we listen.",
+    headlineAr: "قبل أن نتحدث، ننصت بعمق.",
     descEn:
-      "From bespoke product geometries to sprawling virtual environments, we build high-precision 3D assets optimized for cinematic lighting, interactive platforms, and scroll-stopping visuals.",
+      "We start with your business, market, and audience to give every message and execution a clear purpose.",
     descAr:
-      "نصمم ونبني مجسمات وعوالم ثلاثية الأبعاد متناهية الدقة، مجهزة للإضاءة السينمائية والتطبيقات التفاعلية لترتقي بمظهر المنتجات وتخطف انتباه العملاء من النظرة الأولى.",
-    tagsEn: ["Hard-surface Modeling", "Spatial Environments", "Product Geometry", "CGI Assets"],
-    tagsAr: ["نمذجة مجسمات", "بيئات ثلاثية الأبعاد", "هندسة منتجات", "أصول سينمائية"],
+      "نبدأ بفهم أهداف عملك، دراسة السوق، وتحليل الجمهور المستهدف لنمنح كل رسالة وتنفيذ هدفاً تجارياً واضحاً ومؤثراً.",
+    tagsEn: [
+      "Market & competitor research",
+      "Brand & communication strategy",
+      "Content & social strategy",
+      "Campaign & go-to-market planning",
+      "Objectives & KPI frameworks",
+    ],
+    tagsAr: [
+      "أبحاث السوق والمنافسين",
+      "استراتيجية العلامة والاتصال",
+      "استراتيجية المحتوى والتواجد",
+      "تخطيط الحملات ودخول السوق",
+      "تحديد الأهداف وأطر قياس الأداء",
+    ],
     metricsEn: [
-      { label: "Deliverables", value: "Sub-D Models" },
-      { label: "Optimization", value: "Real-time & CGI" },
-      { label: "Impact", value: "+300% Engagement" },
+      { label: "Approach", value: "Insight-First" },
+      { label: "Framework", value: "KPI Aligned" },
+      { label: "Focus", value: "Commercial Purpose" },
     ],
     metricsAr: [
-      { label: "المخرجات", value: "مجسمات عالية الدقة" },
-      { label: "المعالجة", value: "جاهزة للسينما والويب" },
-      { label: "الأثر", value: "+300% تفاعل" },
+      { label: "المنهجية", value: "مبنية على الرؤى" },
+      { label: "الإطار", value: "محدد المؤشرات" },
+      { label: "الهدف", value: "أثر تجاري واضح" },
     ],
     link: "/contact",
-    image: "/assets/images/service-1-3d.png",
+    image: "/assets/images/about-director.webp",
   },
   {
     num: "02",
-    nameEn: "Rendering",
-    nameAr: "الرندرة الواقعية",
-    categoryEn: "Photorealistic CGI & Lighting",
-    categoryAr: "إخراج واقعي ومحاكاة خامات",
-    headlineEn: "Hyper-realistic illumination, tactile materials, and studio-grade photography.",
-    headlineAr: "إخراج فوتوغرافي واقعي يبرز أدق تفاصيل المواد والخامات والإضاءة.",
+    nameEn: "Creative Content",
+    nameAr: "المحتوى الإبداعي والسرد",
+    categoryEn: "Concepts & Storytelling",
+    categoryAr: "المفاهيم الإبداعية والسرد القصصي",
+    headlineEn: "The right thing, said differently.",
+    headlineAr: "الفكرة الصحيحة، بطريقة استثنائية.",
     descEn:
-      "We replace costly physical production with CGI rendering that looks indistinguishable from reality. Custom shaders, macro lens simulations, and bespoke light setups turn products into pure art.",
+      "We turn business objectives and audience insight into distinctive campaign ideas, stories, and content formats.",
     descAr:
-      "نبتكر صوراً واقعية تنافس الكاميرات الاحترافية بدقة فائقة. محاكاة ذكية لانعكاسات الزجاج والمعادن والأقمشة تمنح منتجاتك فخامة تليق بأقوى الحملات الإعلانية.",
-    tagsEn: ["Ray Tracing", "PBR Materials", "Studio Lighting", "8K Resolution"],
-    tagsAr: ["تتبع الأشعة", "خامات فيزيائية", "إضاءة استوديو", "دقة 8K فائقة"],
+      "نحوّل أهدافك التجارية ورؤى الجمهور إلى أفكار حملات ملهمة، وسرد قصصي مبتكر، وقوالب محتوى تفرض حضورها.",
+    tagsEn: [
+      "Creative concepts & campaigns",
+      "Scriptwriting & storytelling",
+      "Arabic & English copywriting",
+      "Content concepts & formats",
+      "Creative & art direction",
+    ],
+    tagsAr: [
+      "تطوير المفاهيم الإبداعية",
+      "كتابة السيناريو والسرد",
+      "صناعة النصوص الإعلانية",
+      "قوالب المحتوى المبتكرة",
+      "الإخراج الإبداعي والفني",
+    ],
     metricsEn: [
-      { label: "Resolution", value: "8K Ultra-HD" },
-      { label: "Turnaround", value: "Zero Studio Friction" },
-      { label: "Visual Fidelity", value: "100% Photoreal" },
+      { label: "Format", value: "Social & Cinematic" },
+      { label: "Language", value: "Arabic & English" },
+      { label: "Impact", value: "Distinctive Hooks" },
     ],
     metricsAr: [
-      { label: "الدقة", value: "8K فائقة الجودة" },
-      { label: "السرعة", value: "بدون مصاريف تصوير" },
-      { label: "الواقعية", value: "100% تطابق واقعي" },
-    ],
-    link: "/contact",
-    image: "/assets/images/service-2-render.png",
-  },
-  {
-    num: "03",
-    nameEn: "Motion Design",
-    nameAr: "تصميم الحركة والأنيميشن",
-    categoryEn: "Kinetic Direction & Animation",
-    categoryAr: "موشن جرافيك وتحريك سينمائي",
-    headlineEn: "Dynamic physics, expressive kinetic type, and commercial promo animation.",
-    headlineAr: "تحريك احترافي وموشن جرافيك ديناميكي يضفي طاقة وحيوية للعلامات التجارية.",
-    descEn:
-      "We turn static concepts into hypnotic motion. High-energy launch videos, kinetic typography, and snappy product loops engineered to hook viewers within the opening two seconds.",
-    descAr:
-      "نبث الحيوية في أفكار علامتك التجارية من خلال فيديوهات إطلاق حماسية وتحريك تيبوغرافي مصمم لإيقاف التمرير ورفع نسب المشاهدة من أول ثانيتين.",
-    tagsEn: ["Kinetic Typography", "Physics Simulation", "Launch Reels", "60 FPS Animation"],
-    tagsAr: ["تيبوغرافي حركي", "محاكاة حركة فيزيائية", "ريلز إطلاق", "حركة 60 إطار"],
-    metricsEn: [
-      { label: "Pacing", value: "60 FPS Fluid" },
-      { label: "Hook Rate", value: "< 2s Stop Scroll" },
-      { label: "Engagement", value: "+4.2x Retention" },
-    ],
-    metricsAr: [
-      { label: "الانسيابية", value: "60 إطار/ثانية" },
-      { label: "الجذب", value: "أقل من ثانيتين" },
-      { label: "المشاهدة", value: "+4.2x استبقاء" },
+      { label: "القوالب", value: "رقمية وسينمائية" },
+      { label: "اللغات", value: "عربي وإنجليزي" },
+      { label: "الأثر", value: "أفكار ملهمة تعلق" },
     ],
     link: "/contact",
     image: "/assets/images/service-3-motion.png",
   },
   {
-    num: "04",
-    nameEn: "Branding",
-    nameAr: "الهوية البصرية والبراندينج",
-    categoryEn: "Identity Systems & Strategy",
-    categoryAr: "أنظمة الهوية والاستراتيجية",
-    headlineEn: "Complete brand systems built to stand out, command respect, and scale globally.",
-    headlineAr: "صناعة أنظمة بصرية متكاملة وشعارات حركية تضمن حضوراً فريداً ومؤثراً.",
+    num: "03",
+    nameEn: "Social Media Management",
+    nameAr: "إدارة منصات التواصل",
+    categoryEn: "Channel Stewardship & Publishing",
+    categoryAr: "إدارة القنوات والتفاعل المستمر",
+    headlineEn: "We run the channel, not just the posts.",
+    headlineAr: "ندير القناة كمنظومة، وليس مجرد منشورات.",
     descEn:
-      "Far beyond a logo: we design comprehensive identity universes. From typographic rules and color architectures to digital guidelines, packaging, and brand voice that unifies your entire presence.",
+      "We manage your social presence from planning and publishing to community management and monthly reporting.",
     descAr:
-      "أكثر من مجرد شعار: نبني منظومة هوية كاملة تشمل التيبوغرافي، باليت الألوان، تصميم المطبوعات والتغليف، ونبرة الصوت التي تجعل علامتك تفرض هيبتها في أي سوق.",
-    tagsEn: ["Identity Systems", "Bespoke Typography", "Packaging", "Brand Guidelines"],
-    tagsAr: ["أنظمة الهوية", "خطوط وهوية مخصصة", "تصميم تغليف", "أدلة العلامة"],
+      "ندير حضورك على منصات التواصل من التخطيط المسبق والجدولة وحتى إدارة المجتمع والردود والتقارير الشهرية التحليلية.",
+    tagsEn: [
+      "Platform & channel planning",
+      "Monthly content calendars",
+      "Publishing & scheduling",
+      "Community moderation",
+      "Performance reporting",
+    ],
+    tagsAr: [
+      "تخطيط القنوات والمنصات",
+      "تقويم المحتوى الشهري",
+      "النشر والجدولة الذكية",
+      "إدارة وتفاعل المجتمع",
+      "تقارير الأداء الشهرية",
+    ],
     metricsEn: [
-      { label: "Scope", value: "Complete System" },
-      { label: "Market Reach", value: "Cairo & Dubai" },
-      { label: "Equity", value: "+250% Brand Value" },
+      { label: "Pacing", value: "Always-On" },
+      { label: "Cadence", value: "Monthly Sprints" },
+      { label: "Community", value: "Active Moderation" },
     ],
     metricsAr: [
-      { label: "النطاق", value: "منظومة بصرية شاملة" },
-      { label: "الانتشار", value: "القاهرة ودبي" },
-      { label: "القيمة", value: "+250% ولاء وقيمة" },
+      { label: "التواجد", value: "مستمر وفعّال" },
+      { label: "الجدولة", value: "سبرنتات شهرية" },
+      { label: "المجتمع", value: "تفاعل حقيقي" },
+    ],
+    link: "/contact",
+    image: "/assets/images/contact-studio.webp",
+  },
+  {
+    num: "04",
+    nameEn: "Media Production House",
+    nameAr: "بيت الإنتاج الإعلامي والسينمائي",
+    categoryEn: "Film, 3D Solutions & AI Craft",
+    categoryAr: "الإنتاج السينمائي والـ 3D والذكاء الاصطناعي",
+    headlineEn: "A good idea deserves to be well made.",
+    headlineAr: "الفكرة العظيمة تستحق تنفيذاً فائق الإتقان.",
+    descEn:
+      "Our production team brings the creative direction to life through film, photography, 3D visualization, AI-assisted production, and post-production.",
+    descAr:
+      "فريق الإنتاج لدينا يحوّل الرؤية الإبداعية إلى واقع من خلال الأفلام، التصوير الفوتوغرافي، الرؤية ثلاثية الأبعاد (3D)، الإنتاج المدعوم بالذكاء الاصطناعي (AI)، وعمليات ما بعد الإنتاج.",
+    tagsEn: [
+      "Commercial & campaign films",
+      "Social-first video & Reels",
+      "Product photography & video",
+      "3D Modeling, Rendering & CGI",
+      "AI-Assisted Production",
+      "Editing, color grading & retouching",
+    ],
+    tagsAr: [
+      "أفلام الحملات والإعلانات",
+      "فيديوهات السوشيال والريلز",
+      "تصوير المنتجات الاحترافي",
+      "حلول 3D: نمذجة ورندرة و CGI",
+      "الإنتاج المدعوم بالذكاء الاصطناعي",
+      "المونتاج، تصحيح الألوان والريتاتش",
+    ],
+    metricsEn: [
+      { label: "3D Solutions", value: "CGI & Sub-D" },
+      { label: "AI Hybrid", value: "Expanded Possibilities" },
+      { label: "Mastering", value: "8K & ProRes Output" },
+    ],
+    metricsAr: [
+      { label: "حلول 3D", value: "CGI ورندرة واقعية" },
+      { label: "الذكاء الاصطناعي", value: "إمكانيات إنتاج موسعة" },
+      { label: "الجودة", value: "ماستر 8K وسينمائي" },
+    ],
+    link: "/contact",
+    image: "/assets/images/hero-mama-studio.webp",
+  },
+  {
+    num: "05",
+    nameEn: "PR & UGC",
+    nameAr: "العلاقات العامة وصناع المحتوى",
+    categoryEn: "Earned Credibility & Creator Voices",
+    categoryAr: "بناء السمعة وصناع المحتوى",
+    headlineEn: "Reputation is earned. So is a recommendation.",
+    headlineAr: "السمعة تُبنى بالجدارة، والتوصية كذلك.",
+    descEn:
+      "We connect media relations and creator-led content to build credibility, communicate launches, and bring real voices into the brand story.",
+    descAr:
+      "نربط بين العلاقات الإعلامية والمحتوى الذي يقوده المبدعون لبناء المصداقية، إطلاق الحملات، وإشراك أصوات حقيقية في قصة علامتك.",
+    tagsEn: [
+      "Press & media relations",
+      "Launch & event communication",
+      "Reputation management",
+      "Creator sourcing & briefing",
+      "UGC content production",
+      "Influencer campaigns & seeding",
+    ],
+    tagsAr: [
+      "العلاقات الإعلامية والصحفية",
+      "تغطية الإطلاقات والفعاليات",
+      "إدارة السمعة المؤسسية",
+      "اختيار المبدعين وتوجيههم",
+      "إنتاج محتوى UGC الأصيل",
+      "حملات المؤثرين وتفعيل المنتجات",
+    ],
+    metricsEn: [
+      { label: "Relations", value: "Top Media Outlets" },
+      { label: "Creators", value: "Authentic UGC" },
+      { label: "Credibility", value: "Earned Trust" },
+    ],
+    metricsAr: [
+      { label: "الصحافة", value: "تغطيات واسعة" },
+      { label: "المبدعون", value: "محتوى UGC حقيقي" },
+      { label: "الأثر", value: "مصداقية وثقة" },
+    ],
+    link: "/contact",
+    image: "/assets/images/about-clarity-hd.webp",
+  },
+  {
+    num: "06",
+    nameEn: "Design",
+    nameAr: "التصميم الفني والتطبيقات البصرية",
+    categoryEn: "Visual Assets & Campaign Systems",
+    categoryAr: "الأصول والتطبيقات البصرية",
+    headlineEn: "Craft is part of the idea.",
+    headlineAr: "الإتقان جزء لا يتجزأ من الفكرة.",
+    descEn:
+      "We create visual assets that carry your brand consistently across campaigns, platforms, and everyday communication.",
+    descAr:
+      "نبتكر أصولاً وتطبيقات بصرية تحمل هوية علامتك بتناسق تام عبر الحملات والمنصات الرقمية والتواصل اليومي.",
+    tagsEn: [
+      "Graphic design & art direction",
+      "Key visuals & campaign assets",
+      "Social & digital design",
+      "Packaging, print & collateral",
+      "Presentations & brand documents",
+    ],
+    tagsAr: [
+      "التصميم الجرافيكي والإخراج الفني",
+      "المفاهيم البصرية الرئيسية (Key Visuals)",
+      "تصاميم السوشيال والديجيتال",
+      "تصميم التغليف والمطبوعات",
+      "العروض التقديمية والوثائق",
+    ],
+    metricsEn: [
+      { label: "Consistency", value: "Multi-Platform" },
+      { label: "Output", value: "Print & Screen" },
+      { label: "Execution", value: "Pixel-Perfect" },
+    ],
+    metricsAr: [
+      { label: "التناسق", value: "عبر كافة المنصات" },
+      { label: "المخرجات", value: "مطبوعات ورقمي" },
+      { label: "الدقة", value: "إتقان فني فائق" },
     ],
     link: "/contact",
     image: "/assets/images/service-4-branding.png",
   },
   {
-    num: "05",
-    nameEn: "Web Design",
-    nameAr: "تصميم الويب والتجارب الرقمية",
-    categoryEn: "Interactive UX/UI & WebGL",
-    categoryAr: "واجهات تفاعلية وتجربة مستخدم",
-    headlineEn: "Conversion-engineered digital experiences merging smooth 3D with flawless speed.",
-    headlineAr: "تصميم وتطوير مواقع وتطبيقات تفاعلية تجمع بين الإبهار البصري وسرعة الأداء.",
+    num: "07",
+    nameEn: "Branding",
+    nameAr: "استراتيجية وبناء الهوية التجارية",
+    categoryEn: "Identity Systems & Positioning",
+    categoryAr: "بناء العلامة واستراتيجية التموضع",
+    headlineEn: "Make your brand unmistakable.",
+    headlineAr: "اجعل علامتك التجارية فريدة لا تُنسى.",
     descEn:
-      "We build modern web flagships that look like living works of art and convert like precision machines. Lightning-fast response times, bespoke micro-interactions, and flawless mobile responsiveness.",
+      "We define how your brand is positioned, expressed, and recognised through a connected verbal and visual identity.",
     descAr:
-      "نبني واجهات وتجارب ويب مبتكرة تجمع بين اللمسات ثلاثية الأبعاد والتنقل الفوري وتجربة المستخدم المصممة لتحويل كل زائر إلى عميل حقيقي.",
-    tagsEn: ["Interactive Web", "Fluid Micro-motion", "Mobile-First", "Conversion UX"],
-    tagsAr: ["ويب تفاعلي", "حركة ميكرو سلسة", "متوافق مع الموبايل", "تحويل مبيعات"],
+      "نحدد تموضع علامتك وصوتها وحضورها في السوق من خلال هوية بصرية ولفظية متكاملة تفرض هيبتها وتخلق صلة عميقة مع العملاء.",
+    tagsEn: [
+      "Brand naming & story",
+      "Brand positioning",
+      "Brand identity & visual systems",
+      "Messaging frameworks",
+      "Brand guidelines & rebrands",
+    ],
+    tagsAr: [
+      "تسمية العلامة وصياغة قصتها",
+      "استراتيجية التموضع في السوق",
+      "تصميم أنظمة الهوية البصرية",
+      "أطر الرسائل ونبرة الصوت",
+      "أدلة استخدام الهوية وتحديثها",
+    ],
     metricsEn: [
-      { label: "Speed", value: "99+ Lighthouse" },
-      { label: "Conversion", value: "+180% Inquiries" },
-      { label: "Experience", value: "Award Grade" },
+      { label: "Scope", value: "Holistic Identity" },
+      { label: "System", value: "Verbal & Visual" },
+      { label: "Authority", value: "Unmistakable" },
     ],
     metricsAr: [
-      { label: "السرعة", value: "99+ على Lighthouse" },
-      { label: "التحويل", value: "+180% استفسارات" },
-      { label: "التجربة", value: "مستوى عالمي" },
+      { label: "النطاق", value: "منظومة هوية كاملة" },
+      { label: "النظام", value: "بصري ولفظي متناسق" },
+      { label: "الأثر", value: "حضور سوقي راسخ" },
     ],
     link: "/contact",
-    image: "/assets/images/service-5-web.png",
+    image: "/assets/images/ams-mama-house-logo.jpg",
+  },
+  {
+    num: "08",
+    nameEn: "Media Buying & Performance",
+    nameAr: "الإعلانات الممولة وإدارة الأداء",
+    categoryEn: "Paid Growth & Conversion Optimization",
+    categoryAr: "الحملات الممولة وتحسين العائد",
+    headlineEn: "Attention only matters when it moves something.",
+    headlineAr: "الوصول لا قيمة له إلا إذا حقق أثراً ملموساً.",
+    descEn:
+      "We plan, test, and optimize paid campaigns around clear business objectives, with reporting that helps guide the next decision.",
+    descAr:
+      "نخطط، نختبر، ونحسّن الحملات الإعلانية الممولة بناءً على أهداف تجارية دقيقة، مع تقارير واضحة توجه القرارات القادمة.",
+    tagsEn: [
+      "Media planning & budget allocation",
+      "Paid ads on Meta, Google, TikTok, LinkedIn",
+      "Audience & creative testing",
+      "Lead-generation & conversions",
+      "Monitoring & optimization",
+      "Reporting & recommendations",
+    ],
+    tagsAr: [
+      "التخطيط وتوزيع الميزانيات الذكي",
+      "حملات Meta و Google و TikTok و LinkedIn",
+      "اختبار الجماهير والتصاميم (A/B Testing)",
+      "حملات استقطاب المبيعات والعملاء",
+      "المراقبة اللحظية والتحسين المستمر",
+      "التقارير التحليلية والتوصيات",
+    ],
+    metricsEn: [
+      { label: "Channels", value: "Meta / Google / TikTok" },
+      { label: "Approach", value: "Data & KPI Driven" },
+      { label: "Focus", value: "Commercial Growth" },
+    ],
+    metricsAr: [
+      { label: "المنصات", value: "Meta / Google / TikTok" },
+      { label: "المنهجية", value: "مبنية على الأرقام" },
+      { label: "الهدف", value: "عائد ونمو تجاري حقيقي" },
+    ],
+    link: "/contact",
+    image: "/assets/images/about-sculpture.webp",
   },
 ];
 
@@ -227,7 +410,7 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
           <LiveProjectButton
             label={isRTL ? "ابدأ مشروعك" : "Start Project"}
             href="/contact"
-            className="!px-5 !py-2 sm:!px-7 sm:!py-2.5 !text-xs sm:!text-sm hover:!bg-[#D2392A] hover:!border-[#D2392A] hover:!text-white transition-all"
+            className="!px-5 !py-2 sm:!px-7 sm:!py-2.5 !text-xs sm:!text-sm hover:!bg-[#D2392A] hover:!border-[#D2392A] hover:!text-white transition-all cursor-pointer"
           />
         </div>
 
@@ -238,12 +421,12 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
             <img
               src={project.image}
               alt={`${project.nameEn} Visual Showcase`}
-              className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover p-2 transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             <span className="absolute bottom-3 start-3 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-black/70 backdrop-blur-md text-white/90 border border-white/10">
-              {project.num} · {isRTL ? project.categoryAr : project.categoryEn}
+              {project.num} · {isRTL ? project.nameAr : project.nameEn}
             </span>
           </div>
 
@@ -263,7 +446,7 @@ function ProjectCard({ project, index, totalCards }: CardProps) {
                 className="text-base sm:text-lg md:text-xl font-bold text-white leading-snug tracking-tight mb-2 sm:mb-2.5"
                 style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
               >
-                {isRTL ? project.headlineAr : project.headlineEn}
+                &ldquo;{isRTL ? project.headlineAr : project.headlineEn}&rdquo;
               </h4>
 
               {/* Description */}
@@ -316,14 +499,15 @@ export default function ProjectsSection() {
         {/* Section Heading */}
         <FadeIn delay={0} y={30}>
           <div className="flex flex-col items-center text-center mb-14 sm:mb-18 md:mb-20">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center justify-center gap-2 mb-3">
               <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block" />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#15100C]/70 dark:text-[#F2E6DC]/70">
                 {isRTL ? "خدماتنا بالأرقام والتنفيذ" : "SERVICES IN ACTION"}
               </span>
+              <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block" />
             </div>
             <h2
-              className="hero-heading font-black uppercase tracking-tight leading-none text-[#15100C] dark:text-[#F2E6DC]"
+              className="hero-heading font-black uppercase tracking-tight leading-none text-[#15100C] dark:text-[#F2E6DC] text-balance"
               style={{
                 fontSize: "clamp(2.5rem, 8vw, 84px)",
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
@@ -331,10 +515,10 @@ export default function ProjectsSection() {
             >
               {isRTL ? "خدماتنا على أرض الواقع" : "DISCIPLINES IN ACTION"}
             </h2>
-            <p className="mt-4 text-sm sm:text-base md:text-lg text-[#15100C]/70 dark:text-[#F2E6DC]/70 max-w-xl font-normal">
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-[#15100C]/70 dark:text-[#F2E6DC]/70 max-w-xl mx-auto font-normal text-balance">
               {isRTL
-                ? "استكشف كيف نحوّل كل خدمة من خدماتنا الخمس إلى نتائج وحضور استثنائي على أرض الواقع."
-                : "Explore how our 5 core disciplines translate into real-world impact, prestige, and growth."}
+                ? "استكشف كيف نحوّل خدماتنا الثمانية إلى نتائج وحضور استثنائي على أرض الواقع."
+                : "Explore how our 8 connected services translate into real-world impact, prestige, and growth."}
             </p>
           </div>
         </FadeIn>

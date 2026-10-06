@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import PageHero from "@/components/PageHero";
 import ServicesSection from "@/components/ServicesSection";
+import HowWorkConnects from "@/components/HowWorkConnects";
 import ProjectsSection from "@/components/ProjectsSection";
 import ServicesPipeline from "@/components/ServicesPipeline";
 import ServicesCapabilities from "@/components/ServicesCapabilities";
@@ -24,39 +25,51 @@ export default function ServicesPage() {
       <Navbar />
       <main>
         {/* ============================================================== */}
-        {/* DESKTOP VIEW (lg and above): Full-depth 9-section studio view */}
+        {/* DESKTOP VIEW (lg and above): Full-depth studio view           */}
         {/* ============================================================== */}
         <div className="hidden lg:block">
-          {/* 1. Compact Animated PageHero with Centered "SERVICES" & Living Wave */}
+          {/* 1. Animated PageHero with Centered "SERVICES" & Living Wave */}
           <PageHero
             compact={true}
             title={isRTL ? "خدماتنا" : "SERVICES"}
             curveFill="var(--theme-bg, #FAF6F0)"
           />
 
-          {/* 2. Five Core Creative Disciplines Editorial Cards */}
+          {/* 2. Eight Core Services Editorial Cards with Full Brief Details */}
           <ServicesSection />
 
-          {/* 3. Five Stacking Project Showcase Cards in Action */}
+          {/* 3. Connected System Flow: How The Work Connects */}
+          <HowWorkConnects />
+
+          {/* 4. Disciplines in Action Showcase Cards */}
           <ProjectsSection />
 
-          {/* 4. Four-Stage Production Pipeline & Roadmap */}
+          {/* 5. Production Pipeline & Roadmap */}
           <ServicesPipeline />
 
-          {/* 5. Deep Technical Capabilities & Software Matrix */}
+          {/* 6. Technical Capabilities Matrix */}
           <ServicesCapabilities />
 
-          {/* 6. The Studio Advantage: Why As Mama Said */}
+          {/* 7. The Studio Advantage */}
           <ServicesComparison />
 
-          {/* 7. Brand Collaborations & Regional Metrics */}
+          {/* 8. Brand Collaborations (Sirad Alliance — Preserved) */}
           <Collaborations />
 
-          {/* 8. Frequently Asked Questions Accordion */}
+          {/* 9. Frequently Asked Questions Accordion */}
           <ServicesFaq />
 
-          {/* 9. Final High-Impact Project CTA */}
-          <SharedCta />
+          {/* 10. End CTA from Brief: Let's start with the right question */}
+          <SharedCta
+            title={isRTL ? "فلنبدأ بالسؤال الصحيح." : "Let's start with the right question."}
+            subtitle={
+              isRTL
+                ? "أخبرنا بما تبنيه، تغيره، تطلقه، أو تسعى لحله."
+                : "Tell us what you are building, changing, launching, or trying to solve."
+            }
+            buttonText={isRTL ? "ابدأ مشروعك" : "Start a project"}
+            buttonHref="/contact"
+          />
         </div>
 
         {/* ============================================================== */}

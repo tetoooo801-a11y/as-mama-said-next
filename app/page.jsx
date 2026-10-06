@@ -5,7 +5,11 @@ import Hero from "@/components/Hero";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
+import HowWorkConnects from "@/components/HowWorkConnects";
 import Results from "@/components/Results";
+import GalleryClients from "@/components/GalleryClients";
+import ServicesComparison from "@/components/ServicesComparison";
+import ServicesFaq from "@/components/ServicesFaq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -16,22 +20,34 @@ export default function Home() {
       <Loader />
       <Navbar />
       <main>
-        {/* Preserved Signature Hero */}
+        {/* 1. Preserved Signature Hero */}
         <Hero />
 
         {/* 2. Marquee Section with 21 scroll-driven motion gifs */}
         <MarqueeSection />
 
-        {/* 3. About Section with 4 floating 3D icons & scroll-driven character animated text */}
+        {/* 3. About Section with 20+ years heritage, Cairo & Dubai presence */}
         <AboutSection />
 
-        {/* 4. Services Section with white rounded card & 01-05 items */}
+        {/* 4. Eight Core Services Section */}
         <ServicesSection />
 
-        {/* Studio Live Reels & Results */}
+        {/* 5. Integrated Workflow: How the Work Connects from Strategy to Performance */}
+        <HowWorkConnects />
+
+        {/* 6. Studio Live Reels & Performance Results */}
         <Results />
 
-        {/* Studio Contact Inquiries */}
+        {/* 7. Trusted Enterprise Brands & Multinational Partners Ticker */}
+        <GalleryClients />
+
+        {/* 8. The Studio Advantage: Why Choose As Mama Said Over Legacy Agencies */}
+        <ServicesComparison />
+
+        {/* 9. Agency FAQ: Turnaround, Pricing, Ownership & Regional Hubs */}
+        <ServicesFaq />
+
+        {/* 10. Studio Contact & Direct Regional Inquiries */}
         <Contact />
       </main>
       {/* Studio Dithered Footer */}

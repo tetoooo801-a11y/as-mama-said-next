@@ -202,14 +202,15 @@ export default function ServicesCapabilities() {
         {/* Section Header */}
         <FadeIn delay={0.1} y={25}>
           <div className="flex flex-col items-center text-center mb-14 sm:mb-18 md:mb-20">
-            <div className="flex items-center gap-2.5 mb-3.5">
+            <div className="flex items-center justify-center gap-2.5 mb-3.5">
               <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
               <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
                 {isRTL ? "القدرات الفنية والتنفيذية" : "FULL CAPABILITIES MATRIX"}
               </span>
+              <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
             </div>
             <h2
-              className="font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.02] max-w-3xl"
+              className="font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.02] max-w-3xl text-balance"
               style={{
                 fontSize: "clamp(2.4rem, 5.5vw, 4.8rem)",
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
@@ -219,7 +220,7 @@ export default function ServicesCapabilities() {
                 ? "عمق فني وأدوات عالمية لكل خدمة"
                 : "Deep Technical Craft & Tooling"}
             </h2>
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl font-normal leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl mx-auto font-normal leading-relaxed text-balance">
               {isRTL
                 ? "لا نقدم خدمات سطحية أو قوالب جاهزة. استكشف التفاصيل الدقيقة والمخرجات والأدوات البرمجية المتطورة التي نعتمد عليها في كل تخصص."
                 : "We do not deal in templates or shallow executions. Explore the sub-disciplines, production deliverables, and world-class software that power every discipline."}
@@ -227,32 +228,27 @@ export default function ServicesCapabilities() {
           </div>
         </FadeIn>
 
-        {/* Desktop / Tablet Tab Selector Pills */}
-        <div className="relative">
-          {/* Fade masks for mobile scroll hint */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-[#FAF6F0] dark:from-[#061516] to-transparent z-10 sm:hidden" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-[#FAF6F0] dark:from-[#061516] to-transparent z-10 sm:hidden" />
-          <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 sm:pb-6 mb-8 sm:mb-12 no-scrollbar">
-            {DISCIPLINES.map((item, idx) => {
-              const ItemIcon = item.icon;
-              const isCurrent = activeTab === idx;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveTab(idx)}
-                  className={`relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 shrink-0 flex items-center gap-2 cursor-pointer select-none ${
-                    isCurrent
-                      ? "bg-[#D2392A] text-white shadow-[0_8px_24px_rgba(210,57,42,0.3)]"
-                      : "bg-[#FAF7F2] dark:bg-[#0c1b1c] text-[#15100C]/80 dark:text-[#F2E6DC]/80 border border-black/[0.08] dark:border-white/10 hover:border-[#D2392A]/50"
-                  }`}
-                >
-                  <ItemIcon size={15} strokeWidth={2.3} />
-                  <span>{isRTL ? item.nameAr : item.nameEn}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Desktop / Tablet Tab Selector Pills: Fully visible & wrapped */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 max-w-5xl mx-auto px-2">
+          {DISCIPLINES.map((item, idx) => {
+            const ItemIcon = item.icon;
+            const isCurrent = activeTab === idx;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setActiveTab(idx)}
+                className={`relative px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer select-none ${
+                  isCurrent
+                    ? "bg-[#D2392A] text-white shadow-[0_8px_24px_rgba(210,57,42,0.3)] scale-[1.02]"
+                    : "bg-[#FAF7F2] dark:bg-[#0c1b1c] text-[#15100C]/80 dark:text-[#F2E6DC]/80 border border-black/[0.08] dark:border-white/10 hover:border-[#D2392A]/50 hover:text-[#D2392A]"
+                }`}
+              >
+                <ItemIcon size={15} strokeWidth={2.3} />
+                <span>{isRTL ? item.nameAr : item.nameEn}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Selected Discipline Deep-Dive Box */}

@@ -7,6 +7,7 @@ import SharedCta from "@/components/SharedCta";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import FadeIn from "@/components/ui/FadeIn";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   Users,
@@ -14,6 +15,7 @@ import {
   Globe,
   Heart,
   ArrowRight,
+  Quote,
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -91,12 +93,17 @@ export default function AboutPage() {
                 </h1>
 
                 {/* Paragraphs */}
-                <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-xl mb-4">
+                <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-xl mb-3.5">
                   {t.about.p1}
                 </p>
-                <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-xl mb-7">
+                <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-xl mb-3.5">
                   {t.about.p2}
                 </p>
+                {t.about.p3 && (
+                  <p className="text-sm sm:text-base md:text-[1.02rem] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-xl mb-6">
+                    {t.about.p3}
+                  </p>
+                )}
 
                 {/* Signature */}
                 <div
@@ -125,44 +132,101 @@ export default function AboutPage() {
           </section>
 
           {/* ============================================================== */}
+          {/* NEW SECTION: THE STORY BEHIND OUR NAME                         */}
+          {/* ============================================================== */}
+          {t.about.nameStory && (
+            <section className="rounded-[28px] sm:rounded-[36px] bg-[#FAF7F2] dark:bg-[#0C1B1C]/80 border border-black/8 dark:border-white/10 p-7 sm:p-10 lg:p-14 shadow-[0_12px_40px_rgba(0,0,0,0.03)]">
+              <FadeIn delay={0.1} y={20}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  <div className="lg:col-span-7 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="w-5 sm:w-6 h-[2px] bg-[#D2392A] inline-block shrink-0" />
+                      <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                        {t.about.nameStory.kicker}
+                      </span>
+                    </div>
+
+                    <h2
+                      className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight mb-4 text-balance"
+                      style={{
+                        fontSize: "clamp(1.8rem, 3.2vw, 2.75rem)",
+                        fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                      }}
+                    >
+                      {t.about.nameStory.title}
+                    </h2>
+
+                    <p className="text-base sm:text-lg font-semibold text-[#D2392A] mb-4 leading-relaxed">
+                      {t.about.nameStory.lead}
+                    </p>
+
+                    <p className="text-sm sm:text-base leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 mb-3.5">
+                      {t.about.nameStory.p1}
+                    </p>
+
+                    <p className="text-sm sm:text-base leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75">
+                      {t.about.nameStory.p2}
+                    </p>
+                  </div>
+
+                  <div className="lg:col-span-5 flex flex-col justify-center">
+                    <div className="rounded-[24px] bg-[#07191a] text-white p-7 sm:p-8 border border-white/10 shadow-lg relative overflow-hidden">
+                      <div className="w-10 h-10 rounded-full bg-[#D2392A]/15 text-[#D2392A] flex items-center justify-center mb-4">
+                        <Quote size={20} className="rotate-180" />
+                      </div>
+                      <blockquote className="text-base sm:text-lg font-serif italic text-white/90 leading-relaxed mb-6">
+                        {t.about.nameStory.quote}
+                      </blockquote>
+                      <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/60 font-mono uppercase tracking-wider">
+                        <span>AS MAMA SAID</span>
+                        <span className="text-[#D2392A] font-bold">EST. 2004</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            </section>
+          )}
+
+          {/* ============================================================== */}
           {/* SECTION 2: WHAT WE DO (4 Capabilities)                         */}
           {/* ============================================================== */}
           <section>
             <FadeIn delay={0.1} y={20}>
-              <div className="flex items-center gap-2.5 mb-3 sm:mb-4">
-                <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
-                <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
-                  {t.about.whatWeDoKicker}
-                </span>
+              <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <div className="flex items-center justify-center gap-2.5 mb-3 sm:mb-4">
+                  <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                    {t.about.whatWeDoKicker}
+                  </span>
+                  <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
+                </div>
+                <h2
+                  className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight text-balance"
+                  style={{
+                    fontSize: "clamp(2rem, 3.8vw, 3.2rem)",
+                    fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                  }}
+                >
+                  {t.about.whatWeDoTitle}
+                </h2>
               </div>
-              <h2
-                className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight mb-8 sm:mb-12"
-                style={{
-                  fontSize: "clamp(2rem, 3.8vw, 3.2rem)",
-                  fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
-                }}
-              >
-                {t.about.whatWeDoTitle}
-              </h2>
             </FadeIn>
 
             <FadeIn delay={0.2} y={25}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-black/[0.08] dark:lg:divide-white/10 rtl:lg:divide-x-reverse">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {t.about.services?.map((svc, idx) => (
                   <div
                     key={svc.id || idx}
-                    className={`flex flex-col ${
-                      idx === 0
-                        ? "lg:pr-8 rtl:lg:pr-0 rtl:lg:pl-8"
-                        : idx === 3
-                        ? "lg:pl-8 rtl:lg:pl-0 rtl:lg:pr-8"
-                        : "lg:px-8"
-                    }`}
+                    className="flex flex-col p-5 rounded-2xl bg-black/[0.02] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/10"
                   >
-                    <h3 className="font-bold text-lg sm:text-xl text-[#15100C] dark:text-[#F2E6DC] mb-2.5">
+                    <span className="text-xs font-mono font-bold text-[#D2392A] mb-1.5">
+                      0{idx + 1}
+                    </span>
+                    <h3 className="font-bold text-base sm:text-lg text-[#15100C] dark:text-[#F2E6DC] mb-2">
                       {svc.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-[#15100C]/70 dark:text-[#F2E6DC]/70">
+                    <p className="text-xs sm:text-sm leading-relaxed text-[#15100C]/70 dark:text-[#F2E6DC]/70">
                       {svc.desc}
                     </p>
                   </div>
@@ -196,7 +260,7 @@ export default function AboutPage() {
                         className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D2392A] tracking-tight my-1.5"
                         style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
                       >
-                        {stat.val}
+                        <AnimatedCounter value={stat.val} delay={idx * 0.15} />
                       </span>
                       <span className="text-xs sm:text-sm text-white/70 font-medium">
                         {stat.label}
@@ -207,6 +271,132 @@ export default function AboutPage() {
               </div>
             </FadeIn>
           </section>
+
+          {/* ============================================================== */}
+          {/* NEW SECTION: CORE OPERATING DNA / PILLARS                      */}
+          {/* ============================================================== */}
+          {t.about.valuesList && (
+            <section>
+              <FadeIn delay={0.1} y={20}>
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <span className="w-5 sm:w-6 h-[2px] bg-[#D2392A] inline-block shrink-0" />
+                    <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                      {t.about.valuesKicker}
+                    </span>
+                    <span className="w-5 sm:w-6 h-[2px] bg-[#D2392A] inline-block shrink-0" />
+                  </div>
+                  <h2
+                    className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight text-balance"
+                    style={{
+                      fontSize: "clamp(2rem, 3.6vw, 3rem)",
+                      fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                    }}
+                  >
+                    {t.about.valuesTitle}
+                  </h2>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.2} y={25}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {t.about.valuesList.map((val, idx) => (
+                    <div
+                      key={idx}
+                      className="p-7 sm:p-8 rounded-[26px] bg-white dark:bg-[#0C1B1C]/90 border border-black/8 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:border-[#D2392A]/40 transition-all duration-300 flex flex-col justify-between group"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="font-mono text-sm font-bold text-[#D2392A] px-2.5 py-0.5 rounded-full bg-[#D2392A]/10">
+                            {val.num}
+                          </span>
+                          <span className="w-2 h-2 rounded-full bg-[#D2392A] opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <h3 className="font-black text-xl sm:text-2xl text-[#15100C] dark:text-[#F2E6DC] mb-3 tracking-tight">
+                          {val.title}
+                        </h3>
+                        <p className="text-sm sm:text-[15px] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal">
+                          {val.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </section>
+          )}
+
+          {/* ============================================================== */}
+          {/* NEW SECTION: REGIONAL PRESENCE (Cairo & Dubai)                 */}
+          {/* ============================================================== */}
+          {t.about.presenceTitle && (
+            <section className="rounded-[28px] sm:rounded-[36px] bg-[#07191a] text-white p-7 sm:p-10 lg:p-14 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.25)]">
+              <FadeIn delay={0.1} y={20}>
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="w-5 sm:w-6 h-[2px] bg-[#D2392A] inline-block shrink-0" />
+                    <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                      {t.about.presenceKicker}
+                    </span>
+                    <span className="w-5 sm:w-6 h-[2px] bg-[#D2392A] inline-block shrink-0" />
+                  </div>
+                  <h2
+                    className="font-black tracking-tight text-white leading-tight text-balance"
+                    style={{
+                      fontSize: "clamp(1.8rem, 3.2vw, 2.75rem)",
+                      fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                    }}
+                  >
+                    {t.about.presenceTitle}
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                  {/* Cairo Hub Card */}
+                  <div className="p-7 sm:p-8 rounded-[24px] bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:bg-white/[0.06] transition-colors">
+                    <div>
+                      <div className="flex items-center gap-2.5 mb-4">
+                        <span className="text-2xl">🇪🇬</span>
+                        <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#D2392A]">
+                          HQ &amp; PRODUCTIONS
+                        </span>
+                      </div>
+                      <h3 className="font-black text-xl sm:text-2xl text-white mb-3">
+                        {t.about.presenceCairoTitle}
+                      </h3>
+                      <p className="text-sm sm:text-[15px] leading-relaxed text-white/75 font-normal">
+                        {t.about.presenceCairoDesc}
+                      </p>
+                    </div>
+                    <div className="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                      CAIRO · STUDIO &amp; POST-PRODUCTION HOUSE
+                    </div>
+                  </div>
+
+                  {/* Dubai Gateway Card */}
+                  <div className="p-7 sm:p-8 rounded-[24px] bg-white/[0.04] border border-white/10 flex flex-col justify-between hover:bg-white/[0.06] transition-colors">
+                    <div>
+                      <div className="flex items-center gap-2.5 mb-4">
+                        <span className="text-2xl">🇦🇪</span>
+                        <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#D2392A]">
+                          REGIONAL GROWTH
+                        </span>
+                      </div>
+                      <h3 className="font-black text-xl sm:text-2xl text-white mb-3">
+                        {t.about.presenceDubaiTitle}
+                      </h3>
+                      <p className="text-sm sm:text-[15px] leading-relaxed text-white/75 font-normal">
+                        {t.about.presenceDubaiDesc}
+                      </p>
+                    </div>
+                    <div className="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                      DUBAI · CLIENT CONSULTING &amp; ENTERPRISE DESK
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            </section>
+          )}
 
           {/* ============================================================== */}
           {/* SECTION 4: OUR APPROACH & PROCESS                              */}
@@ -279,21 +469,24 @@ export default function AboutPage() {
           {/* ============================================================== */}
           <section className="flex flex-col">
             <FadeIn delay={0.1} y={20}>
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
-                <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
-                  {t.about.trustedKicker}
-                </span>
+              <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8">
+                <div className="flex items-center justify-center gap-2.5 mb-2">
+                  <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                    {t.about.trustedKicker}
+                  </span>
+                  <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
+                </div>
+                <h3
+                  className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight text-balance"
+                  style={{
+                    fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)",
+                    fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
+                  }}
+                >
+                  {t.about.trustedTitle}
+                </h3>
               </div>
-              <h3
-                className="font-black tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-tight mb-8"
-                style={{
-                  fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)",
-                  fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
-                }}
-              >
-                {t.about.trustedTitle}
-              </h3>
             </FadeIn>
 
             <FadeIn delay={0.2} y={20}>

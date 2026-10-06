@@ -17,8 +17,40 @@ export default function Contact({ isPage = false }) {
   // Form input states
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [selectedService, setSelectedService] = useState("Not sure yet");
   const [extraField, setExtraField] = useState("");
   const [message, setMessage] = useState("");
+
+  const SERVICE_OPTIONS = [
+    { en: "Strategy", ar: "الاستراتيجية وبناء العلامة" },
+    { en: "Creative Content", ar: "المحتوى الإبداعي والسرد القصصي" },
+    { en: "Social Media Management", ar: "إدارة منصات التواصل الاجتماعي" },
+    { en: "Media Production House", ar: "بيت الإنتاج الإعلامي والسينمائي" },
+    { en: "PR & UGC", ar: "العلاقات العامة وصناع المحتوى" },
+    { en: "Design", ar: "التصميم الفني والتطبيقات البصرية" },
+    { en: "Branding", ar: "استراتيجية وبناء الهوية التجارية" },
+    { en: "Media Buying & Performance", ar: "الإعلانات الممولة وإدارة الأداء" },
+    { en: "Not sure yet", ar: "لست متأكداً بعد (نحتاج استشارة)" },
+  ];
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const s = params.get("service");
+      if (s) {
+        const found = SERVICE_OPTIONS.find(
+          (opt) =>
+            opt.en.toLowerCase() === s.toLowerCase() ||
+            opt.ar.toLowerCase() === s.toLowerCase()
+        );
+        if (found) {
+          setSelectedService(found.en);
+        }
+      }
+    }
+  }, []);
 
   const handleInquirySelect = (cat) => {
     setActiveCat(cat);
@@ -56,7 +88,7 @@ export default function Contact({ isPage = false }) {
       href: "https://www.tiktok.com/@as.mama.said",
       icon: (
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .57.04.84.11V9.33a6.33 6.33 0 0 0-.84-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.19 8.19 0 0 0 4.88 1.6v-3.48a4.85 4.85 0 0 1-1.11-.14z" />
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
         </svg>
       ),
     },
@@ -84,22 +116,27 @@ export default function Contact({ isPage = false }) {
       <div className="block md:hidden px-6 max-w-lg mx-auto">
         <FadeIn delay={0.1} y={20}>
           {/* Header with Red Dot */}
-          <div className="flex items-center gap-2.5 mb-2.5">
-            <span className="w-3 h-3 rounded-full bg-[#D2392A] shrink-0" />
+          <div className="flex flex-col items-center text-center mb-5">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#D2392A] shrink-0" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
+                {isRTL ? "تواصل معنا" : "GET IN TOUCH"}
+              </span>
+            </div>
             <h2
-              className="text-2xl font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-none"
+              className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-none mb-2.5 text-balance"
               style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
             >
               {isRTL ? "لنعمل معاً" : "LET'S WORK TOGETHER"}
             </h2>
-          </div>
 
-          {/* Short Subtitle */}
-          <p className="text-[14px] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal mb-5">
-            {isRTL
-              ? "عندك فكرة مشروع أو استفسار؟ نحب نسمع منك ونبدأ العمل."
-              : "Have a project in mind? We'd love to hear from you."}
-          </p>
+            {/* Short Subtitle */}
+            <p className="text-[14px] leading-relaxed text-[#15100C]/75 dark:text-[#F2E6DC]/75 font-normal max-w-sm mx-auto text-balance">
+              {isRTL
+                ? "عندك فكرة مشروع أو استفسار؟ نحب نسمع منك ونبدأ العمل."
+                : "Have a project in mind? We'd love to hear from you."}
+            </p>
+          </div>
 
           {/* Primary CTA Button */}
           <button
@@ -157,6 +194,40 @@ export default function Contact({ isPage = false }) {
                           placeholder={t.contact.companyPlaceholder}
                           className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
                         />
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder={isRTL ? "البريد الإلكتروني *" : "Email Address *"}
+                          required
+                          className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-xs text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
+                        />
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder={isRTL ? "رقم الهاتف / واتساب *" : "Phone / WhatsApp *"}
+                          required
+                          className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-xs text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-[#15100C]/60 dark:text-[#F2E6DC]/60 mb-1">
+                          {isRTL ? "الخدمة المطلوبة:" : "Selected Service:"}
+                        </label>
+                        <select
+                          value={selectedService}
+                          onChange={(e) => setSelectedService(e.target.value)}
+                          className="w-full px-3 py-2 rounded-xl bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-xs text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A]"
+                        >
+                          {SERVICE_OPTIONS.map((opt) => (
+                            <option key={opt.en} value={opt.en}>
+                              {isRTL ? opt.ar : opt.en}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                       <div>
                         <textarea
@@ -383,12 +454,19 @@ export default function Contact({ isPage = false }) {
                       {isRTL ? "استفسارات الأعمال والتعاقدات المباشرة" : "DIRECT BUSINESS ENQUIRIES"}
                     </span>
                     <span className="text-[11px] text-[#15100C]/65 dark:text-[#F2E6DC]/65 font-medium">
-                      EGYPT · DUBAI · SAUDI ARABIA · QATAR
+                      {isRTL ? "مصر · الإمارات (دبي)" : "EGYPT · DUBAI (UAE)"}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold text-[#15100C] dark:text-[#F2E6DC]">
+                  <a
+                    href="mailto:info@as-mama-said.com"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 hover:border-[#D2392A] hover:text-[#D2392A] transition-colors"
+                  >
+                    <Mail size={13} className="text-[#D2392A]" strokeWidth={2} />
+                    <span>info@as-mama-said.com</span>
+                  </a>
                   <a
                     href="https://wa.me/201092927390"
                     target="_blank"
@@ -476,18 +554,52 @@ export default function Contact({ isPage = false }) {
                       </div>
                     </div>
 
-                    {/* Dynamic Field */}
+                    {/* Contact Channels (Email & Phone) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-[#15100C]/70 dark:text-[#F2E6DC]/70 mb-1.5">
+                          {isRTL ? "البريد الإلكتروني *" : "Email Address *"}
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="name@company.com"
+                          required
+                          className="w-full px-3.5 py-2.5 rounded-[12px] bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] placeholder-[#15100C]/40 dark:placeholder-[#F2E6DC]/40 focus:outline-none focus:border-[#D2392A] focus:ring-1 focus:ring-[#D2392A] transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-[#15100C]/70 dark:text-[#F2E6DC]/70 mb-1.5">
+                          {isRTL ? "رقم الهاتف / واتساب *" : "Phone / WhatsApp *"}
+                        </label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="+20 100 ... / +971 50 ..."
+                          required
+                          className="w-full px-3.5 py-2.5 rounded-[12px] bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] placeholder-[#15100C]/40 dark:placeholder-[#F2E6DC]/40 focus:outline-none focus:border-[#D2392A] focus:ring-1 focus:ring-[#D2392A] transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Service Selection Dropdown */}
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-[#15100C]/70 dark:text-[#F2E6DC]/70 mb-1.5">
-                        {currentConfig.label}
+                        {isRTL ? "الخدمة المطلوبة (8 خدمات معتمدة + Not sure yet)" : "Required Discipline (8 Services + Not sure yet)"}
                       </label>
-                      <input
-                        type="text"
-                        value={extraField}
-                        onChange={(e) => setExtraField(e.target.value)}
-                        placeholder={currentConfig.placeholder}
-                        className="w-full px-3.5 py-2.5 rounded-[12px] bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm text-[#15100C] dark:text-[#F2E6DC] placeholder-[#15100C]/40 dark:placeholder-[#F2E6DC]/40 focus:outline-none focus:border-[#D2392A] focus:ring-1 focus:ring-[#D2392A] transition-colors"
-                      />
+                      <select
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                        className="w-full px-3.5 py-2.5 rounded-[12px] bg-[#FAF7F2] dark:bg-[#061516] border border-black/10 dark:border-white/10 text-sm font-medium text-[#15100C] dark:text-[#F2E6DC] focus:outline-none focus:border-[#D2392A] focus:ring-1 focus:ring-[#D2392A] transition-colors cursor-pointer"
+                      >
+                        {SERVICE_OPTIONS.map((opt) => (
+                          <option key={opt.en} value={opt.en}>
+                            {isRTL ? opt.ar : opt.en}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     {/* Textarea */}

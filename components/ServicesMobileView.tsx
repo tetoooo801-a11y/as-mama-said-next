@@ -23,83 +23,10 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import FadeIn from "@/components/ui/FadeIn";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { useLanguage } from "@/context/LanguageContext";
+import { SERVICES_8 } from "@/data/servicesData";
 
-/* -------------------------------------------------------------------------- */
-/* 1. CORE SERVICES DATA                                                     */
-/* -------------------------------------------------------------------------- */
-const MOBILE_SERVICES = [
-  {
-    num: "01",
-    nameEn: "3D Modeling",
-    nameAr: "النمذجة ثلاثية الأبعاد",
-    taglineEn: "Spatial Geometry & Assets",
-    taglineAr: "هندسة المجسمات والبيئات",
-    descEn:
-      "Creation of detailed objects, characters, or environments tailored for commercial ads, games, and cinematic visuals.",
-    descAr:
-      "بناء مجسمات وعوالم ثلاثية الأبعاد بدقة فائقة مخصصة للمنتجات والإعلانات والألعاب والعروض السينمائية.",
-    image: "/assets/images/service-1-3d.png",
-    tagsEn: ["CAD Precision", "Sub-D Surfaces", "CGI Assets"],
-    tagsAr: ["دقة متناهية", "أصول سينمائية", "نمذجة منتجات"],
-  },
-  {
-    num: "02",
-    nameEn: "Photoreal Rendering",
-    nameAr: "الرندرة الواقعية",
-    taglineEn: "Light & Material Choreography",
-    taglineAr: "إضاءة وخامات سينمائية",
-    descEn:
-      "Photorealistic renders showcasing designs with custom lighting, tactile materials, and ray-traced accuracy.",
-    descAr:
-      "معالجة وإخراج فوتوغرافي واقعي يبرز جماليات المواد والخامات والإضاءة المصممة بعناية لإحياء المفاهيم.",
-    image: "/assets/images/service-2-render.png",
-    tagsEn: ["Ray-Tracing", "PBR Materials", "8K Output"],
-    tagsAr: ["محاكاة ضوئية", "خامات فيزيائية", "جودة 8K"],
-  },
-  {
-    num: "03",
-    nameEn: "Motion Design",
-    nameAr: "تصميم الحركة والأنيميشن",
-    taglineEn: "Viral Social & Cinematic Hooks",
-    taglineAr: "موشن يخطف الانتباه فوراً",
-    descEn:
-      "Dynamic animations and kinetic graphics that stop the scroll, add energy, and tell compelling brand stories.",
-    descAr:
-      "تحريك احترافي وموشن جرافيك ديناميكي يضفي طاقة وحيوية ويوقف التمرير على منصات التواصل الاجتماعي.",
-    image: "/assets/images/service-3-motion.png",
-    tagsEn: ["Kinetic Motion", "Viral Hooks", "Social Reels"],
-    tagsAr: ["تحريك سينمائي", "ريلز فيروسية", "موشن جرافيك"],
-  },
-  {
-    num: "04",
-    nameEn: "Brand Identity",
-    nameAr: "الهوية البصرية والبراندينج",
-    taglineEn: "Cohesive Visual Ecosystems",
-    taglineAr: "أنظمة هوية متكاملة",
-    descEn:
-      "Full brand systems — from distinctive logos to packaging and guidelines — that establish market authority.",
-    descAr:
-      "صناعة أنظمة بصرية متكاملة — من تصميم الشعار وحتى منظومة الهوية الكاملة التي تضمن حضوراً فريداً ومؤثراً.",
-    image: "/assets/images/service-4-branding.png",
-    tagsEn: ["Identity Systems", "Guidelines", "Packaging"],
-    tagsAr: ["أنظمة هوية", "أدلة بصرية", "تغليف منتجات"],
-  },
-  {
-    num: "05",
-    nameEn: "Interactive Web",
-    nameAr: "تصميم الويب والتجارب الرقمية",
-    taglineEn: "High-Converting Flagships",
-    taglineAr: "منصات ومواقع تفاعلية",
-    descEn:
-      "Modern, conversion-focused websites engineered with 3D canvas, smooth motion, and sub-second performance.",
-    descAr:
-      "تصميم مواقع وتطبيقات عصرية وتفاعلية تضع تجربة المستخدم وتناسق الخطوط وتوليد المبيعات في المقدمة.",
-    image: "/assets/images/service-5-web.png",
-    tagsEn: ["Next.js & WebGL", "Responsive UX", "Lighthouse 99+"],
-    tagsAr: ["تقنيات WebGL", "تجربة مستخدم", "سرعة استجابة"],
-  },
-];
 
 /* -------------------------------------------------------------------------- */
 /* 2. PIPELINE ROADMAP DATA                                                  */
@@ -225,24 +152,24 @@ export default function ServicesMobileView() {
       <section className="px-4 py-8 sm:py-10">
         <div className="flex flex-col items-center text-center mb-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#D2392A]/10 text-[#D2392A] border border-[#D2392A]/20 mb-2.5">
-            <span>{isRTL ? "مجالات الإبداع" : "CORE DISCIPLINES"}</span>
+            <span>{isRTL ? "خدماتنا" : "OUR SERVICES"}</span>
           </div>
           <h2
             className="text-2xl sm:text-3xl font-black uppercase text-[#15100C] dark:text-[#F2E6DC] leading-tight"
             style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
           >
-            {isRTL ? "ما نبنيه ونبدع فيه" : "What We Craft"}
+            {isRTL ? "ثماني خدمات. منظومة واحدة متصلة." : "Eight services. One connected system."}
           </h2>
           <p className="mt-1 text-xs text-[#15100C]/70 dark:text-[#F2E6DC]/70 max-w-xs">
             {isRTL
-              ? "5 مجالات إبداعية متكاملة تحت سقف استوديو واحد"
-              : "5 integrated disciplines engineered under one creative roof"}
+              ? "من الاستراتيجية والمحتوى الإبداعي إلى الإنتاج، السوشيال، وإعلانات الأداء — نربط العمل حول أهدافك."
+              : "From strategy and creative to production, social, and performance — connected around your goals."}
           </p>
         </div>
 
-        {/* Quick Number Tabs */}
-        <div className="flex items-center justify-center gap-2 mb-4 overflow-x-auto pb-1">
-          {MOBILE_SERVICES.map((s, idx) => {
+        {/* Quick Number Tabs (01 to 08) */}
+        <div className="flex items-center justify-start gap-1.5 mb-4 overflow-x-auto pb-1 no-scrollbar">
+          {SERVICES_8.map((s, idx) => {
             const isActive = activeServiceIdx === idx;
             return (
               <button
@@ -263,7 +190,8 @@ export default function ServicesMobileView() {
 
         {/* Active Service Showcase Card */}
         {(() => {
-          const s = MOBILE_SERVICES[activeServiceIdx];
+          const s = SERVICES_8[activeServiceIdx];
+          const scopeList = isRTL ? s.scopeAr : s.scopeEn;
           return (
             <motion.div
               key={s.num}
@@ -281,13 +209,18 @@ export default function ServicesMobileView() {
                   loading="lazy"
                 />
                 <span className="absolute top-3 start-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[11px] font-mono font-bold">
-                  {s.num} / 05
+                  {s.num} / 08
                 </span>
+                {s.client && (
+                  <span className="absolute bottom-2 start-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono text-white/90">
+                    {s.client}
+                  </span>
+                )}
               </div>
 
               <div>
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#D2392A] block mb-1">
-                  {isRTL ? s.taglineAr : s.taglineEn}
+                  &ldquo;{isRTL ? s.headlineAr : s.headlineEn}&rdquo;
                 </span>
                 <h3
                   className="text-xl font-black uppercase text-[#15100C] dark:text-[#F2E6DC] leading-snug mb-2"
@@ -299,9 +232,9 @@ export default function ServicesMobileView() {
                   {isRTL ? s.descAr : s.descEn}
                 </p>
 
-                {/* Deliverable Tags */}
+                {/* Deliverable Tags / Scope */}
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-black/[0.06] dark:border-white/10">
-                  {(isRTL ? s.tagsAr : s.tagsEn).map((tag, tIdx) => (
+                  {scopeList.map((tag, tIdx) => (
                     <span
                       key={tIdx}
                       className="px-2.5 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.06] text-[10.5px] font-mono font-semibold text-[#15100C]/80 dark:text-[#F2E6DC]/80"
@@ -309,6 +242,17 @@ export default function ServicesMobileView() {
                       {tag}
                     </span>
                   ))}
+                </div>
+
+                {/* Start Project CTA Button */}
+                <div className="mt-4 pt-3 border-t border-black/[0.06] dark:border-white/10">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded-xl bg-[#D2392A] text-white font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95"
+                  >
+                    <span>{isRTL ? "ابدأ مشروعك" : "Start Project"}</span>
+                    <ArrowRight size={13} className="rtl:rotate-180" />
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -477,7 +421,7 @@ export default function ServicesMobileView() {
                     className="block text-lg font-black text-[#A3E635] leading-none mb-0.5"
                     style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
                   >
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} delay={idx * 0.1} />
                   </span>
                   <span className="text-[8.5px] text-white/70 font-semibold block leading-tight truncate">
                     {stat.label}
@@ -653,24 +597,24 @@ export default function ServicesMobileView() {
       <section className="px-4 pb-12 pt-4 max-w-lg mx-auto w-full">
         <div className="rounded-[24px] bg-[#15100C] dark:bg-[#07130e] text-white p-6 text-center border border-white/10 shadow-xl">
           <span className="inline-block px-3 py-1 rounded-full bg-[#D2392A] text-white text-[11px] font-bold uppercase tracking-wider mb-3">
-            {isRTL ? "جاهزون للبدء" : "READY TO LAUNCH"}
+            {isRTL ? "تواصل معنا" : "GET IN TOUCH"}
           </span>
           <h3
             className="text-xl sm:text-2xl font-black uppercase text-white mb-2 leading-tight"
             style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
           >
-            {isRTL ? "دعنا نبني مشروعك القادم" : "Let's Build Something Iconic"}
+            {isRTL ? "فلنبدأ بالسؤال الصحيح." : "Let's start with the right question."}
           </h3>
           <p className="text-xs text-white/75 mb-5 max-w-xs mx-auto leading-relaxed">
             {isRTL
-              ? "فريقنا الإبداعي والتقني جاهز لتحويل فكرتك إلى واقع حي يفرض سيطرته في السوق."
-              : "Our creative and technical war room is ready to transform your vision into commercial authority."}
+              ? "أخبرنا بما تبنيه، تغيره، تطلقه، أو تسعى لحله."
+              : "Tell us what you are building, changing, launching, or trying to solve."}
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-full bg-[#D2392A] hover:bg-[#b02e20] text-white font-black text-xs uppercase tracking-wider shadow-lg active:scale-95 transition-all"
           >
-            <span>{isRTL ? "ابدأ مشروعك الآن" : "Start Your Project"}</span>
+            <span>{isRTL ? "ابدأ مشروعك" : "Start a project"}</span>
             <Send size={14} className="rtl:rotate-180" />
           </Link>
         </div>

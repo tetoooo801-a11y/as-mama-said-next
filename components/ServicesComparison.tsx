@@ -90,14 +90,15 @@ export default function ServicesComparison() {
         {/* Section Header */}
         <FadeIn delay={0.1} y={25}>
           <div className="flex flex-col items-center text-center mb-14 sm:mb-18 md:mb-20">
-            <div className="flex items-center gap-2.5 mb-3.5">
+            <div className="flex items-center justify-center gap-2.5 mb-3.5">
               <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
               <span className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] text-[#D2392A]">
                 {isRTL ? "الفارق الحقيقي" : "THE STUDIO ADVANTAGE"}
               </span>
+              <span className="w-5 sm:w-6 h-[2.5px] bg-[#D2392A] inline-block shrink-0" />
             </div>
             <h2
-              className="font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.02] max-w-3xl"
+              className="font-black uppercase tracking-tight text-[#15100C] dark:text-[#F2E6DC] leading-[1.02] max-w-3xl text-balance"
               style={{
                 fontSize: "clamp(2.4rem, 5.5vw, 4.8rem)",
                 fontFamily: "var(--font-kanit), 'Kanit', sans-serif",
@@ -105,7 +106,7 @@ export default function ServicesComparison() {
             >
               {isRTL ? "لماذا تختارنا؟" : "Why Choose Us"}
             </h2>
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl font-normal leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[1.05rem] text-[#15100C]/75 dark:text-[#F2E6DC]/75 max-w-2xl mx-auto font-normal leading-relaxed text-balance">
               {isRTL
                 ? "ابتعدنا عن الروتين البيروقراطي والأسعار المبالغ فيها بلا عائد، وبنينا استوديو إبداعي يركز على أعلى معايير الحرفة الفنية والسرعة والأثر الحقيقي."
                 : "We stripped away agency overhead, endless account managers, and cookie-cutter templates to deliver unmatched craftsmanship, velocity, and measurable brand stature."}
