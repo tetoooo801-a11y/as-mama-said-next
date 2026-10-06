@@ -272,8 +272,30 @@ export default function Results() {
   const current = REELS[index];
   const embed = getEmbedInfo(current.url, current.type);
 
-  const [showDetails, setShowDetails] = useState(false);
-  const [isPlayingMobile, setIsPlayingMobile] = useState(false);
+  const touchStartXRef = useRef(null);
+  const touchStartYRef = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartXRef.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (isRTL) {
+        if (deltaX > 0) go(1);
+        else go(-1);
+      } else {
+        if (deltaX < 0) go(1);
+        else go(-1);
+      }
+    }
+  };
 
   // Multi-click detection
   const clickCountRef = useRef(0);
@@ -315,7 +337,7 @@ export default function Results() {
     />
   );
 
-  // ─── Rich Content Panel (Desktop and Mobile expandable) ────────────────────
+  // ─── Rich Content Panel (Unified Desktop and Mobile) ───────────────────────
   const ContentSide = () => (
     <div className="results-side">
       {/* Eyebrow & Live Reel indicator */}
@@ -401,286 +423,161 @@ export default function Results() {
 
   return (
     <section id="results" className="reels-section">
+      <div className="wrap">
+        {/* Section Heading */}
+        <div className="head flex flex-col items-center text-center max-w-2xl mx-auto">
+          <h2 className="text-balance">{t.results.headTitle}</h2>
+          <p className="text-balance">{t.results.headDesc}</p>
+        </div>
 
-      {/* ══════════════════════════════════════════════════════════════
-          MOBILE VIEW  < 768px (Condensed visual reference layout)
-      ══════════════════════════════════════════════════════════════ */}
-      <div className="block md:hidden px-5 py-10 max-w-lg mx-auto">
-        <div className="rounded-2xl sm:rounded-[24px] bg-[#0c1b1c] text-[#F2E6DC] border border-white/10 p-4 sm:p-5 shadow-lg overflow-hidden">
-          
-          {/* Media frame */}
-          <div
-            className="relative aspect-[16/10] sm:aspect-[9/16] w-full rounded-xl overflow-hidden bg-black/60 border border-white/10 mb-4 group cursor-pointer"
-            onClick={handleInteractiveClick}
-            onDoubleClick={openExternal}
-            title={isRTL ? "انقر مرتين للفتح في المنصة" : "Double-tap to open externally"}
-          >
-            {isPlayingMobile ? (
-              <ReelFrame className={current.type === "vimeo" ? "reel-iframe-vimeo" : "w-full h-full border-none"} />
-            ) : (
-              <div className="relative w-full h-full flex items-center justify-center bg-black/40">
-                <img
-                  src={current.image}
-                  alt={current.label}
-                  className="w-full h-full object-cover opacity-75"
-                />
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsPlayingMobile(true);
-                  }}
-                  className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-[#D2392A] text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform"
-                  aria-label="Play video"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                </button>
-                <div className="absolute top-3 start-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-sm text-[11px] font-bold tracking-wider text-white border border-white/15 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#D2392A] animate-pulse" />
-                  <span>{current.label}: {isRTL ? current.titleAr : current.titleEn}</span>
-                </div>
-              </div>
-            )}
-
-            {/* Quick External Jump Button */}
-            <a
-              href={current.externalUrl || current.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => {
-                e.stopPropagation();
-                openExternal();
-              }}
-              className="absolute bottom-2.5 end-2.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1.5 border border-white/20 hover:bg-[#D2392A] transition-colors z-20"
-            >
-              <span>{current.type === "vimeo" ? (isRTL ? "فتح في فيميو ↗" : "Vimeo ↗") : (isRTL ? "فتح في إنستغرام ↗" : "Instagram ↗")}</span>
-            </a>
-          </div>
-
-          {/* Red Stat & Short Highlight Text */}
-          <div className="mb-4">
-            <span
-              className="block font-black text-3xl sm:text-4xl text-[#D2392A] leading-tight"
-              style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-            >
-              20+
-            </span>
-            <p className="text-xs sm:text-sm text-[#F2E6DC]/80 font-normal leading-relaxed mt-0.5">
-              {isRTL
-                ? "مشاريع وعلامات تجارية وقصص صنعناها بإتقان لتترك أثراً حقيقياً."
-                : "Projects, brands, and stories we've brought to life on screen."}
-            </p>
-          </div>
-
-          {/* Reel Switcher Buttons (All 13 items) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-white/10 mb-3.5 scrollbar-none">
+        {/* Quick Reel Selector Pills (Horizontal scrollable track) */}
+        <div className="reel-pill-track-wrapper">
+          <div className="reel-pill-track">
             {REELS.map((r, i) => (
               <button
                 key={r.id || i}
                 type="button"
-                onClick={() => {
-                  goTo(i);
-                  setIsPlayingMobile(false);
-                }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors ${
-                  i === index
-                    ? "bg-[#D2392A] text-white"
-                    : "bg-white/5 hover:bg-white/10 text-white/70"
-                }`}
+                onClick={() => goTo(i)}
+                className={`reel-pill-btn ${i === index ? "reel-pill-btn--active" : ""}`}
+                aria-label={`Select ${r.label}`}
               >
-                {r.label}
+                <span className="reel-pill-dot" />
+                <span className="reel-pill-label">{r.label}</span>
+                {r.type === "vimeo" && (
+                  <span className="reel-pill-badge">Vimeo</span>
+                )}
               </button>
             ))}
           </div>
-
-          {/* Action Row */}
-          <div className="flex items-center justify-between gap-2">
-            <a
-              href={current.externalUrl || current.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 hover:text-[#D2392A] transition-colors"
-            >
-              {current.type === "vimeo" ? (
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                  <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.135L0 7.197c1.185-1.044 2.351-2.083 3.501-3.123 1.577-1.418 2.766-2.158 3.567-2.222 1.88-.156 3.037.979 3.475 3.407.472 2.607.8 4.246.983 4.917.55 2.484 1.15 3.727 1.802 3.727.495 0 1.233-.655 2.213-1.966.979-1.309 1.503-2.309 1.57-2.999.123-1.171-.341-1.758-1.393-1.758-.517 0-1.054.12-1.611.359 1.066-3.486 3.102-5.181 6.108-5.084 2.226.07 3.327 1.341 3.303 3.811z" />
-                </svg>
-              ) : (
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              )}
-              <span>{current.type === "vimeo" ? "Vimeo Video ↗" : "@asmamasaid ↗"}</span>
-            </a>
-
-            <button
-              type="button"
-              onClick={() => setShowDetails(!showDetails)}
-              className="text-xs text-[#D2392A] hover:underline font-medium"
-            >
-              {showDetails ? (isRTL ? "إخفاء التفاصيل" : "Hide details") : (isRTL ? "تفاصيل الإنتاج +" : "Production details +")}
-            </button>
-          </div>
-
-          {/* Expandable Secondary Details */}
-          {showDetails && (
-            <div className="mt-4 pt-4 border-t border-white/10 text-xs text-white/70 space-y-3 animate-fadeIn">
-              <p className="leading-relaxed">{isRTL ? current.highlightAr : current.highlightEn}</p>
-              {t.results.stats && (
-                <div className="grid grid-cols-3 gap-2 pt-1 text-center">
-                  {t.results.stats.map((stat, sIdx) => (
-                    <div key={sIdx} className="p-2 rounded-lg bg-white/5 border border-white/5">
-                      <div className="text-sm font-bold text-[#D2392A]">
-                        <AnimatedCounter value={stat.num} delay={sIdx * 0.1} />
-                      </div>
-                      <div className="text-[10px] text-white/60 truncate">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
         </div>
-      </div>
 
-      {/* ══════════════════════════════════════════════════════════════
-          DESKTOP VIEW  ≥ 768px   (phone-mockup design)
-      ══════════════════════════════════════════════════════════════ */}
-      <div className="reel-desktop-view">
-        <div className="wrap">
-          <div className="head flex flex-col items-center text-center max-w-2xl mx-auto">
-            <h2 className="text-balance">{t.results.headTitle}</h2>
-            <p className="text-balance">{t.results.headDesc}</p>
-          </div>
-
-          <div className="reel-layout">
-            {/* Phone mockup with left and right peek cards */}
-            <div className="phone-mockup-wrap">
-              <div className="phone-carousel-stage">
-                {/* Left Peek (Previous Reel Image) */}
-                <div
-                  className="phone-peek-card phone-peek--left"
-                  onClick={() => go(-1)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Previous reel: ${prevReel.label}`}
-                  title={prevReel.label}
-                >
-                  <img
-                    src={prevReel.image}
-                    alt={prevReel.label}
-                    className="phone-peek-img"
-                  />
-                  <div className="phone-peek-overlay">
-                    <span className="phone-peek-tag">{prevReel.label}</span>
-                    <div className="phone-peek-play">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="6 3 20 12 6 21 6 3" />
-                      </svg>
-                    </div>
+        {/* Unified 3D Phone Mockup Carousel + Content Grid */}
+        <div className="reel-layout">
+          {/* Phone mockup with left and right peek cards */}
+          <div className="phone-mockup-wrap">
+            <div
+              className="phone-carousel-stage"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Left Peek (Previous Reel Image) */}
+              <div
+                className="phone-peek-card phone-peek--left"
+                onClick={() => go(-1)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Previous reel: ${prevReel.label}`}
+                title={prevReel.label}
+              >
+                <img
+                  src={prevReel.image}
+                  alt={prevReel.label}
+                  className="phone-peek-img"
+                />
+                <div className="phone-peek-overlay">
+                  <span className="phone-peek-tag">{prevReel.label}</span>
+                  <div className="phone-peek-play">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6 3 20 12 6 21 6 3" />
+                    </svg>
                   </div>
                 </div>
+              </div>
 
-                {/* Center Phone Shell */}
-                <div className="phone-shell">
-                  <div className="phone-notch"><div className="phone-notch-pill" /></div>
+              {/* Center Phone Shell */}
+              <div className="phone-shell">
+                <div className="phone-notch"><div className="phone-notch-pill" /></div>
 
-                  <div
-                    className={`phone-screen ${transitioning ? "phone-fade-out" : "phone-fade-in"} cursor-pointer group`}
-                    onClick={handleInteractiveClick}
-                    onDoubleClick={openExternal}
-                    title={isRTL ? "انقر مرتين للفتح في المنصة" : "Double-click to open externally"}
+                <div
+                  className={`phone-screen ${transitioning ? "phone-fade-out" : "phone-fade-in"} cursor-pointer group`}
+                  onClick={handleInteractiveClick}
+                  onDoubleClick={openExternal}
+                  title={isRTL ? "انقر مرتين للفتح في المنصة" : "Double-click to open externally"}
+                >
+                  <div className="reel-clip-wrap">
+                    <ReelFrame className={current.type === "vimeo" ? "reel-iframe-vimeo" : "reel-iframe"} />
+                  </div>
+
+                  {/* Quick External Jump Pill Badge */}
+                  <a
+                    href={current.externalUrl || current.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openExternal();
+                    }}
+                    className="phone-quick-external-badge"
                   >
-                    <div className="reel-clip-wrap">
-                      <ReelFrame className={current.type === "vimeo" ? "reel-iframe-vimeo" : "reel-iframe"} />
-                    </div>
-
-                    {/* Quick External Jump Pill Badge */}
-                    <a
-                      href={current.externalUrl || current.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openExternal();
-                      }}
-                      className="phone-quick-external-badge"
-                    >
-                      {current.type === "vimeo" ? (
-                        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
-                          <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.135L0 7.197c1.185-1.044 2.351-2.083 3.501-3.123 1.577-1.418 2.766-2.158 3.567-2.222 1.88-.156 3.037.979 3.475 3.407.472 2.607.8 4.246.983 4.917.55 2.484 1.15 3.727 1.802 3.727.495 0 1.233-.655 2.213-1.966.979-1.309 1.503-2.309 1.57-2.999.123-1.171-.341-1.758-1.393-1.758-.517 0-1.054.12-1.611.359 1.066-3.486 3.102-5.181 6.108-5.084 2.226.07 3.327 1.341 3.303 3.811z" />
-                        </svg>
-                      ) : (
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                        </svg>
-                      )}
-                      <span>
-                        {current.type === "vimeo"
-                          ? (isRTL ? "فتح في فيميو ↗" : "Vimeo ↗")
-                          : (isRTL ? "فتح في إنستغرام ↗" : "Instagram ↗")}
-                      </span>
-                    </a>
-                  </div>
-
-                  <div className="phone-home-bar" />
-                </div>
-
-                {/* Right Peek (Next Reel Image) */}
-                <div
-                  className="phone-peek-card phone-peek--right"
-                  onClick={() => go(1)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Next reel: ${nextReel.label}`}
-                  title={nextReel.label}
-                >
-                  <img
-                    src={nextReel.image}
-                    alt={nextReel.label}
-                    className="phone-peek-img"
-                  />
-                  <div className="phone-peek-overlay">
-                    <span className="phone-peek-tag">{nextReel.label}</span>
-                    <div className="phone-peek-play">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="6 3 20 12 6 21 6 3" />
+                    {current.type === "vimeo" ? (
+                      <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
+                        <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.135L0 7.197c1.185-1.044 2.351-2.083 3.501-3.123 1.577-1.418 2.766-2.158 3.567-2.222 1.88-.156 3.037.979 3.475 3.407.472 2.607.8 4.246.983 4.917.55 2.484 1.15 3.727 1.802 3.727.495 0 1.233-.655 2.213-1.966.979-1.309 1.503-2.309 1.57-2.999.123-1.171-.341-1.758-1.393-1.758-.517 0-1.054.12-1.611.359 1.066-3.486 3.102-5.181 6.108-5.084 2.226.07 3.327 1.341 3.303 3.811z" />
                       </svg>
-                    </div>
+                    ) : (
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                      </svg>
+                    )}
+                    <span>
+                      {current.type === "vimeo"
+                        ? (isRTL ? "فتح في فيميو ↗" : "Vimeo ↗")
+                        : (isRTL ? "فتح في إنستغرام ↗" : "Instagram ↗")}
+                    </span>
+                  </a>
+                </div>
+
+                <div className="phone-home-bar" />
+              </div>
+
+              {/* Right Peek (Next Reel Image) */}
+              <div
+                className="phone-peek-card phone-peek--right"
+                onClick={() => go(1)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Next reel: ${nextReel.label}`}
+                title={nextReel.label}
+              >
+                <img
+                  src={nextReel.image}
+                  alt={nextReel.label}
+                  className="phone-peek-img"
+                />
+                <div className="phone-peek-overlay">
+                  <span className="phone-peek-tag">{nextReel.label}</span>
+                  <div className="phone-peek-play">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6 3 20 12 6 21 6 3" />
+                    </svg>
                   </div>
                 </div>
               </div>
-
-              {/* Nav controls */}
-              <div className="reel-nav">
-                <NavArrow dir="prev" onClick={() => go(-1)} id="reelDesktopPrev" />
-                <div className="reel-dots">
-                  {REELS.map((_, i) => (
-                    <button
-                      key={i}
-                      className={`reel-dot ${i === index ? "reel-dot--active" : ""}`}
-                      onClick={() => goTo(i)}
-                      aria-label={`Video ${i + 1}`}
-                    />
-                  ))}
-                </div>
-                <NavArrow dir="next" onClick={() => go(1)} id="reelDesktopNext" />
-              </div>
-              <p className="reel-count">{pad(index + 1)} / {pad(total)}</p>
             </div>
 
-            {/* Side copy */}
-            <ContentSide />
+            {/* Nav controls */}
+            <div className="reel-nav">
+              <NavArrow dir="prev" onClick={() => go(-1)} id="reelUnifiedPrev" />
+              <div className="reel-dots">
+                {REELS.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`reel-dot ${i === index ? "reel-dot--active" : ""}`}
+                    onClick={() => goTo(i)}
+                    aria-label={`Video ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <NavArrow dir="next" onClick={() => go(1)} id="reelUnifiedNext" />
+            </div>
+            <p className="reel-count">{pad(index + 1)} / {pad(total)}</p>
           </div>
+
+          {/* Side copy */}
+          <ContentSide />
         </div>
       </div>
-
     </section>
   );
 }

@@ -1090,130 +1090,211 @@ header.site-nav.scrolled {
 }
 
 /* ═══════════════════════════════════════════════════════
-   MOBILE REEL — Full-screen video (≤ 767px)
-   ═══════════════════════════════════════════════════════
-   Geometry explanation:
-   • 9:16 video fills iframe width. For video height = 100dvh:
-       iframe_width = 100dvh × 9/16 ≈ 122vw (we use 128vw)
-   • left:-14vw + right:-14vw → iframe is 128vw, centred
-   • top:-9%  clips Instagram header bar
-   • height:150% pushes Instagram footer below the fold
+   UNIFIED 3D PHONE MOCKUP & REEL PILL TRACK (Responsive)
    ═══════════════════════════════════════════════════════ */
 
-/* Toggle: mobile shows mobile view, desktop shows phone mockup */
-.reel-mobile-view  { display: none; }
-.reel-mobile-info  { display: none; }
-.reel-desktop-view { display: block; }
-
-@media (max-width: 767px) {
-  .reel-mobile-view  { display: block; }
-  .reel-mobile-info  {
-    display: block;
-    background: var(--theme-bg);
-    padding: 36px 20px 60px 20px;
-  }
-  .reel-desktop-view { display: none;  }
-}
-
-.reel-mobile-view {
-  position: relative;
+/* Quick reel selector pills track */
+.reel-pill-track-wrapper {
   width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  background: #000;
-  overflow: hidden;
+  max-width: 960px;
+  margin: 0 auto clamp(20px, 3vh, 32px) auto;
+  position: relative;
 }
 
-.reel-fs-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: #000;
-  transition: opacity 0.26s ease;
-}
-.reel-fs-in  { opacity: 1; }
-.reel-fs-out { opacity: 0; }
-
-.reel-fs-iframe {
-  position: absolute;
-  left: 50%;
-  top: -115px;
-  width: 100vw;
-  height: 100dvh;
-  transform: translateX(-50%) scale(2.15);
-  transform-origin: top center;
-  border: none;
-  display: block;
-}
-
-/* Tap zones */
-.reel-fs-controls {
-  position: absolute;
-  inset: 0;
+.reel-pill-track {
   display: flex;
-  z-index: 10;
-  pointer-events: none;
-}
-.reel-fs-zone {
-  flex: 1;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  pointer-events: all;
-  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 6px 12px 14px 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
 }
 
-/* Dots */
-.reel-fs-dots {
-  position: absolute;
-  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+@media (min-width: 992px) {
+  .reel-pill-track {
+    justify-content: center;
+  }
+}
+
+.reel-pill-track::-webkit-scrollbar {
+  display: none;
+}
+
+.reel-pill-btn {
+  display: inline-flex;
+  align-items: center;
   gap: 7px;
-  z-index: 20;
-}
-.reel-fs-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.38);
-  border: none;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text-muted);
   cursor: pointer;
-  transition: background .2s, transform .2s;
-}
-.reel-fs-dot--active { background: #fff; transform: scale(1.4); }
-
-/* Counter */
-.reel-fs-counter {
-  position: absolute;
-  top: calc(18px + env(safe-area-inset-top, 0px));
-  right: 18px;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-  z-index: 20;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+  flex-shrink: 0;
 }
 
-/* Instagram button */
-.reel-fs-ig {
-  position: absolute;
-  top: calc(14px + env(safe-area-inset-top, 0px));
-  left: 14px;
-  width: 36px; height: 36px;
+.reel-pill-btn:hover {
+  background: var(--theme-bg-alt);
+  color: var(--theme-text);
+  border-color: rgba(210, 57, 42, 0.35);
+  transform: translateY(-1px);
+}
+
+.reel-pill-btn--active {
+  background: var(--red) !important;
+  color: #fff !important;
+  border-color: var(--red) !important;
+  box-shadow: 0 4px 14px rgba(210, 57, 42, 0.35);
+}
+
+.reel-pill-dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  text-decoration: none;
-  z-index: 20;
-  transition: background .2s;
+  background: currentColor;
+  opacity: 0.6;
 }
-.reel-fs-ig:hover { background: rgba(225,48,108,0.75); }
+
+.reel-pill-btn--active .reel-pill-dot {
+  opacity: 1;
+  background: #fff;
+  box-shadow: 0 0 6px #fff;
+}
+
+.reel-pill-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  letter-spacing: 0.04em;
+}
+
+/* Responsive Reel Layout for Tablets & Mobile */
+@media (max-width: 991px) {
+  .reel-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .results-side {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .results-side-header {
+    justify-content: center;
+  }
+
+  .results-actions {
+    justify-content: center;
+  }
+
+  .reel-highlight-box {
+    text-align: start;
+  }
+}
+
+/* Mobile sizing for phone mockup (< 768px) */
+@media (max-width: 767px) {
+  .phone-mockup-wrap {
+    width: 100%;
+    max-width: 100%;
+    gap: 16px;
+  }
+
+  .phone-carousel-stage {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 4px;
+  }
+
+  .phone-shell {
+    width: clamp(190px, 54vw, 230px);
+    border-radius: 36px;
+    padding: 7px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 0 0 6px #1c1c1e,
+      0 0 0 7px rgba(255,255,255,0.05),
+      0 20px 45px rgba(0,0,0,0.65),
+      0 6px 20px rgba(0,0,0,0.4);
+  }
+
+  .phone-screen {
+    border-radius: 30px;
+  }
+
+  .phone-peek-card {
+    width: clamp(95px, 26vw, 120px);
+    border-radius: 24px;
+    opacity: 0.82;
+  }
+
+  .phone-peek--left {
+    left: 2px;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  .phone-peek--right {
+    right: 2px;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  .phone-peek-overlay {
+    padding: 10px 8px;
+  }
+
+  .phone-peek-tag {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
+
+  .phone-peek-play {
+    width: 32px;
+    height: 32px;
+  }
+
+  .phone-peek-play svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .reel-dots {
+    gap: 5px;
+  }
+
+  .reel-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .reel-arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .phone-quick-external-badge {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+}
+
 
 /* ---------- LEGACY ABOUT (Preserved without overriding container padding) ---------- */
 .legacy-about {
