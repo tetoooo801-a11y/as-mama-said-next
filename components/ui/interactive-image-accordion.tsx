@@ -12,55 +12,50 @@ interface AccordionItemData {
   categoryEn: string;
   categoryAr: string;
   videoUrl: string;
-  posterUrl: string;
+  posterUrl?: string;
 }
 
-// --- Data for the studio gallery video accordion (from Downloads/Reals) ---
+// --- Data for the studio gallery video accordion (from Downloads/wep) ---
 const accordionItems: AccordionItemData[] = [
   {
     id: 1,
-    titleEn: "3D Modeling & CGI",
-    titleAr: "النمذجة ثلاثية الأبعاد",
-    categoryEn: "Reel 01 • Spatial Geometry",
-    categoryAr: "ريل 01 • مجسمات وبيئات",
-    videoUrl: "/assets/videos/reels/1.mp4",
-    posterUrl: "/assets/videos/reels/1-poster.jpg",
+    titleEn: "1650 Dirty Espresso",
+    titleAr: "1650 كافيه — ذا ديرتي إسبريسو",
+    categoryEn: "Reel 01 • Campaign Production",
+    categoryAr: "ريل 01 • إنتاج إعلاني",
+    videoUrl: "/assets/videos/wep/dirty-espresso-1650.webm",
   },
   {
     id: 2,
-    titleEn: "Cinematic Rendering",
-    titleAr: "الرندرة الواقعية",
-    categoryEn: "Reel 02 • Lighting & Visuals",
-    categoryAr: "ريل 02 • إضاءة وخامات",
-    videoUrl: "/assets/videos/reels/2.mp4",
-    posterUrl: "/assets/videos/reels/2-poster.jpg",
+    titleEn: "Rabbit Rapid Delivery",
+    titleAr: "رابيت — سرعة التوصيل",
+    categoryEn: "Reel 02 • High-Paced Commercial",
+    categoryAr: "ريل 02 • إعلان تجاري سريع",
+    videoUrl: "/assets/videos/wep/rabbit.webm",
   },
   {
     id: 3,
-    titleEn: "Motion & Film",
-    titleAr: "تصميم الحركة والأنيميشن",
-    categoryEn: "Reel 03 • Kinetic Direction",
-    categoryAr: "ريل 03 • إخراج حركي",
-    videoUrl: "/assets/videos/reels/3.mp4",
-    posterUrl: "/assets/videos/reels/3-poster.jpg",
+    titleEn: "Woods Living & Design",
+    titleAr: "وودز — هوية وتصميم مساحات",
+    categoryEn: "Reel 03 • Brand & Space Direction",
+    categoryAr: "ريل 03 • علامة وتصميم مساحات",
+    videoUrl: "/assets/videos/wep/woods.webm",
   },
   {
     id: 4,
-    titleEn: "Brand Identity",
-    titleAr: "الهوية البصرية",
-    categoryEn: "Reel 04 • Visual Systems",
-    categoryAr: "ريل 04 • أنظمة الهوية",
-    videoUrl: "/assets/videos/reels/4.mp4",
-    posterUrl: "/assets/videos/reels/4-poster.jpg",
+    titleEn: "Summer Campaign Launch",
+    titleAr: "حملة الصيف — إطلاق تجاري",
+    categoryEn: "Reel 04 • Seasonal Campaign",
+    categoryAr: "ريل 04 • إطلاق موسمي",
+    videoUrl: "/assets/videos/wep/summer-campaign.webm",
   },
   {
     id: 5,
-    titleEn: "Digital Experiences",
-    titleAr: "التجارب الرقمية",
-    categoryEn: "Reel 05 • Interactive & Web",
-    categoryAr: "ريل 05 • ويب وتطبيقات",
-    videoUrl: "/assets/videos/reels/5.mp4",
-    posterUrl: "/assets/videos/reels/5-poster.jpg",
+    titleEn: "90s Spotlight Nostalgia",
+    titleAr: "خطف الأضواء — نوستالجيا التسعينات",
+    categoryEn: "Reel 05 • Viral Storytelling",
+    categoryAr: "ريل 05 • سرد قصصي فيروسي",
+    videoUrl: "/assets/videos/wep/spotlight-90s.webm",
   },
 ];
 
@@ -85,7 +80,7 @@ const AccordionItem = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [srcLoaded, setSrcLoaded] = useState(false);
 
-  // Load src only once the section is in view
+  // Load src once the section is in view
   useEffect(() => {
     if (sectionVisible && !srcLoaded) {
       setSrcLoaded(true);
@@ -131,27 +126,16 @@ const AccordionItem = ({
       onMouseEnter={onActivate}
       onClick={onActivate}
     >
-      {/* Background static poster frame */}
-      <img
-        src={item.posterUrl}
-        alt={isRTL ? item.titleAr : item.titleEn}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        loading="eager"
-      />
-
-      {/* Reel Video */}
+      {/* Reel Video — natively displays first frame at t=0.001 */}
       <video
         ref={videoRef}
         src={srcLoaded ? `${item.videoUrl}#t=0.001` : undefined}
-        poster={item.posterUrl}
         loop
         muted={isMuted}
         playsInline
-        preload="metadata"
+        preload="auto"
         onPlay={() => setIsPlaying(true)}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:scale-105 ${
-          isActive && isPlaying ? "opacity-100" : "opacity-0"
-        }`}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
       {/* Overlay */}
@@ -159,7 +143,7 @@ const AccordionItem = ({
         className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
           isActive
             ? "bg-gradient-to-t from-black/90 via-black/25 to-transparent"
-            : "bg-gradient-to-b from-black/45 via-black/15 to-black/65 group-hover:from-black/30 group-hover:via-black/10 group-hover:to-black/50"
+            : "bg-gradient-to-b from-black/55 via-black/20 to-black/75 group-hover:from-black/35 group-hover:via-black/10 group-hover:to-black/55"
         }`}
       />
 
@@ -219,12 +203,17 @@ export function LandingAccordionItem() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setSectionVisible(true);
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setSectionVisible(true);
+          observer.disconnect();
+        }
       },
-      { rootMargin: "200px" }
+      { threshold: 0.1 }
     );
+
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -233,8 +222,7 @@ export function LandingAccordionItem() {
     setActiveIndex(index);
   };
 
-  const toggleMobileSound = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const toggleMobileSound = () => {
     if (mobileVideoRef.current) {
       const nextMuted = !isMobileMuted;
       mobileVideoRef.current.muted = nextMuted;
@@ -334,20 +322,11 @@ export function LandingAccordionItem() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              {/* Static background poster to avoid any flash */}
-              <img
-                src={activeItem.posterUrl}
-                alt={isRTL ? activeItem.titleAr : activeItem.titleEn}
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="eager"
-              />
-
               {/* Active Video Player */}
               <video
                 key={activeItem.id}
                 ref={mobileVideoRef}
                 src={`${activeItem.videoUrl}#t=0.001`}
-                poster={activeItem.posterUrl}
                 autoPlay
                 loop
                 muted={isMobileMuted}
@@ -434,11 +413,13 @@ export function LandingAccordionItem() {
                         : "bg-white dark:bg-[#0A1617] border-black/[0.08] dark:border-white/10 text-[#15100C]/70 dark:text-[#F2E6DC]/70 hover:bg-black/[0.04]"
                     }`}
                   >
-                    <div className="relative w-9 h-11 rounded-lg overflow-hidden shrink-0 bg-black/20">
-                      <img
-                        src={item.posterUrl}
-                        alt=""
-                        className="w-full h-full object-cover"
+                    <div className="relative w-9 h-11 rounded-lg overflow-hidden shrink-0 bg-black/40">
+                      <video
+                        src={`${item.videoUrl}#t=0.001`}
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover pointer-events-none"
                       />
                       {isActive && (
                         <div className="absolute inset-0 bg-[#D2392A]/25 flex items-center justify-center">
@@ -448,12 +429,9 @@ export function LandingAccordionItem() {
                     </div>
                     <div className="flex flex-col">
                       <span className="text-[9.5px] font-mono font-bold text-[#D2392A]">
-                        0{item.id}
+                        REEL 0{item.id}
                       </span>
-                      <span
-                        className="text-xs font-bold leading-tight line-clamp-1 max-w-[90px]"
-                        style={{ fontFamily: "var(--font-kanit), 'Kanit', sans-serif" }}
-                      >
+                      <span className="text-xs font-bold leading-none line-clamp-1">
                         {isRTL ? item.titleAr : item.titleEn}
                       </span>
                     </div>
