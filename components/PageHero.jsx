@@ -15,10 +15,10 @@ export default function PageHero({
       {/* Ambient Moving Blobs (Motion inside Hero) */}
       <motion.span
         animate={{
-          x: [0, 8, -4, 0],
-          y: [0, -8, 8, 0],
-          scale: [1, 1.05, 0.96, 1],
-          opacity: [0.32, 0.44, 0.35, 0.32],
+          x: [0, 6, -3, 0],
+          y: [0, -6, 6, 0],
+          scale: [1, 1.04, 0.97, 1],
+          opacity: [0.20, 0.28, 0.22, 0.20],
         }}
         transition={{
           duration: 9,
@@ -29,10 +29,10 @@ export default function PageHero({
       />
       <motion.span
         animate={{
-          x: [0, -8, 6, 0],
-          y: [0, 8, -8, 0],
-          scale: [1, 0.96, 1.04, 1],
-          opacity: [0.35, 0.48, 0.38, 0.35],
+          x: [0, -6, 4, 0],
+          y: [0, 6, -6, 0],
+          scale: [1, 0.97, 1.03, 1],
+          opacity: [0.28, 0.38, 0.30, 0.28],
         }}
         transition={{
           duration: 11,
