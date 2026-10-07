@@ -17,8 +17,8 @@ export default function PageHero({
         animate={{
           x: [0, 8, -4, 0],
           y: [0, -8, 8, 0],
-          scale: [1, 1.04, 0.96, 1],
-          opacity: [0.22, 0.32, 0.25, 0.22],
+          scale: [1, 1.05, 0.96, 1],
+          opacity: [0.32, 0.44, 0.35, 0.32],
         }}
         transition={{
           duration: 9,
@@ -32,7 +32,7 @@ export default function PageHero({
           x: [0, -8, 6, 0],
           y: [0, 8, -8, 0],
           scale: [1, 0.96, 1.04, 1],
-          opacity: [0.32, 0.44, 0.34, 0.32],
+          opacity: [0.35, 0.48, 0.38, 0.35],
         }}
         transition={{
           duration: 11,

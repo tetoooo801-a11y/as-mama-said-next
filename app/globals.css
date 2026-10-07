@@ -1805,55 +1805,55 @@ header.site-nav.scrolled {
 
 @media (max-width: 1023px) {
   .page-hero .blob {
-    filter: blur(32px);
+    filter: blur(48px);
   }
   .blob-a {
-    width: 180px;
-    height: 180px;
-    top: -60px;
-    right: -55px;
+    width: 320px;
+    height: 320px;
+    top: -110px;
+    right: -95px;
   }
   .blob-b {
-    width: 160px;
-    height: 160px;
-    bottom: -60px;
-    left: -45px;
+    width: 220px;
+    height: 220px;
+    bottom: -80px;
+    left: -60px;
   }
 }
 
 @media (max-width: 768px) {
   .page-hero .blob {
-    filter: blur(22px);
+    filter: blur(40px);
   }
   .blob-a {
-    width: 120px;
-    height: 120px;
-    top: -40px;
-    right: -35px;
+    width: 230px;
+    height: 230px;
+    top: -70px;
+    right: -65px;
   }
   .blob-b {
-    width: 100px;
-    height: 100px;
-    bottom: -40px;
-    left: -30px;
+    width: 170px;
+    height: 170px;
+    bottom: -60px;
+    left: -45px;
   }
 }
 
 @media (max-width: 480px) {
   .page-hero .blob {
-    filter: blur(16px);
+    filter: blur(28px);
   }
   .blob-a {
-    width: 80px;
-    height: 80px;
-    top: -20px;
-    right: -20px;
+    width: 150px;
+    height: 150px;
+    top: -45px;
+    right: -40px;
   }
   .blob-b {
-    width: 75px;
-    height: 75px;
-    bottom: -20px;
-    left: -20px;
+    width: 120px;
+    height: 120px;
+    bottom: -45px;
+    left: -30px;
   }
 }
 .page-hero .eyebrow-dot {
