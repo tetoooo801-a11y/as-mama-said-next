@@ -1529,15 +1529,6 @@ header.site-nav.scrolled {
     padding: 22px 18px;
   }
 
-  /* Blobs: تصغير على الموبايل */
-  .blob-a {
-    width: clamp(200px, 60vw, 420px);
-    height: clamp(200px, 60vw, 420px);
-  }
-  .blob-b {
-    width: clamp(150px, 45vw, 300px);
-    height: clamp(150px, 45vw, 300px);
-  }
 
   /* Scroll cue: تكبير touch target */
   .scroll-cue {
@@ -1810,6 +1801,60 @@ header.site-nav.scrolled {
   bottom: -140px;
   left: -80px;
   opacity: 0.5;
+}
+
+@media (max-width: 1023px) {
+  .page-hero .blob {
+    filter: blur(45px);
+  }
+  .blob-a {
+    width: 240px;
+    height: 240px;
+    top: -80px;
+    right: -70px;
+  }
+  .blob-b {
+    width: 200px;
+    height: 200px;
+    bottom: -80px;
+    left: -50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-hero .blob {
+    filter: blur(30px);
+  }
+  .blob-a {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    right: -45px;
+  }
+  .blob-b {
+    width: 130px;
+    height: 130px;
+    bottom: -50px;
+    left: -35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero .blob {
+    filter: blur(24px);
+  }
+  .blob-a {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    right: -35px;
+  }
+  .blob-b {
+    width: 110px;
+    height: 110px;
+    bottom: -40px;
+    left: -30px;
+  }
 }
 .page-hero .eyebrow-dot {
   display: inline-flex;
