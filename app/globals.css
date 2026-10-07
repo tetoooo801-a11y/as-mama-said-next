@@ -1789,10 +1789,14 @@ header.site-nav.scrolled {
 }
 .blob-a {
   width: 420px;
-  height: 420px;
+  height: 460px;
   background: var(--red);
-  top: -160px;
-  right: -120px;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: -80px;
+  filter: blur(65px);
 }
 .blob-b {
   width: 300px;
@@ -1804,15 +1808,11 @@ header.site-nav.scrolled {
 }
 
 @media (max-width: 1023px) {
-  .page-hero .blob {
-    filter: blur(48px);
-  }
   .blob-a {
-    width: 300px;
-    height: 120%;
-    min-height: 400px;
-    top: -10%;
-    right: -80px;
+    width: 380px;
+    height: 420px;
+    right: -70px;
+    filter: blur(55px);
   }
   .blob-b {
     width: 220px;
@@ -1823,15 +1823,11 @@ header.site-nav.scrolled {
 }
 
 @media (max-width: 768px) {
-  .page-hero .blob {
-    filter: blur(42px);
-  }
   .blob-a {
-    width: 260px;
-    height: 125%;
-    min-height: 360px;
-    top: -12%;
+    width: 300px;
+    height: 380px;
     right: -60px;
+    filter: blur(48px);
   }
   .blob-b {
     width: 170px;
@@ -1842,15 +1838,11 @@ header.site-nav.scrolled {
 }
 
 @media (max-width: 480px) {
-  .page-hero .blob {
-    filter: blur(32px);
-  }
   .blob-a {
-    width: 170px;
-    height: 130%;
-    min-height: 320px;
-    top: -15%;
-    right: -45px;
+    width: 220px;
+    height: 320px;
+    right: -50px;
+    filter: blur(38px);
   }
   .blob-b {
     width: 120px;
