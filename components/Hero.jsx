@@ -227,7 +227,7 @@ export default function Hero() {
                 <video
                   id="heroVideo"
                   ref={videoRef}
-                  src="/assets/videos/hero.mp4"
+                  src="/assets/videos/AMS_Cinematic_Web.webm"
                   autoPlay
                   loop
                   muted
